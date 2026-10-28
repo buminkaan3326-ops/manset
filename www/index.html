@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#14213d">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Manşet</title>
+<style>
+:root{--bg:#eef1f5;--bg2:#dfe5ee;--card:#fff;--ink:#14213d;--mute:#5b6678;--line:#d5dbe5;--red:#d62839;--grn:#2a9d5c;--gold:#e9a820;--btn:#14213d;--btnt:#fff;--bar:#14213d;--ts:1;--sh:0 6px 24px rgba(20,33,61,.10);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1424;--bg2:#17223f;--card:#16203a;--ink:#eef1f8;--mute:#9aa6bf;--line:#2a3555;--red:#ff5a69;--btn:#eef1f8;--btnt:#0d1424;--bar:#eef1f8;--sh:0 6px 24px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#0d1424;--bg2:#17223f;--card:#16203a;--ink:#eef1f8;--mute:#9aa6bf;--line:#2a3555;--red:#ff5a69;--btn:#eef1f8;--btnt:#0d1424;--bar:#eef1f8;--sh:0 6px 24px rgba(0,0,0,.35)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+body{min-height:100vh;background-image:radial-gradient(circle at 50% -20%,var(--bg2),transparent 70%)}
+body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(var(--line) 1px,transparent 1.3px);background-size:20px 20px;opacity:.5;pointer-events:none;z-index:0}
+input{-webkit-user-select:text;user-select:text}
+.w{position:relative;z-index:1;max-width:520px;margin:0 auto;padding:16px 16px 120px}
+h1,h2{font-family:Rockwell,"Roboto Slab",Georgia,serif;margin:0}
+.noanim *,.noanim *::before{animation:none!important;transition:none!important}
+
+/* üst başlık */
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.top h1{font-size:28px;letter-spacing:-.5px}
+.day{color:var(--mute);font-size:13px;margin-top:2px}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:13px;font-weight:700;white-space:nowrap}
+.pb{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:-2px 0 12px}
+.pb i{display:block;height:100%;background:var(--gold);transition:width .4s}
+.kb{margin:0 0 10px}.kb .pb{margin:6px 0 0}.kt{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:12px;color:var(--mute)}.kt b{color:var(--ink);font-size:13px}
+.fp{background:#f6f0e1;color:#1b1b1b;border:1px solid #cfc6ad;border-radius:6px;padding:12px 14px 14px;margin:10px 0 14px;box-shadow:0 4px 14px rgba(0,0,0,.14);position:relative;font-family:Georgia,"Times New Roman",serif;animation:fpin .5s cubic-bezier(.2,.9,.3,1.2)}
+.fpm{text-align:center;border-bottom:3px double #1b1b1b;padding-bottom:6px;margin-bottom:8px}
+.fpm b{display:block;font-size:24px;letter-spacing:1px;text-transform:uppercase;line-height:1.1}
+.fpm span{display:block;font:11px system-ui,sans-serif;opacity:.7;margin-top:3px;letter-spacing:.5px}
+.fpk{font:700 10px system-ui,sans-serif;letter-spacing:2px;color:#b3202f;margin-bottom:4px}
+.fph{font-weight:800;font-size:23px;line-height:1.15;margin:0 0 6px}
+.fps{font-size:13px;line-height:1.4;opacity:.8;margin:0 0 10px}
+.fpi{height:68px;border-radius:3px;border:1px solid #cfc6ad;background:repeating-linear-gradient(45deg,#d9d0b8,#d9d0b8 6px,#e4dcc6 6px,#e4dcc6 12px);display:flex;align-items:center;justify-content:center;font-size:34px}
+.fpv{position:absolute;top:-10px;right:10px;background:#d62839;color:#fff;font:800 11px system-ui,sans-serif;letter-spacing:1px;padding:4px 9px;border-radius:4px;transform:rotate(3deg);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.fpv.neg{background:#8a5d00}
+@keyframes fpin{from{opacity:0;transform:translateY(14px) rotate(-1.2deg)}}
+.vr{display:flex;gap:10px;align-items:center;border-radius:12px;padding:10px 12px;margin:0 0 12px;font-size:14px;font-weight:700;background:linear-gradient(90deg,rgba(214,40,57,.14),rgba(233,168,32,.14));border:1px solid var(--red)}
+.vr.neg{background:rgba(233,168,32,.12);border-color:var(--gold)}
+.vr small{display:block;font-weight:500;color:var(--mute);font-size:12px;margin-top:2px}
+.tj{margin:6px 0 10px}.tjh{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--mute)}.tjh b{color:var(--ink);font-size:17px}.tjh small{font-size:12px}
+.tjg{width:100%;height:46px;display:block;margin-top:4px}
+.rc{margin-top:12px}.rct{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.rci{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line)}
+.rca{font-size:22px;line-height:1}.rci b{font-size:13px}.rci p{margin:2px 0 0!important;font-size:14px;line-height:1.35}.rci em{font-style:normal;font-size:12px;color:var(--mute);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.fp{animation:none}}
+
+/* göstergeler */
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:6px}
+.st3{background:var(--card);border-radius:16px;padding:10px 12px;box-shadow:0 2px 10px rgba(20,33,61,.06)}
+.sn{font-size:12px;color:var(--mute);display:flex;justify-content:space-between;align-items:center}
+.sv{font-family:Rockwell,"Roboto Slab",Georgia,serif;font-size:26px;font-weight:700;line-height:1.1;margin:2px 0 6px}
+.dd{font-style:normal;font-weight:700;font-size:12px;animation:pop .6s}
+.dd.pos{color:var(--grn)}.dd.neg{color:var(--red)}
+.tr{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:3px}
+.tr i{display:block;height:100%;background:var(--bar);width:50%;transition:width .4s}
+.tr i.lo{background:var(--red)}
+.warn{min-height:22px;color:var(--red);font-size:14px;font-weight:600;margin:6px 0 10px}
+.warn.on{background:rgba(214,40,57,.12);padding:8px 12px;border-radius:12px}
+
+/* kartlar */
+.card{background:var(--card);border-radius:20px;padding:18px;box-shadow:var(--sh)}
+.card h2{font-size:calc(20px*var(--ts));line-height:1.35;margin-bottom:16px}
+.card p{line-height:1.5;margin:0 0 10px;font-size:calc(15px*var(--ts))}
+.b{display:block;width:100%;text-align:left;font:inherit;font-size:calc(16px*var(--ts));line-height:1.35;padding:13px 14px;margin-top:10px;background:var(--btn);color:var(--btnt);border:0;border-radius:14px;cursor:pointer}
+.b:focus-visible,.big:focus-visible,.tile:focus-visible,.mb:focus-visible,.ic:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.b:active{transform:scale(.99)}
+.opt{background:var(--bg);color:var(--ink);border:1px solid var(--line);font-weight:600}
+.opt:hover{border-color:var(--ink)}
+.st{color:var(--mute);font-size:14px;margin:12px 0}
+.nt{color:var(--mute);font-size:calc(14px*var(--ts))!important;margin:10px 0 0!important}
+.chip{display:inline-block;font-size:14px;font-weight:700;padding:4px 10px;border-radius:12px;margin:0 6px 6px 0;border:1px solid var(--line)}
+.dn{color:var(--red)}
+.hint{color:var(--mute);font-size:13px;line-height:1.5;margin:4px 2px 10px}
+
+/* oyun tarzı büyük butonlar */
+.big{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;font:inherit;font-weight:800;font-size:calc(20px*var(--ts));letter-spacing:.5px;text-transform:uppercase;color:#fff;background:linear-gradient(180deg,#ef4456,var(--red));border:0;border-radius:18px;padding:17px 16px;cursor:pointer;box-shadow:0 5px 0 #8f1624,0 12px 22px rgba(214,40,57,.28);margin-top:14px;transition:transform .08s,box-shadow .08s}
+.big:active{transform:translateY(4px);box-shadow:0 1px 0 #8f1624,0 4px 10px rgba(214,40,57,.25)}
+.big small{display:block;font-size:12px;font-weight:600;letter-spacing:0;text-transform:none;opacity:.85}
+.big.sec{background:var(--card);color:var(--ink);font-size:calc(16px*var(--ts));box-shadow:0 5px 0 var(--line),0 10px 18px rgba(20,33,61,.08)}
+.big.sec:active{box-shadow:0 1px 0 var(--line)}
+.big[disabled]{opacity:.6;cursor:default}
+.big.pulse{animation:pulse 1.6s infinite}
+@keyframes pulse{50%{transform:scale(1.03)}}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.tile{position:relative;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;cursor:pointer;box-shadow:0 4px 0 var(--line);display:flex;flex-direction:column;gap:3px;transition:transform .08s,box-shadow .08s}
+.tile:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.tile .ti{font-size:28px;line-height:1.2}
+.tile b{font-family:Rockwell,"Roboto Slab",Georgia,serif;font-size:calc(17px*var(--ts))}
+.tile small{color:var(--mute);font-size:12px}
+.tile .tg{position:absolute;top:10px;right:10px;background:var(--red);color:#fff;font-size:11px;font-weight:800;padding:2px 8px;border-radius:10px}
+
+/* ana menü */
+.topbar{display:flex;align-items:center;gap:10px}
+.prof{display:flex;align-items:center;gap:10px;flex:1;min-width:0;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:8px 14px 8px 8px;cursor:pointer;box-shadow:0 3px 0 var(--line)}
+.prof:active{transform:translateY(2px);box-shadow:0 1px 0 var(--line)}
+.pi{min-width:0;flex:1}
+.pi b{display:block;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pi small{color:var(--mute);font-size:12px}
+.xp{height:6px;background:var(--line);border-radius:3px;margin-top:5px;overflow:hidden}
+.xp i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#f4c95d);border-radius:3px}
+.ib{display:flex;gap:8px}
+.ic{width:46px;height:46px;flex:none;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:19px;cursor:pointer;box-shadow:0 3px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:0}
+.ic:active{transform:translateY(2px);box-shadow:0 1px 0 var(--line)}
+.av{flex:none;width:46px;height:46px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:22px}
+.mast{padding:20px 0 6px;text-align:center}
+.dl{display:flex;justify-content:space-between;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mute);border-top:4px double var(--ink);border-bottom:1px solid var(--ink);padding:7px 2px}
+.mast h1{font-size:68px;line-height:1;letter-spacing:-2px;text-transform:uppercase;margin:20px 0 8px}
+.mast p{font-family:Georgia,serif;font-style:italic;color:var(--mute);font-size:17px;margin:0 0 4px}
+.tick{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);margin:10px 0 4px;font-size:13px}
+.tick>b{background:var(--red);color:#fff;padding:8px 10px;letter-spacing:1px;font-size:11px;white-space:nowrap;display:flex;align-items:center}
+.tick>div{overflow:hidden;flex:1;display:flex;align-items:center}
+.tick>div span{display:inline-block;white-space:nowrap;padding-left:100%;animation:tk 60s linear infinite;color:var(--mute)}
+@keyframes tk{to{transform:translateX(-100%)}}
+.ft{text-align:center;color:var(--mute);font-size:12px;margin-top:24px;letter-spacing:1px}
+
+/* açılış */
+.splash{min-height:82vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.splash .lg{font-size:76px;animation:pop .8s}
+.splash h1{font-size:62px;letter-spacing:-2px;text-transform:uppercase;margin:6px 0}
+.splash p{font-family:Georgia,serif;font-style:italic;color:var(--mute);font-size:17px;margin:0}
+.ld{width:70%;height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:28px 0 4px}
+.ld i{display:block;height:100%;width:100%;background:var(--red);animation:ldb 1.3s linear}
+@keyframes ldb{from{width:0}}
+.splash .big{max-width:320px}
+
+/* alt sayfalar */
+.hd{display:flex;align-items:center;gap:12px;margin:4px 0 14px}
+.hd h1{font-size:26px;flex:1}
+.sect{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--mute);margin:22px 4px 8px;font-weight:700}
+.mb{display:flex;align-items:center;gap:14px;width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-top:10px;cursor:pointer;box-shadow:0 4px 0 var(--line);transition:transform .08s,box-shadow .08s}
+.mb:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.mb .mi{flex:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1px solid var(--line);font-size:20px}
+.mb .mt{flex:1;display:flex;flex-direction:column;gap:3px}
+.mb .mt b{font-family:Rockwell,"Roboto Slab",Georgia,serif;font-size:calc(19px*var(--ts))}
+.mb .mt small{color:var(--mute);font-size:13px;line-height:1.35}
+.mb .ar{color:var(--mute);font-size:26px;line-height:1}
+.mb.pri{background:linear-gradient(180deg,#ef4456,var(--red));border-color:var(--red);color:#fff;box-shadow:0 5px 0 #8f1624}
+.mb.pri:active{box-shadow:0 1px 0 #8f1624}
+.mb.pri .mi{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35)}
+.mb.pri .mt small,.mb.pri .ar{color:rgba(255,255,255,.88)}
+
+/* ayarlar */
+.grp{background:var(--card);border-radius:20px;box-shadow:var(--sh);padding:2px 14px}
+.row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border:0}
+.ri{flex:none;width:38px;height:38px;border-radius:12px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:19px}
+.rt{flex:1;min-width:0}
+.rt b{display:block;font-size:calc(15px*var(--ts))}
+.rt small{display:block;color:var(--mute);font-size:12px;line-height:1.35;margin-top:2px}
+.seg{display:inline-flex;background:var(--bg);border-radius:12px;padding:3px;gap:2px;flex:none}
+.seg button{border:0;background:none;color:var(--mute);font:inherit;font-size:13px;font-weight:700;padding:8px 10px;border-radius:9px;cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--bg)}
+.seg.full{display:flex;width:100%}
+.seg.full button{flex:1;padding:11px 4px}
+.sw{flex:none;width:52px;height:30px;border-radius:15px;border:0;background:var(--line);position:relative;cursor:pointer;transition:background .2s;padding:0}
+.sw i{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3);transition:transform .2s}
+.sw.on{background:var(--grn)}
+.sw.on i{transform:translateX(22px)}
+.in{width:130px;font:inherit;font-size:15px;padding:9px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.dng{flex:none;font:inherit;font-size:13px;font-weight:700;color:var(--red);background:none;border:1px solid var(--red);border-radius:10px;padding:8px 12px;cursor:pointer}
+
+/* sonlar / profil */
+.eg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ec{background:var(--card);border-radius:18px;padding:14px 10px;box-shadow:var(--sh);text-align:center}
+.ec.lk{opacity:.55}
+.ec .ei{font-size:36px;line-height:1.2}
+.ec b{display:block;font-family:Rockwell,"Roboto Slab",Georgia,serif;margin:4px 0;font-size:calc(16px*var(--ts))}
+.ec small{color:var(--mute);font-size:12px;line-height:1.35;display:block}
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:12px 0}
+.sg div{background:var(--bg);border-radius:12px;padding:8px 2px;text-align:center}
+.sg b{display:block;font-size:18px}
+.sg small{font-size:11px;color:var(--mute)}
+.sec{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.sec:last-child{border:0}
+.sec span{color:var(--mute);font-size:14px}
+.how{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.how:last-child{border:0}
+.how .hi{flex:none;font-size:24px;width:34px;text-align:center}
+.how b{display:block;margin-bottom:2px}
+.how span{color:var(--mute);font-size:calc(14px*var(--ts));line-height:1.5}
+
+/* ekip / yatırım */
+.cr{margin-bottom:12px;padding:16px}
+.cr.off{opacity:.5}
+.ch{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.ci b{display:block;font-family:Rockwell,"Roboto Slab",Georgia,serif;font-size:17px}
+.ci small{color:var(--mute);font-size:13px}
+.act{display:block;width:100%;text-align:left;font:inherit;color:var(--btnt);background:var(--btn);border:0;border-radius:14px;padding:11px 14px;margin-top:10px;cursor:pointer}
+.act b{display:block;font-size:15px}
+.act small{opacity:.8;font-size:12px}
+.act.alt{background:var(--bg);color:var(--ink);border:1px solid var(--line)}
+.act[disabled]{opacity:.45;cursor:default}
+.act:not([disabled]):active,.up:not([disabled]):active{transform:scale(.98)}
+.gr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.up{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;text-align:left;font:inherit;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;gap:4px;box-shadow:0 2px 10px rgba(20,33,61,.06)}
+.up .ui{font-size:28px}.up b{font-size:15px}.up small{color:var(--mute);font-size:12px;line-height:1.35;flex:1}
+.up em{font-style:normal;font-weight:700;font-size:13px;margin-top:6px;color:var(--red)}
+.up.own{border-color:var(--grn)}.up.own em{color:var(--grn)}
+.up[disabled]:not(.own){opacity:.5}.up[disabled]{cursor:default}
+
+/* alt menü ve bildirim */
+.nv{position:fixed;left:0;right:0;bottom:0;max-width:520px;margin:0 auto;padding:8px 12px calc(10px + env(safe-area-inset-bottom,0px));pointer-events:none;z-index:5}
+.nvi{pointer-events:auto;display:flex;gap:4px;background:var(--card);border-radius:22px;box-shadow:0 8px 30px rgba(20,33,61,.18);padding:6px;border:1px solid var(--line)}
+.nvi button{flex:1;position:relative;background:none;border:0;color:var(--mute);font:inherit;font-size:11px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0;border-radius:16px;cursor:pointer}
+.nvi button span{font-size:20px;line-height:1}
+.nvi button.on{background:var(--red);color:#fff}
+.nvi button:focus-visible{outline:3px solid var(--ink)}
+.bd{position:absolute;top:6px;right:calc(50% - 20px);width:8px;height:8px;border-radius:50%;background:var(--red)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:14px;font-size:14px;font-weight:600;max-width:90%;text-align:center;animation:tst 2.4s forwards;z-index:6;pointer-events:none}
+@keyframes tst{0%{opacity:0;transform:translate(-50%,10px)}12%,80%{opacity:1;transform:translate(-50%,0)}100%{opacity:0}}
+
+/* oyun sonu */
+.end{text-align:center}
+.eb{font-size:68px;line-height:1.1;animation:pop .6s}
+.end h2{font-size:30px;color:var(--red);margin:6px 0 10px}
+.end p{font-size:calc(17px*var(--ts));line-height:1.5}
+.nw{display:inline-block;background:rgba(233,168,32,.18);color:var(--gold);font-weight:800;font-size:13px;padding:5px 12px;border-radius:12px;margin:2px 4px 8px}
+
+@keyframes pop{from{transform:scale(1.7);opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+.card,.mb,.hint,.act,.up,.tile,.ec,.grp{animation:rise .25s ease}
+@media (prefers-reduced-motion:reduce){.card,.mb,.hint,.act,.up,.dd,.toast,.tile,.ec,.grp,.splash .lg,.eb,.big.pulse{animation:none}.tick>div span{animation:none;padding-left:10px}}
+.gd{display:flex;gap:10px;align-items:flex-start;margin:12px 0}
+.gav{width:58px;height:58px;font-size:34px;flex:none;background:var(--card);border:2px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:pop .5s}
+.bub{position:relative;background:var(--ink);color:var(--bg);border-radius:6px 18px 18px 18px;padding:12px 14px;font-size:calc(15px*var(--ts));line-height:1.5;animation:rise .3s}
+.bub b{color:var(--gold)}.gn{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--mute);margin:0 0 2px}
+.hl{outline:3px solid var(--gold);outline-offset:3px;border-radius:16px}
+.lt{margin-top:14px;padding:12px 14px;background:var(--bg);border:1px dashed var(--ink);border-radius:12px;font-family:Georgia,serif}
+.lt b{font-family:system-ui,sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--mute)}
+.lt p{font-style:italic;margin:6px 0 0!important}
+
+/* uygulama kabuğu */
+html,body{overscroll-behavior-y:none;-webkit-touch-callout:none}
+.sl{animation:slin .22s ease}@keyframes slin{from{opacity:0;transform:translateX(18px)}}
+@keyframes up{from{transform:translateY(100%)}}@keyframes fade{from{opacity:0}}
+.hd.ph{margin:10px 0 14px}.hd.ph h1{font-size:34px}
+.hero2{border-radius:26px;padding:22px 20px 20px;margin-top:14px;color:#fff;background:linear-gradient(160deg,var(--red),#6e1019);box-shadow:0 8px 0 rgba(0,0,0,.2),0 18px 30px rgba(0,0,0,.18);position:relative;overflow:hidden}
+.hero2::after{content:"📰";position:absolute;right:-8px;top:-6px;font-size:110px;opacity:.14;transform:rotate(12deg)}
+.hero2 .hl{font-size:11px;letter-spacing:2.5px;font-weight:800;opacity:.85}
+.hero2 h1{font-size:46px;line-height:1.05;letter-spacing:-1.5px;text-transform:uppercase;margin:8px 0 4px}
+.hero2 p{margin:0 0 6px;font-family:Georgia,serif;font-style:italic;opacity:.9}
+.pbtn{display:flex;flex-direction:column;align-items:center;gap:2px;width:100%;margin-top:14px;font:inherit;font-weight:800;font-size:20px;letter-spacing:.5px;text-transform:uppercase;color:#14213d;background:#fff;border:0;border-radius:18px;padding:15px;cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.25)}
+.pbtn small{font-size:12px;font-weight:600;letter-spacing:0;text-transform:none;opacity:.7}
+.pbtn.alt{background:rgba(255,255,255,.18);color:#fff;font-size:15px;box-shadow:none;padding:11px}
+.pbtn:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.dc{position:relative;display:flex;align-items:center;gap:14px;width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 16px;margin-top:12px;cursor:pointer;box-shadow:0 4px 0 var(--line)}
+.dc:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.dc.new{border-color:var(--red)}
+.dc .di{font-size:28px}.dc .dt{flex:1;display:flex;flex-direction:column;gap:3px}
+.dc .dt b{font-family:Rockwell,"Roboto Slab",Georgia,serif;font-size:18px}.dc .dt small{color:var(--mute);font-size:13px}
+.dc .dn2{font-weight:800;font-size:15px}
+.dots{display:flex;gap:5px;margin-top:4px}.dots i{width:14px;height:14px;border-radius:50%;background:var(--line)}.dots i.f{background:var(--gold)}.dots.big{margin:10px 0}.dots.big i{width:26px;height:26px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:20;animation:fade .2s}
+.sh{position:fixed;left:0;right:0;bottom:0;max-width:520px;margin:0 auto;max-height:88vh;overflow:auto;background:var(--bg);border-radius:26px 26px 0 0;padding:10px 16px calc(18px + env(safe-area-inset-bottom,0px));z-index:21;animation:up .25s ease;box-shadow:0 -12px 40px rgba(0,0,0,.35)}
+.sh .gp{width:44px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 12px}
+.sh .sht{font-size:26px;margin:4px 0 6px}
+@media (prefers-reduced-motion:reduce){.sl,.sh,.ov{animation:none}}
+@media (min-width:900px){.w{max-width:700px;padding-top:28px}.nv,.sh{max-width:700px}.card h2{font-size:calc(24px*var(--ts))}.b{font-size:calc(18px*var(--ts));padding:16px 18px}.sv{font-size:32px}.hero2 h1{font-size:60px}.top h1{font-size:34px}}
+/* v3.7 mobil oyun menüleri */
+.nvi{border-radius:28px;padding:7px;gap:6px;border:2px solid var(--line);box-shadow:0 6px 0 rgba(0,0,0,.10),0 14px 34px rgba(20,33,61,.25)}
+.nvi button{padding:9px 0 7px;transition:transform .2s cubic-bezier(.3,1.6,.5,1),background .2s}
+.nvi button span{font-size:24px;transition:transform .2s cubic-bezier(.3,1.6,.5,1)}
+.nvi button.on{background:linear-gradient(180deg,#ef4456,var(--red));box-shadow:0 4px 0 #8f1624;transform:translateY(-8px)}
+.nvi button.on span{transform:scale(1.2)}
+.nvi button:active{transform:scale(.92)}
+.mb{border-radius:22px;border:2px solid var(--line);box-shadow:0 5px 0 var(--line)}
+.mb .mi{width:50px;height:50px;border-radius:16px;font-size:26px;border:0;box-shadow:0 3px 0 rgba(0,0,0,.2);background:linear-gradient(160deg,#9aa6bf,#6b7790)}
+#t4 .mi,#dm6 .mi{background:linear-gradient(160deg,#ffd76a,var(--gold))}
+#t5 .mi,#dm7 .mi,#dm2 .mi{background:linear-gradient(160deg,#6ea2ff,#2563eb)}
+#t3 .mi,#dm3 .mi,#dm1 .mi{background:linear-gradient(160deg,#5fd18f,var(--grn))}
+#dm5 .mi{background:linear-gradient(160deg,#ef4456,#b01c2c)}
+.mb .ar{font-size:30px;opacity:.35}
+.pbtn{border-radius:22px;padding:17px;font-size:24px;background:linear-gradient(180deg,#fff,#ffe9a8);box-shadow:0 7px 0 rgba(0,0,0,.28)}
+.pbtn.alt{background:rgba(255,255,255,.2);box-shadow:none}
+.dc{border-radius:22px;border:2px solid var(--line);box-shadow:0 5px 0 var(--line)}
+.dc.new{border-color:var(--gold);box-shadow:0 5px 0 #b98410}
+.opt{border:2px solid var(--line);border-radius:18px;box-shadow:0 4px 0 var(--line);padding:14px 15px}
+.opt:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.hn{display:block;margin-top:6px;font-size:12px;font-weight:700;color:var(--mute);letter-spacing:.5px}
+.act,.up{border-radius:18px}.sh{border-radius:30px 30px 0 0}
+.mg{background:linear-gradient(90deg,var(--gold),#f6c85a);color:#3a2a00;font-weight:700;font-size:13px;border-radius:14px;padding:9px 12px;margin:0 0 10px;box-shadow:0 3px 0 #b98410}
+.mg.ok{background:var(--grn);color:#fff;box-shadow:0 3px 0 #1c6b3f}
+@media (prefers-reduced-motion:no-preference){.pbtn:not(.alt){animation:pul 2s ease-in-out infinite}.bd{animation:pls 1.2s infinite}@keyframes pul{50%{transform:scale(1.025)}}@keyframes pls{50%{transform:scale(1.5);opacity:.6}}}
+/* v3.8 gerçekçi gazete */
+.fp{background:linear-gradient(180deg,#f8f2e3,#efe7d1);padding:10px 14px 12px;box-shadow:0 1px 0 #fff inset,0 6px 18px rgba(0,0,0,.2)}
+.fpe{display:flex;justify-content:space-between;font:600 10px system-ui,sans-serif;letter-spacing:.5px;opacity:.75;border-bottom:1px solid #1b1b1b;padding-bottom:4px}
+.fpm{border-bottom:3px double #1b1b1b;padding:6px 0}
+.fpm b{font-size:36px;font-weight:900;letter-spacing:2px}
+.fpm span{border-top:1px solid #1b1b1b;margin-top:6px;padding-top:4px;text-transform:uppercase;font-size:9.5px;letter-spacing:1px}
+.fpk{margin-top:8px}.fph{font-size:26px;font-weight:900;letter-spacing:-.3px}
+.fpi{height:120px;margin-top:4px;position:relative;overflow:hidden;border:1px solid #6d6a60;background:radial-gradient(circle at 1px 1px,rgba(0,0,0,.28) 1px,transparent 1.5px) 0 0/4px 4px,linear-gradient(135deg,#8f8c84,#d2cdbd)}
+.fpi i{font-style:normal;font-size:64px;filter:grayscale(1) contrast(1.2);opacity:.85}
+.fpc{font:italic 10px Georgia,serif;opacity:.65;margin:3px 0 8px;border-bottom:1px solid #cfc6ad;padding-bottom:6px}
+.fpb{column-count:2;column-gap:12px;column-rule:1px solid #cfc6ad;font-size:12.5px;line-height:1.45;text-align:justify;hyphens:auto}
+.fpb p{margin:0 0 6px}.fpb p::first-letter{float:left;font-size:34px;line-height:.9;padding-right:4px;font-weight:900}
+.fpl{height:84px;background:repeating-linear-gradient(to bottom,rgba(27,27,27,.3) 0 4px,transparent 4px 10px)}
+.fpk2{margin-top:8px;border-top:3px double #1b1b1b;padding-top:5px;font:800 10px system-ui,sans-serif;letter-spacing:2px;color:#b3202f}
+.fpq{font-size:12.5px;line-height:1.35;font-weight:700;padding:3px 0;border-bottom:1px dotted #b9b095}
+.fpf{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font:600 10px system-ui,sans-serif;opacity:.7}
+.bc{width:70px;height:16px;background:repeating-linear-gradient(90deg,#1b1b1b 0 2px,transparent 2px 3px,#1b1b1b 3px 4px,transparent 4px 7px)}
+/* v3.9 spor eki */
+.fp.spor{background:linear-gradient(180deg,#f4f8e8,#e3ecca)}
+.spor .fpe{border-color:#0b5d2a}
+.spor .fpm{background:#0b5d2a;color:#ffd23f;margin:0 -14px;padding:8px 14px;border-bottom:4px solid #ffd23f}
+.spor .fpm b{font-size:30px;font-style:italic}
+.spor .fpm span{color:#fff;border-top-color:#ffd23f}
+.spor .fpk{color:#0b5d2a}
+.spor .fph{color:#b3202f;font-size:30px;font-style:italic;text-transform:uppercase;line-height:1.08}
+.spor .fpi{border:2px solid #fff;background:radial-gradient(circle at 50% 125%,transparent 0 40px,rgba(255,255,255,.6) 40px 42px,transparent 42px),repeating-linear-gradient(90deg,#2f8f46 0 28px,#2a823f 28px 56px)}
+.spor .fpi i{filter:drop-shadow(0 4px 4px rgba(0,0,0,.4));font-size:72px;opacity:1}
+.spor .fpk2{color:#0b5d2a;border-top-color:#0b5d2a}
+/* v3.10 olay görselleri */
+.fpi svg{display:block;width:100%;height:100%;filter:grayscale(1) contrast(1.15)}
+.fpi::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 1px 1px,rgba(0,0,0,.22) 1px,transparent 1.5px) 0 0/4px 4px;mix-blend-mode:multiply;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="w" id="app"></div>
+<script>
+var E=[
+{t:"Belediye otobüs ücretine %60 zam yaptı. Halk sokakta.",o:[["Halk haklı: Zam cebimizi yakıyor",15,-5,5,15],["Zam, şehrin ulaşımını kurtaracak",-15,10,-5,-5],["Zam sonrası gerginlik: İki taraf ne diyor?",0,0,0,3]]},
+{t:"Ünlü futbolcu Emre Kaya yasadışı bahis oynarken yakalandı. Taraftar ikiye bölündü.",o:[["Emre Kaya’ya sert tepki: Kulüp ne yapacak?",12,-8,3,8],["Kulüp: Sporcumuzun yanındayız",-10,15,-3,-5],["Bahis soruşturmasında neler biliniyor?",0,3,3,0]]},
+{t:"Ülkenin en büyük fotoğraf platformu Karekare’ye erişim engeli geldi. Kurum “güvenlik gerekçesi” dedi.",o:[["Karekare yasağı özgürlüğe darbe: Milyonlar sustu",20,-5,3,25],["Kurum açıkladı: Engel milli güvenlik için şart",-15,15,-5,-10],["Erişim kapandı: VPN talebi patladı",5,8,0,5]]},
+{t:"Büyükşehir ihalesindeki usulsüzlük belgeleri sana ulaştı.",o:[["İhale çalındı, belgeler elimizde",18,-8,8,30],["Belediye: Her şey yasal",-15,12,-8,-10],["İhale iddiaları: Belgeler ne diyor?",2,2,4,5]]},
+{t:"Dev bir fabrika nehre atık bıraktı. Balıklar ölüyor. Fabrika, gazetenin en büyük reklam vereni.",o:[["Nehir zehirleniyor: Sorumlular kim?",15,-20,6,10],["Fabrika: Atıklar standartlara uygun",-12,20,-6,-3],["Nehirdeki kirlilik: Uzmanlar ne diyor?",3,-3,3,2]]},
+{t:"Tanımadığın bir iş insanı arıyor: “Şu haberi yazma, hesabına 50 bin yatsın.”",o:[["Parayı al, haberi yazma",-10,30,-12,-5],["Teklifi reddet, haberi yaz",8,-5,10,10],["Konuşmayı kaydet, sonra kullan",0,0,3,12]]},
+{t:"Yapay zekâ ile üretilmiş sahte bir video, bakanın istifa ettiğini söylüyor. Milyonlar izledi.",o:[["Sahte video yayılıyor: Hızla doğrula",5,-5,12,0],["Bakan istifa mı etti? Video gündemi sarstı",8,12,-18,5],["Video gerçek mi? İnceleme sürüyor",0,3,4,0]]},
+{t:"Belediye başkanı sabaha karşı gözaltına alındı. Destekçiler karakolun önünde.",o:[["Sabaha karşı operasyon: Hukuk nerede?",15,-5,3,22],["Başkana yolsuzluk operasyonu",-10,10,-3,-8],["Gözaltı sonrası karakol önünde neler yaşandı?",2,2,2,3]]},
+{t:"Üniversite öğrencileri harç zammına karşı kampüsü işgal etti.",o:[["Gençler haklı: Harç zammı geri çekilsin",14,-6,4,14],["Kampüs işgali: Eğitim durdu",-12,8,-4,-6],["Kampüste ne oluyor? Rektörlük ve öğrenciler anlatıyor",2,2,3,3]]},
+{t:"Büyük market zinciri temel gıdaları stokluyor. Raflar boş.",o:[["Raflar boş, fiyatlar uçuyor: Market zinciri suçlu",16,-10,5,12],["Market zinciri: Tedarik sorunu geçici",-14,14,-5,-4],["Boş raflar: Sebep ne, çözüm ne zaman?",2,0,3,2]]},
+{t:"Ülkenin tek bağımsız televizyonuna yayın durdurma cezası geldi.",o:[["Susturulan ekran: Basın özgürlüğü kararla yanıyor",15,-5,5,20],["Kurul: Yayın kuralları herkes için eşit",-12,10,-4,-6],["Yayın cezası: Kurul ve kanal ne diyor?",1,2,3,3]]},
+{t:"Öğretmenler maaş zammı için iş bıraktı.",o:[["Öğretmenin ekmeği: Grev haklı",14,-6,4,12],["Okullar kapalı: Veliler mağdur",-10,8,-3,-4],["İş bırakma: Talepler ve hükümet teklifi",2,1,3,2]]},
+{t:"Meşhur bir YouTuber hayır kampanyasında topladığı parayı kendine harcadı.",o:[["Hayır parası nereye gitti? Belgeler ortada",12,-4,6,2],["YouTuber: Montaj ve iftira var",-8,10,-8,-2],["Kampanya soruşturması: İddialar ve savunma",1,2,3,0]]},
+{t:"Gizli bir kaynak, bakanlığın sızdırılmış ihale listesini sana verdi. Yayınlarsan kaynak ortaya çıkabilir.",o:[["Listeyi yayınla, kaynağı koru",16,-8,6,22],["Listeyi bakanlığa ver, açıklama iste",-6,8,2,-5],["Kaynağı bırak, haberi unut",-12,4,-10,-8]]},
+{t:"Sahil kasabasında kaçak yapılar yıkıldı, onlarca aile sokakta.",o:[["Evsiz kalan aileler: Kimin suçu?",14,-5,4,10],["Kaçak yapıyla mücadele sürüyor",-10,8,-4,-5],["Kaçak yapı yıkımı: Mevzuat ne diyor?",2,0,4,1]]},
+{t:"Dev telekom şirketi kullanıcı verilerini sızdırdı. Şirket aynı zamanda sana reklam veriyor.",o:[["Milyonların verisi ortada: Şirket susuyor",13,-15,7,6],["Telekom: Güvenlik açığı kapatıldı",-10,18,-6,-4],["Veri sızıntısı: Neler çalındı, ne yapmalı?",4,0,5,1]]},
+{t:"Rakip gazete, senin muhabirinin haberini çalıp birinci sayfaya koydu.",o:[["Haber hırsızlığı: Rakibi mahkemeye veriyoruz",3,-8,6,3],["Sessiz kal, bir sonraki haberi daha iyi yap",0,0,-2,-2],["Aynı hamleyi yap, onların haberini al",-4,10,-8,3]]},
+{t:"Deprem tatbikatında yardım çadırları eksik çıktı.",o:[["Eksik çadır, boş vaat: Kriz yönetimi çöktü",14,-4,5,14],["Tatbikat başarılı: Eksikler giderilecek",-12,10,-4,-6],["Tatbikat sonrası: Neler eksik?",2,1,4,2]]},
+{t:"Bir iş insanı gazetenin borçlarını kapatmayı teklif ediyor, karşılığında yazı işleri kadrosunu istiyor.",o:[["Teklifi kabul et",-12,35,-12,-8],["Reddet, kendi ayaklarımızın üstünde duralım",8,-10,8,0],["Pazarlık et: Borcu al, kadroya dokunma",-3,15,-3,8]]},
+{t:"Seçimlere iki hafta var. Parti sana kapak röportajı için sınırsız erişim sunuyor.",o:[["Röportajı yap, soruları kısıtlama",-8,12,-6,-3],["Seçim vaatleri: Kim ne söz verdi?",3,2,5,2],["Röportajı reddet, sert bir dosya hazırla",12,-8,5,18]]},
+{t:"Özel hastane zincirinde ihmal iddiası: hasta yakınları sana belgeleri getirdi. Zincir, gazetene sağlık sayfası reklamı veriyor.",o:[["Hastanede ihmal: Aileler belgeleri açıkladı",14,-12,6,8],["Hastane: Tüm süreç mevzuata uygun",-10,14,-6,-3],["İhmal iddiası: Hastane ve aileler ne diyor?",3,-2,4,2]]},
+{t:"Maden ocağında göçük: yedi işçi mahsur. Şirket, iş güvenliği raporlarının yayınlanmamasını istiyor.",o:[["Göçükten önce uyarılmıştı: Raporlar ortada",16,-8,7,16],["Şirket: Kaza öngörülemezdi",-12,10,-7,-5],["Göçük sonrası kurtarma çalışmaları: Son durum",5,0,3,0]]},
+{t:"Bir milletvekilinin diplomasının sahte olduğu iddiası ortaya atıldı. Belgeler belirsiz.",o:[["Milletvekilinin diploması sahte mi? Belgeler ortada",8,-2,-4,12],["Vekilden diploma yalanlaması",-6,5,2,-5],["Diploma tartışması: Üniversite ne diyor?",2,0,5,2]]},
+{t:"Muhabirin tehdit mesajları aldı ve haberden çekilmek istiyor.",o:[["Tehdidi manşete taşı, muhabirini koru",12,-4,7,12],["Muhabiri başka bir habere kaydır",-5,2,-6,-4],["Hukuk birimine ver, sessizce takip et",2,-2,3,3]]},
+{t:"Ünlü şarkıcı boşandı. Magazin sayfaları günlerdir bunu konuşuyor, satışlar fırlayabilir.",o:[["Şarkıcının boşanma kavgası: Tüm detaylar",-8,20,-12,-5],["Sadece tek paragraf haber yap",0,3,0,0],["Magazin yerine kentin su sorunu dosyası",8,-6,5,3]]},
+{t:"Bakanlık gazetenin basın kartlarını askıya aldı. Resmî açıklamalara erişemiyorsun.",o:[["Basın kartı cezası: Gazeteye sansür",14,-5,4,18],["Bakanlığa özür mektubu yaz",-12,5,-8,-8],["Bilgiyi başka kaynaklardan toparla",3,-3,6,4]]},
+{t:"Popüler bir fenomen, gazetenin haberine “yalan” dedi ve milyonlarca takipçisine duyurdu.",o:[["Fenomene cevap: Haberimizin arkasındayız",6,-3,6,4],["Fenomenle ortak röportaj: Kim haklı?",4,6,2,1],["Haberi tekrar doğrula, düzeltme gerekirse yayınla",3,-2,10,0]]},
+{t:"Okurlar mektuplarında gazeteni hem “yandaş” hem “muhalif” diye suçluyor. Tarafsızlığın tartışılıyor.",o:[["Okurlara açık mektup: Çizgimiz belli",5,-4,6,6],["İki tarafın görüşüne eşit yer ver",3,0,3,-2],["Mektup sayfasını kaldır",-8,2,-6,-3]]},
+{t:"Büyük bir enerji şirketi yıllık reklam anlaşması önerdi. Aynı şirketin çevre ihlalleri üzerine dosya hazırlıyordun.",o:[["Anlaşmayı kabul et, dosyayı rafa kaldır",-12,28,-10,-6],["Reddet, dosyayı yayınla",12,-10,8,10],["Anlaşmayı al, dosyayı yumuşat",-6,16,-8,-4]]},
+{t:"Yabancı bir ajans, “bağımsız haber” adıyla yazdıracağı içerikler için sana ödeme öneriyor.",o:[["Parayı kabul et, içeriği yayınla",-10,24,-12,-6],["Reddet",6,-4,8,3],["Teklifi okura açıkla ve reddet",8,-3,10,8]]},
+{t:"Ünlü bir yazar, gazeten için “kiralık kalemler” dedi. Köşe yazarların öfkeli.",o:[["Yazara cevap: Kalemlerimiz kiralık değil",3,-2,5,3],["Yazarı yemeğe davet et, barış",0,-3,2,-2],["Sessiz kal, tartışma kendiliğinden sönsün",-2,0,-3,-1]]},
+{t:"Şehirde elektrikler günlerdir kesik. Dağıtım şirketi “bakım çalışması” diyor.",o:[["Karanlıkta kalan şehir: Şirket neden sustu?",14,-6,5,8],["Şirket: Bakım planlandığı gibi ilerliyor",-12,10,-5,-4],["Elektrik kesintisi: Hangi mahalle ne zaman aydınlanacak?",4,1,3,1]]},
+{t:"Eski bir bakanın hükümetin sırlarını anlattığı kitabın ön okuma kopyası sana ulaştı.",o:[["Kitaptan sızanları manşete taşı",12,-5,6,18],["Kitabın tanıtımını yap, ağır kısımları yayınlama",-3,8,-2,-3],["Kitap hakkında uzman yorumları topla",3,0,4,3]]},
+{t:"Seçimde “sandıkta usulsüzlük” iddiaları var. İki taraf birbirini suçluyor.",o:[["Sandık görüntüleri ortada: Usulsüzlük var mı?",8,-3,5,12],["Seçim kurulu: İddialar asılsız",-12,6,-6,-5],["Her iki tarafın iddiasını yan yana yayınla",2,0,6,2]]},
+{t:"Küçük bir köyün yolu sel baskınında koptu. Yardım hâlâ ulaşmadı.",o:[["Köy yolsuz kaldı: Yardım nerede?",13,-3,5,9],["Valilik: Müdahale sürüyor",-8,6,-3,-3],["Köylüler anlatıyor: Üç gündür ne yaşandı?",5,0,4,1]]},
+{t:"Genç bir muhabirin maskeli kişilerce darp edildi. Failler belli değil.",o:[["Muhabire saldırı: Faillerin peşindeyiz",10,-4,6,14],["Saldırıyı tek sütuna sığdır",-6,3,-5,-5],["Avukatlarla sessizce takip et",2,-2,3,3]]},
+{t:"Bir kulüp başkanı seçimden önce sana sınırsız reklam bütçesi sunuyor. Karşılığında rakip adayı karalayacaksın.",o:[["Teklifi reddet, iki adayın programını da yaz",5,-5,8,2],["Rakibi karala, parayı al",-10,22,-14,-4],["Parayı al, sadece kendi adayının iyi yanlarını yaz",-6,12,-8,-2]]},
+{t:"Sosyal medyada “gazete kapanıyor” söylentisi yayıldı. Abonelikler iptal ediliyor.",o:[["Söylentiyi yalanla: Gazete ayakta",3,-3,5,0],["Okurlara çağrı: Bizi destekleyin",6,10,2,3],["Söylentiyi görmezden gel",-6,-6,-4,-2]]},
+{t:"İç kaynaklar, gazete sahibinin ortaklarından birinin inşaat şirketiyle çıkar ilişkisini ortaya koyuyor.",o:[["Kendi sahibimizi de yazıyoruz",12,-15,10,10],["Haberi çöpe at",-12,8,-12,-4],["Sahibe haberi göster, tepkisini ölç",0,-3,-2,5]]},
+{t:"Üniversiteden akademisyenler ihraç edildi. Rektör “disiplin” diyor.",o:[["İhraç edilen akademisyenler konuşuyor",14,-4,5,16],["Rektör: Disiplin kuralları herkes için eşit",-10,8,-5,-4],["İhraç kararı: Hukukçular ne diyor?",3,0,4,3]]},
+{t:"Bir suç örgütü lideri sana röportaj teklif ediyor. Sansasyonel ama tehlikeli.",o:[["Röportajı olduğu gibi yayınla",-8,18,-12,3],["Teklifi reddet",4,-4,6,0],["Her iddiayı doğrula, karşı tarafı da dinle",5,8,6,8]]},
+{t:"Hava kirliliği alarm seviyesinde. Belediye ölçüm raporlarını açıklamıyor.",o:[["Şehir zehirli hava soluyor: Raporlar nerede?",15,-4,5,10],["Belediye: Değerler normal sınırlarda",-12,8,-6,-4],["Hava kirliliği: Uzmanlar ne diyor?",4,0,4,1]]},
+{t:"Kıdemli editörün istifa edip rakip gazeteye geçiyor. En iyi muhabirlerini de götürmek istiyor.",o:[["Maaşlara zam yap, ekibi tut",3,-18,5,0],["Gitmek isteyen gitsin",-4,0,-6,0],["Genç muhabirlere şans ver, yeni kadro kur",3,-6,6,3]]},
+{t:"Gazetenin eski bir muhabiri, haber uydurduğunu itiraf etti. Okurlar şokta.",o:[["Hatayı açıkça kabul et, düzeltme yayınla",6,-4,10,0],["Muhabiri savun",-8,0,-10,-2],["Sessizce arşivden kaldır",-10,3,-8,-3]]},
+{t:"Yüksek bir mahkemenin kararı, gazetecilerin kaynak gizliliğini tehdit ediyor.",o:[["Kaynak gizliliği tehlikede: Basına kelepçe",13,-4,6,16],["Karara saygı gösterilmeli",-8,6,-4,-5],["Karar: Hukukçular ve meslek örgütleri ne diyor?",3,0,5,3]]},
+{t:"Şehrin tanınmış bir araştırmacı gazetecisi şüpheli koşullarda ölü bulundu. Herkes soruyor.",o:[["Ölümün arkasında ne var? Sorular yanıtsız",14,-4,6,20],["Resmî açıklamayı olduğu gibi yayınla",-8,4,-4,-3],["Meslektaşları anlatıyor: Kimdi, ne yazdı?",6,2,5,5]]},
+{t:"Kentteki büyük festival sana sponsorlu özel ek yapman için para teklif ediyor.",o:[["Sponsorlu özel ek hazırla",-4,16,-5,-3],["Festivali tarafsız haber yap",3,0,3,0],["Festival bütçesini araştır",8,-6,6,5]]},
+{t:"Mahalledeki bir kişi hakkında doğrulanmamış bir suçlama sosyal medyada yayılıyor. Halk linç havasında.",o:[["Suçlamayı manşete taşı, tiraj yap",-6,14,-14,0],["Doğrulayana kadar yayınlama",4,-3,9,0],["Hukuk uzmanıyla işleyişi anlatan yazı hazırla",5,0,5,0]]},
+{t:"Meclise gelen bir yasa teklifi, “dezenformasyon” suçuyla basını sınırlıyor.",o:[["Yeni yasa özgür basını susturur: Meclise çağrı",15,-5,5,22],["Yasa teklifi: Dezenformasyonla mücadele",-12,8,-5,-6],["Teklifin maddeleri: Neleri değiştiriyor?",3,0,4,3]]},
+{t:"Eski bir muhabir kitap yazdı ve seni “sistemin parçası” diye eleştiriyor.",o:[["Cevap ver: Hepimiz bedel ödedik",3,-2,4,3],["Davet et, kamuoyu önünde tartış",5,3,3,2],["Görmezden gel",-3,0,-3,-1]]},
+{t:"Belediye, tarihî çarşıyı otoparka çevirmek istiyor. Esnaf eylemde.",o:[["Tarihî çarşı otopark olmasın: Esnaf sesini duyurdu",13,-3,5,9],["Belediye: Otopark şehrin trafik sorununu çözecek",-10,8,-4,-4],["Çarşı projesi: Plan ve itirazlar",2,0,4,2]]},
+{t:"Büyük bir e-ticaret devi kargo çalışanlarını güvencesiz çalıştırıyor. Bir kurye sana yazışmaları gönderdi.",o:[["Kuryeler konuşuyor: Mesai yok, güvence yok",13,-8,6,8],["Şirket: Çalışanlarımız memnun",-10,14,-6,-3],["Kargo sektöründe çalışma koşulları",3,0,4,1]]},
+{t:"Devlet hastanesinde randevular aylar sonrasına veriliyor. Hastalar sabaha kadar kuyrukta.",o:[["Randevu için gece kuyruğu: Sağlıkta çöküş",14,-3,5,10],["Bakanlık: Randevu sistemi iyileştiriliyor",-11,8,-4,-5],["Hastane kuyrukları: Sorun nerede?",3,0,4,2]]},
+{t:"Ünlü bir markanın ürünlerinde tehlikeli kimyasal bulundu. Marka gazetene tam sayfa ilan veriyor.",o:[["Üründe kimyasal tehlikesi: Test sonuçları ortada",14,-14,7,7],["Marka: Ürünlerimiz güvenli",-11,16,-7,-3],["Kimyasal iddiası: Uzmanlar ne diyor?",3,-2,4,1]]},
+{t:"Köyde kurulan taş ocağı su kaynaklarını kurutuyor. Köylüler yolu kesti.",o:[["Taş ocağı köyü susuz bıraktı",13,-5,5,9],["Şirket: İstihdam yaratıyoruz",-10,10,-5,-4],["Köy ve taş ocağı: Taraflar anlatıyor",3,0,4,1]]},
+{t:"Sosyal medyada yayılan bir bağış hesabının sahte olduğu ortaya çıktı. Binlerce kişi para göndermiş.",o:[["Sahte bağış hesabı: Binlerce kişi dolandırıldı",12,-2,7,3],["Hesap sahibi: Montaj ve iftira var",-8,6,-8,-2],["Bağış tuzakları: Nasıl korunulur?",4,0,5,0]]},
+{t:"Belediye meclisi üyesi ihaleyi kardeşinin şirketine verdi. Kayıtlar sana ulaştı.",o:[["Kardeşe ihale: Kayıtlar ortada",13,-6,6,15],["Üye: Süreç mevzuata uygun",-10,8,-5,-4],["İhale kayıtları: Neler yazıyor?",3,0,4,3]]},
+{t:"Şehirdeki tek sinema kapanıyor. Gençler imza kampanyası başlattı.",o:[["Sinema kapanıyor: Gençler ayakta",10,-2,4,2],["Sinema sahibi: Zarar ediyoruz",-4,4,-2,-1],["Sinemanın hikâyesi: Şehir ne kaybediyor?",5,0,4,0]]},
+{t:"Yeni bir vergi paketi emeklileri vuruyor. Emekli dernekleri tepkili.",o:[["Emekliye ağır vergi: Dernekler isyan etti",14,-4,5,13],["Maliye: Paket adalet getirecek",-12,9,-5,-5],["Vergi paketi: Kim ne kadar ödeyecek?",3,0,5,3]]},
+{t:"Bir doktor, hastanede ilaç stoklarının tükendiğini söyledi. Hastane yönetimi inkâr ediyor.",o:[["İlaç yok: Doktor stok listesini paylaştı",14,-4,7,12],["Yönetim: İlaç sıkıntısı yok",-11,8,-6,-3],["İlaç stokları: Eczacılar ne diyor?",3,0,5,2]]},
+{t:"Şehrin en büyük oteli çalışanların sigortasını yatırmamış. İşçiler sendikaya başvurdu.",o:[["Sigortasız işçiler: Otel zinciri sorgulanıyor",12,-8,6,8],["Otel: Çalışanlarımız kayıtlıdır",-10,12,-5,-3],["Sigorta ve otel işçileri: Mevzuat ne diyor?",3,0,4,1]]},
+{t:"Yerel bir şair ödül kazandı ama ödülü iade etti: “Sansür var.” Kamuoyu bölündü.",o:[["Şair ödülü neden iade etti? Sansür tartışması",8,-2,5,9],["Ödül komitesi: Şair yanlış anladı",-8,5,-4,-3],["Şair ve ödül komitesi: İki taraf konuşuyor",3,1,4,1]]},
+{t:"Dev bir yapay zekâ şirketi, gazetenin arşivini izinsiz kullandığını itiraf etti.",o:[["Arşivimiz çalındı: Şirkete hukuki savaş",8,-6,8,2],["Şirketle lisans anlaşması yap",-4,14,-4,-1],["Yapay zekâ ve telif: Basın ne yapmalı?",3,0,5,0]]},
+{t:"Şehrin su idaresi, musluk suyundaki bulanıklığı kabul etmiyor. Mahalleliler şişe su taşıyor.",o:[["Musluktan çamur akıyor: İdare nerede?",13,-3,5,9],["İdare: Su analizleri temiz",-11,8,-5,-4],["Su kalitesi: Laboratuvar sonuçları",4,0,5,2]]},
+{t:"İş insanları derneği, gazetene tam sayfa ilan ve “olumlu bir gündem” istiyor.",o:[["Reddet, ilan istemiyoruz",8,-8,7,3],["İlanı al, olumlu haber yaz",-8,15,-9,-3],["İlanı “reklam” etiketiyle yayınla",0,8,2,0]]},
+{t:"Bir kadın muhabir, ofisteki tacizi anlattı. Suçlanan kişi senin yakın arkadaşın olan haber müdürü.",o:[["Muhabiri dinle, soruşturma başlat",8,-6,10,0],["Olayı kapat, muhabire işini sürdürmesini söyle",-12,2,-12,-3],["Bağımsız bir denetçi çağır",5,-4,7,0]]},
+{t:"Bir bankanın kredi kartı faizleri rekora çıktı. Bankanın pazarlama müdürü seni yemeğe davet etti.",o:[["Faiz kıskacı: Milyonlar borç batağında",13,-8,5,7],["Banka: Faizler piyasa koşullarında",-10,14,-7,-3],["Kart faizleri: Kim ne kadar ödüyor?",3,0,5,1]]},
+{t:"Sokak hayvanlarının zehirlendiği iddiası gündemde. Belediye “asılsız” diyor.",o:[["Sokak hayvanları zehirleniyor: Kanıtlar ortada",12,-2,5,8],["Belediye: Hayvanlar korunuyor",-8,6,-4,-3],["Zehirlenme iddiası: Veteriner raporları",4,0,5,1]]},
+{t:"Ünlü bir şefin restoranında bayat malzeme kullanıldığı iddiası var. Mutfaktan biri sana ihbar gönderdi.",o:[["Şefin mutfağı: Bayat malzeme iddiası",8,-3,5,0],["Şef: Rakip restoran iftira atıyor",-6,6,-6,-2],["Restoran denetimi: Neler kontrol edilir?",3,1,4,0]]},
+{t:"Dağ köyündeki okulun kapatılmasına karar verildi. Çocuklar 40 km uzağa taşınacak.",o:[["Köy okulu kapanıyor: Çocuklar yollarda",12,-3,5,7],["Bakanlık: Taşımalı eğitim planlandı",-9,6,-4,-3],["Köy okulları: Rakamlar ne söylüyor?",4,0,4,1]]},
+{t:"Bir soruşturmaya ait şifreli dosyayı sana bir hacker gönderdi. Gerçek olduğunu söylüyor ama doğrulamak zor.",o:[["Dosyayı olduğu gibi yayınla",3,6,-12,8],["Doğrula, sonra yaz",5,0,9,6],["Yayınlama, hacker’ı ihbar et",-3,-2,-4,-4]]},
+{t:"Kentte yerel seçim anketleri çelişkili. İki anket şirketi de gazetene sponsorluk sunuyor.",o:[["İki anketi de yayınla, yöntemleri karşılaştır",3,0,8,2],["Sponsor olan şirketin anketini manşet yap",-5,14,-10,-2],["Hiçbirini yayınlama",0,-3,2,0]]},
+{t:"Liman işçileri toplu sözleşme için greve gidiyor. İhracat durabilir.",o:[["Liman grevi: İşçilerin talebi haklı",13,-5,5,9],["Grev ekonomiyi vuruyor: İhracatçılar zarar ediyor",-10,8,-4,-4],["Liman grevi: Rakamlar ve talepler",3,0,5,2]]},
+{t:"Bir kuruluş gazetene “ücretsiz araştırma raporu” gönderiyor. Rapor çok iyi hazırlanmış ama kaynağı belirsiz.",o:[["Rapordaki iddiaları bağımsız doğrula",5,-2,9,1],["Raporu olduğu gibi yayınla",-3,5,-9,-2],["Raporu çöpe at",-1,0,-1,0]]},
+{t:"Şehrin en eski gazetesi kapanıyor. Çalışanları sana başvurdu.",o:[["Tüm çalışanları işe al",6,-18,6,0],["Sadece en iyi üçünü al",2,-8,3,0],["Başsağlığı mesajıyla yetin",-4,0,-3,0]]},
+{t:"Bakanlık, kamu ihalelerini basından gizlemek için yeni bir genelge yayınladı.",o:[["Gizli ihaleler: Genelgeye karşı mahkemeye",12,-4,6,15],["Genelge: Kamu güvenliği için gerekli",-10,8,-5,-4],["Genelgenin maddeleri: Ne değişiyor?",3,0,5,2]]},
+{t:"Mahalle muhtarı, afet sonrası toplanan yardımı yakınlarına dağıtmakla suçlanıyor.",o:[["Yardım nereye gitti? Muhtara soru",12,-3,6,8],["Muhtar: İddialar yersiz",-8,6,-5,-2],["Yardım dağıtımı: Kayıtlar ne diyor?",4,0,5,2]]},
+{t:"Uluslararası bir basın kuruluşu, gazetene “Yılın cesur gazetesi” ödülü veriyor. Tören çevrimiçi ama maliyetli.",o:[["Ödülü kabul et, töreni yayınla",10,-6,10,6],["Ödülü reddet",-2,2,-2,-2],["Ödülü ekibe armağan et",8,-3,7,2]]},
+{t:"Şehir stadyumu lisanssız kullanıldığı için kapatıldı. Taraftar tepkili.",o:[["Stadyum kapatıldı: Kimin ihmali?",11,-3,5,7],["Federasyon: Güvenlik önlemleri şart",-8,6,-4,-3],["Stadyum neden kapandı? Yetkililer anlatıyor",3,0,4,1]]},
+{t:"Genç bir girişimci gazeteye ortak olmak istiyor. Dijital bir platform kuracak ama senden pay isteyecek.",o:[["Ortak ol, platformu birlikte kur",3,-14,3,-2],["Yatırımını al, ortak olma",0,10,-3,-2],["Reddet, bağımsız kal",4,-3,5,1]]},
+{t:"Bir kamu kurumunun çalışanlarını ses kaydıyla izlediği ortaya çıktı. İhbar sana geldi.",o:[["Kamuda dinleme: Çalışanlar tedirgin",12,-3,6,14],["Kurum: Güvenlik amaçlı uygulama",-10,8,-5,-4],["Çalışan izleme: Hukukçular ne diyor?",3,0,5,3]]},
+{t:"Şehir merkezindeki tarihî hamam otel olmak üzere satıldı.",o:[["Tarihî hamam satıldı: Şehir mirasını kaybediyor",10,-3,5,6],["Yatırımcı: Hamam yeniden canlanacak",-6,8,-3,-2],["Hamam kimin? Tapu kayıtları ne diyor?",3,0,5,2]]},
+{t:"Yerel bir sendika başkanı, işçilerin parasını zimmetine geçirmekle suçlanıyor. Başkan sana yalvarıyor.",o:[["Sendika zimmeti: Belgeler ortada",11,-4,7,6],["Başkana destek ol, haberi yayınlama",-8,6,-9,-3],["Sendika üyeleriyle konuş",4,0,5,1]]},
+{t:"Çocuklara yönelik bir mobil oyunun veri topladığı ortaya çıktı. Oyunun sahibi gazetene reklam veriyor.",o:[["Çocukların verisi toplanıyor: Şirkete tepki",13,-10,6,5],["Şirket: Veriler güvende",-9,14,-6,-3],["Oyun uygulamaları: Ebeveynler ne yapmalı?",4,0,5,0]]},
+{t:"Deprem bölgesinde bir müteahhit, yeni konutları eksik malzemeyle yapmakla suçlanıyor.",o:[["Konutlar eksik malzemeyle yapıldı: Kanıtlar",14,-5,7,14],["Müteahhit: Her yer ruhsatlı",-10,10,-6,-4],["Konut denetimi: Mühendisler ne diyor?",3,0,5,2]]},
+{t:"Üniversitede sınav sorularının çalındığı iddiası var. Rektörlük soruşturma başlatmayacağını söyledi.",o:[["Sınav soruları çalındı: Rektörlük susuyor",12,-3,6,8],["Rektörlük: İddia asılsız",-9,6,-5,-3],["Sınav güvenliği: Uzmanlar ne diyor?",3,0,5,1]]},
+{t:"Sahilin kamu alanı özel bir şirkete devredildi. Halk denize giremiyor.",o:[["Sahil kapatıldı: Halk denizden uzak",13,-3,5,8],["Şirket: Sahil bakımlı olacak",-9,8,-4,-3],["Sahil devri: Sözleşme ne diyor?",3,0,5,2]]},
+{t:"Eski bir belediye çalışanı, belediye araçlarının özel işlerde kullanıldığını anlattı.",o:[["Kamu aracı özel işte: Kayıtlar",11,-3,6,9],["Belediye: İddialar eski çalışanın kini",-8,6,-5,-3],["Araç kayıtları: Neler yazıyor?",3,0,5,2]]},
+{t:"Bir yarışma programında jüri üyesi, yarışmacıya aşağılayıcı sözler söyledi. Sosyal medya ikiye bölündü.",o:[["Jüri üyesi özür dilesin",6,4,3,0],["Jüri üyesini savun: Dürüst konuştu",-4,6,-4,0],["Yarışma ve eleştiri: Sınır nerede?",3,3,4,0]]},
+{t:"Bir milletvekili, gazetene “tek taraflı haber” diye dava açacağını söyledi.",o:[["Davaya hazırız: Haberimizin arkasındayız",5,-3,6,6],["Düzeltme yayınla, davadan vazgeçir",-6,2,-6,-3],["Haberin kaynaklarını yeniden gözden geçir",3,-2,7,2]]},
+{t:"Şehrin en büyük fabrikasında işten çıkarmalar başladı. 800 işçi kapıda.",o:[["800 işçi kapıda: Fabrika yöneticileri konuşsun",12,-5,5,6],["Fabrika: Zor dönem, yeniden yapılanma",-8,10,-5,-3],["İşten çıkarmalar: Ekonomistler ne diyor?",3,0,5,1]]},
+{t:"Uluslararası bir fon, gazetene “bağımsız basın desteği” sunuyor. Şartları belirsiz.",o:[["Şartları açıkla, desteği kabul et",3,10,2,2],["Reddet: Dış fonla çalışmayız",-2,-2,4,-1],["Fon şartlarını okurla paylaş",5,6,6,2]]},
+{t:"Bir futbol hakeminin maç öncesi rüşvet aldığını gösteren gizli kayıt sana ulaştı.",o:[["Rüşvet kaydı: Hakem ifşa oldu",12,-3,7,6],["Kaydı federasyona ilet",-3,2,3,-3],["Kaydı yayınlamadan önce doğrula",4,0,7,3]]},
+{t:"Kurum içi bir denetim, gazetede maaşların aylardır geciktiğini ortaya çıkardı. Ekip huzursuz.",o:[["Şeffaf ol: Ekibe gerçeği anlat",4,0,8,0],["Ekibi oyalayıp reklam gelirini bekle",-3,10,-8,-1],["Maaşın bir kısmını ödemek için kredi çek",3,-12,2,0]]},
+{ch:"derbi",t:"Şehir takımı, ezeli rakibiyle derbiye çıkıyor. İki taraf da gazetende yer istiyor.",o:[["Şehir takımına destek: Derbiyi biz alırız",3,2,-1,0,"a"],["Rakip takımı öne çıkar: Bu sefer onların günü",-3,3,-2,0,"b"],["Derbi öncesi iki takımı da tanıt",3,0,3,0,"n"]]},
+{ch:"arz",t:"Bir gıda şirketi halka arz olacak. Şirket sana röportaj ve reklam teklif ediyor.",o:[["Halka arzı öv: Yatırım fırsatı",-2,10,-4,-2,"a"],["Şirketin borç dosyasını yaz: Dikkat",2,-5,5,3,"b"],["Halka arz nasıl işler? Rehber",3,1,3,0,"n"]]},
+{ch:"ref",t:"Kentin tek büyük parkına alışveriş merkezi yapılıp yapılmayacağı referandumda. Oy kullanacak halk manşetine bakıyor.",o:[["Parkı koru: Hayır oyu çağrısı",4,-2,2,3,"a"],["AVM kentin geleceği: Evet",-2,6,-3,-2,"b"],["Referandum rehberi: İki tarafın argümanı",3,0,4,0,"n"]]},
+{ch:"dava",t:"Şehrin tanınmış bir iş insanı yolsuzluk davasında yargılanıyor. Karar günleri yakın.",o:[["İş insanının masumiyetini savun",-2,8,-3,-1,"a"],["İddianameyi yazı dizisi yap",5,-3,4,4,"b"],["Dava takvimini anlat",3,0,3,0,"n"]]},
+{ch:"konser",t:"Hayvan barınağı için büyük bir hayır konseri düzenleniyor. Organizatör gazetenden sponsorluk istiyor.",o:[["Sponsor ol: Konser gazetenin adıyla",3,-8,2,0,"a"],["Konser masraflarını sorgula",-1,0,3,2,"b"],["Konseri haberleştir",2,0,2,0,"n"]]},
+{ch:"yerel",t:"Büyükşehir yerel seçiminde bağımsız genç aday, mevcut belediye başkanıyla başa baş. İkisi de gazetene röportaj teklif ediyor.",o:[["Genç adayı öne çıkar: Değişim zamanı",3,2,-2,-3,"a"],["Mevcut başkanın projelerini yaz: Süreklilik",-3,4,-3,-4,"b"],["İki adayı eşit yer vererek tanıt",3,0,4,0,"n"]]}
+,
+{sp:1,pe:"🥊",pc:"FOTO: Tünel girişi · Kamera görüntüsünden",t:"Derbi bitti, tünelde Ulaş Barjak ile Archie Bronson birbirine girdi. Görüntüler sosyal medyada hızla yayılıyor.",o:[["Derbide skandal: Tünelde yumruklar konuştu",10,8,-4,2],["Kulüplerden ortak açıklama: Olay büyütülmesin",-4,2,4,-1],["Kavganın ilk saniyeleri: Kamera kayıtlarında ne var?",4,2,6,2]]},
+{sp:1,pe:"💶",pc:"FOTO: Basın toplantısı · Arşiv",t:"Şehir takımı, yıldız forvet için rekor bonservis ödedi. Taraftar sevinçli ama kulübün borcu tartışılıyor.",o:[["Rekor transfer: Şehir takımı şampiyonluğa oynuyor",8,6,2,0],["Bu parayla neler yapılırdı? Kulübün borcu büyüyor",5,-4,5,5],["Yıldız forvet yarın imza atıyor: Saat saat süreç",2,3,2,0]]},
+{sp:1,pe:"🟨",pc:"FOTO: Hakem ve oyuncular · Maç anı",t:"Derbide verilmeyen penaltı tartışması büyüyor. Rakip kulüp federasyona sert bir açıklama yaptı.",o:[["Hakem skandalı: Verilmeyen penaltı maçın kaderini değiştirdi",12,3,-2,6],["Federasyon: Karar kurallara uygun",-8,6,-3,-3],["Penaltı pozisyonu yavaş çekimde: Uzmanlar ne diyor?",3,1,5,0]]},
+{sp:1,pe:"🧤",pc:"FOTO: Antrenman sahası · Arşiv",t:"Altyapıdan çıkan 17 yaşındaki kaleci milli takıma çağrıldı. Mahalle sokaklarında bayram havası var.",o:[["Mahalleden milli takıma: Genç kalecinin hikâyesi",10,2,6,-2],["Çağrıya itiraz: Tecrübeli kaleci neden yok?",-4,3,-2,2],["Milli takımın yeni kadrosu açıklandı",2,1,3,0]]},
+{t:"Mahalledeki sokak kedisi Pamuk, muhtarlık binasında muhtarın koltuğuna yerleşti. Muhtar “Kovamıyorum, oy getiriyor” diyor.",o:[["Muhtarlıkta koltuk krizi: Kedi mi muhtar mı?",8,2,-2,0],["Pamuk’un oy oranı muhtarı geçti: Mahalle anketi",6,3,2,1],["Mahalleli kediye mama bağışı topluyor",4,0,3,0]]},
+{t:"Belediye bir çukuru kapatmak yerine başına “Tarihî eser, dokunmayınız” tabelası astı. Çukur üç aydır açık.",o:[["Çukur tarihî eser ilan edildi: Vatandaş yola mı bakıyor, müzeye mi?",12,-2,3,8],["Belediye: Tabela geçici önlem, asfalt yolda",-8,6,-3,-3],["Çukurun yanındaki esnaf: Müşteri turist sanıyor",5,2,4,0]]},
+{t:"Simit fiyatı bir günde 5 lira arttı. Simitçi “Susam da zamlandı, ben ne yapayım” diyor.",o:[["Simitte zam sesi: Susamı kim yedi?",13,-2,4,6],["Simit sektörü: Maliyetler gerçekten arttı",-10,6,-2,-2],["Simit yerine ne yenir? Kahvaltı bütçesi hesabı",3,2,4,0]]},
+{t:"Doğal gaz faturalarında “hava durumu bedeli” adlı yeni bir kalem çıktı. Şirket “Hava soğuktu, haksızlık yok” dedi.",o:[["Faturada hava durumu bedeli: Bulut da mı abone?",14,-3,4,10],["Şirket: Kalem şeffaflık için eklendi",-9,8,-4,-3],["Faturanı nasıl okursun? Satır satır rehber",4,2,6,0]]},
+{t:"Köprünün açılışı üçüncü kez yapıldı. Her seferinde kurdele yeniden kesildi, vatandaş yine eski yoldan gitti.",o:[["Üçüncü açılış: Kurdele bütçesi ne kadar?",11,-2,3,9],["Açılış töreni büyük coşkuyla yapıldı",-9,8,-4,-4],["Köprü ne zaman gerçekten açılacak? Takvim belli değil",3,1,5,2]]},
+{t:"Üniversite kantininde tostun fiyatı öğrenciyi isyan ettirdi. Kantinci “İçindeki peynir 2 dilim, ikisi de kaliteli” diyor.",o:[["Öğrenciler isyanda: Tost bir maaş mı oldu?",12,-3,3,5],["Kantinci: Tostumuz kalitelidir, rakamlar bizim değil",-6,5,-2,-1],["Kampüs yemek bütçesi: Öğrenci günde ne kadar harcıyor?",4,2,5,0]]},
+{t:"Hastanenin randevu sistemi çöktü. Vatandaşlar “randevu için randevu” alıyor, telefonlar 40 dakikadır meşgul.",o:[["Randevu sistemi çöktü: Hasta sıra bekliyor",13,-3,4,8],["Hastane: Sistem yarın yenilenecek",-8,5,-3,-2],["Randevuyu hızlı almanın 5 yolu",4,2,6,-1]]},
+{t:"Sürücüler köprü trafiğinde beş saat bekledi. Yol kenarında çay demleyenler, bu arada tanışıp evlenme kararı alanlar da var.",o:[["Beş saat trafikte: Vatandaş çay demledi",12,0,4,5],["Yetkililer: Trafik beklenmedik yoğunluktan",-8,4,-3,-2],["Trafik çilesi arasında sevgi hikâyesi",5,3,5,0]]},
+{t:"Marketlerde “indirim” etiketlerinin eski fiyatı, yeni fiyatın üstüne yazılıyor. Bir müşteri “Eski fiyat daha ucuzdu” dedi.",o:[["Market etiketi şaşırttı: İndirim mi zam mı?",13,-3,4,7],["Market: Hata düzeltildi, müşteri memnuniyeti öncelik",-7,6,-2,-2],["Etiket nasıl okunur? Hile avcıları rehberi",5,2,6,0]]},
+{t:"Bir fenomen “Ekmek yemeyeceğim” sözü verdi, üç gün sonra pasta fotoğrafı paylaştı. Takipçileri “Pasta ekmek sayılmaz mı” diye soruyor.",o:[["Fenomen sözünü tutmadı: Pasta mı ekmek mi?",9,3,-1,1],["Fenomen: Açıklama yapılacak, bekleyin",-4,5,-2,0],["Söz verip tutmayan fenomenler: Halkın en çok neye güvenmediği",5,2,5,0]]},
+{t:"Belediyenin yeni parkında 14 bank, 2 çöp kovası ve kim olduğu bilinmeyen bir heykel var. Mahalleliler heykele “Hacı Bey” adını verdi.",o:[["Parktaki gizemli heykel: Kim bu Hacı Bey?",8,2,0,0],["Belediye heykeli tanıtacak: Sanat parkta buluşuyor",-4,5,-2,-1],["Heykelin yanında piknik: Mahalle bayram yeri",5,1,5,0]]},
+{t:"Meteoroloji “yağışlı” dedi, güneş açtı. Ertesi gün “güneşli” dedi, dolu yağdı. Vatandaş artık balkona bakıyor.",o:[["Meteoroloji yine şaşırdı: Vatandaş balkondan bakıyor",10,0,2,2],["Meteoroloji: Tahmin yüzde 70 doğru",-6,4,-3,-2],["Hava durumu doğruluk testi: Hangi uygulama tutuyor?",4,2,5,0]]},
+{t:"Motokuryeler “3 dakikada teslimat” baskısına karşı bir günlük grev yaptı. Şehirde ilk kez yemek sipariş etmeyen insanlar mutfağa girdi.",o:[["Kuryeler grevde: Şehir mutfağa girdi",11,-3,5,5],["Teslimat şirketleri: Müşteri kaybı büyük",-8,8,-4,-3],["Üç dakikada teslimatın bedelini kim ödüyor?",5,1,7,2]]},
+{t:"Belediye düğün salonunda ses sınırı uyarısına DJ “Ben de komşuyum” diye yanıt verdi. Gelinle damat dahil herkes alkışladı.",o:[["Düğünde ses krizi: DJ’den komşuya cevap",9,2,0,0],["Belediye: Ses sınırı herkes için geçerli",-5,5,-2,-1],["Gece geç saate kadar süren düğün: Mahalle ikiye bölündü",5,1,4,0]]},
+{t:"Nehir kenarındaki yolda kaplumbağa sürüsü karşıya geçmek istedi. Trafik 40 dakika durdu, sürücüler korna yerine alkış çaldı.",o:[["Kaplumbağalar geçti, trafik bekledi",8,1,5,0],["Çevreciler: Yol yapımı doğayı bozuyor",4,-2,6,3],["Yetkililer: Geçit yapımı planlanıyor",-3,4,2,-1]]},
+{t:"Kitap fuarında en çok satan kitap “Nasıl Zengin Olunur” oldu. Yazar kitabı bedava dağıttı, zengin olamadı.",o:[["Zengin olma kitabı bedava dağıtıldı: Yazar iflas etti mi?",8,2,0,0],["Yazar: Amacım okuru zenginleştirmekti",-3,3,-1,0],["Fuarda neler satılıyor? En çok okunanlar",3,2,5,0]]},
+{t:"Bir şirket çalışanlarına “mutluluk yazılımı” aldı. Çalışanlar mutluluk için “maaş zammı” talep etti ve yazılım hata verdi.",o:[["Mutluluk yazılımı çöktü: Çalışanlar maaş istiyor",10,-1,3,3],["Şirket: Yazılım güncellenecek, mutluluk bekliyor",-6,6,-2,-1],["İş yerinde mutluluk: Uzmanlar ne diyor?",4,2,5,0]]},
+{t:"Metro “sessiz vagon” denedi. Telefonla konuşan 40 yolcuya “nezaket uyarısı” kesildi, bir yolcu “Anne arıyor” diyerek tartıştı.",o:[["Sessiz vagon yasaklandı: Telefon kavgaları arttı",9,0,2,2],["Metro: Sessiz vagon başarılı",-5,4,-2,-1],["Toplu taşımada nezaket kuralları",4,2,5,0]]},
+{t:"Pazarcı domatesin üstüne “Bu kilo vizyon” etiketi koydu. Müşteri “Vizyon neyin nesi” diye sorunca zam yapıldığı anlaşıldı.",o:[["Pazarda vizyonlu domates: Fiyat uçtu",12,-2,4,5],["Pazarcı: Etiket sevgiyle yazıldı",-5,4,-1,-1],["Pazarda ne pahalı? Haftalık fiyat listesi",4,2,6,0]]},
+{t:"Apartman yönetimi asansöre “Sadece sakinler kullanabilir” yazdı. Kuryeler ve su taşıyanlar merdivende eylem yaptı.",o:[["Asansörde ayrımcılık: Kuryeler merdiven bekliyor",11,-2,5,4],["Apartman yönetimi: Güvenlik gerekçesiyle karar alındı",-7,5,-2,-1],["Asansör kuralları: Hangi apartman ne yapıyor?",4,2,6,0]]},
+{t:"AVM’de kaybolan çocuk için anons 40 dakika yapıldı. Baba sonunda sinema salonunda uyuyakaldığını fark etti.",o:[["AVM’de anons: Baba sinemada uyuyakaldı",9,2,-1,0],["AVM yönetimi: Anons sistemi çalıştı, güvenlik başarılı",-4,5,-1,-1],["Çocuk AVM’de kaybolursa ne yapılır?",4,1,6,0]]},
+{t:"Bir televizyon kanalı hava durumu spikerini “yağmur duası” için stüdyoya soktu. Dua sonrası yağmur yağdı ama stüdyonun çatısı akıttı.",o:[["Yağmur duası kabul oldu, stüdyo ıslandı",9,2,-1,2],["Kanal: Çatı tamiri yapılacak",-4,4,-1,-1],["Çatı akıtan stüdyolar: Medya binaları ne durumda?",4,1,5,1]]},
+{sp:1,pe:"🏆",pc:"FOTO: Kupa töreni · Mahalle sahası",t:"Mahalle takımı turnuvada şampiyon oldu. Kupa, takım kaptanının kardeşinin dükkânından çıktı, törende gelen bakkal “Ödemesi bende” dedi.",o:[["Mahalle şampiyonluğa kavuştu: Kupa bakkaldan çıktı",9,2,3,0],["Turnuva yönetimi: Kupa kuralları yeniden yazılacak",-4,4,-1,0],["Şampiyon takım: Antrenman yok, çay var",5,1,4,0]]},
+{sp:1,pe:"🟥",pc:"FOTO: Amatör lig maçı · Hakem",t:"Amatör lig maçında hakem ofsayt yerine “öğle arası” verdi. Takımlar yemeğe çıktı, maç 2 saat durdu.",o:[["Hakem öğle arası verdi: Maç yemekle devam etti",8,2,0,0],["Federasyon: Hakem kurulu toplanacak",-4,4,-1,0],["Amatör liglerde hakem sıkıntısı büyüyor",5,2,5,1]]},
+{t:"Toplu konut projesinin teslim tarihi üçüncü kez ertelendi. Aileler hem kira hem kredi ödemeye devam ediyor.",o:[["Teslim tarihi hep yarın: Aileler hem kira hem kredi ödüyor",13,-4,5,9],["Müteahhit: Gecikme mücbir sebepten",-10,10,-5,-4],["Konut teslimi neden gecikiyor? Sözleşme ne diyor?",3,0,5,2]]},
+{t:"Devlet hastanesinde doktor sayısı yarıya indi. Acil serviste tek doktor nöbet tutuyor.",o:[["Acilde tek doktor: Hastalar koridorda bekliyor",14,-3,6,11],["Sağlık yetkilileri: Atamalar yolda",-11,8,-4,-4],["Acil servis nasıl işliyor? Doktorlar anlatıyor",4,0,5,2]]},
+{t:"Büyük bir gıda firmasının “organik” etiketli ürünlerinin sıradan üründen farksız olduğu ortaya çıktı. Firma gazetene reklam veriyor.",o:[["Organik yalanı: Etiketin arkasındaki gerçek",12,-12,7,6],["Firma: Ürünlerimiz sertifikalı",-9,15,-6,-3],["Organik etiket nasıl alınır? Denetim süreci",3,0,5,1]]},
+{t:"Belediye, sosyal yardım listesinden yüzlerce ismi sildi. Silinenlerin arasında engelli vatandaşlar da var.",o:[["Listeden silinen engelliler: Belediye yanıt versin",14,-3,6,11],["Belediye: Liste güncellendi, kurallar herkese aynı",-10,8,-5,-4],["Yardım listesi nasıl hazırlanıyor? Kriterler",3,0,5,2]]},
+{t:"Yabancı uyruklu çocukların okul kayıtları “kontenjan yok” gerekçesiyle reddediliyor.",o:[["Okul kapısında çocuklar: Kayıt neden reddediliyor?",12,-3,6,10],["Milli Eğitim: Kontenjan sınırı herkes için geçerli",-9,7,-5,-4],["Okul kayıtlarında yasa ne diyor?",3,0,5,2]]},
+{t:"Baraj suyu çekildi, tarım arazileri kurudu. Çiftçiler traktörleriyle şehir merkezine geldi.",o:[["Susuz kalan çiftçi traktörle şehre indi",14,-3,5,10],["Su idaresi: Kuraklık herkes için geçerli",-10,8,-4,-4],["Barajda su neden azaldı? Uzmanlar anlatıyor",4,0,5,1]]},
+{t:"Bir milletvekili sosyal medyada gazetecilere “hain” dedi. Muhabirlerine gelen tehdit mesajları arttı.",o:[["Hain diyen vekile cevap: Gazeteciler hedef gösteriliyor",13,-5,6,16],["Vekil: Eleştiri özgürlüğü herkesin hakkı",-10,7,-5,-4],["Hedef gösterilen gazeteciler: Meslek örgütleri ne diyor?",3,0,5,3]]},
+{t:"Gazete sahibi yeni bir televizyon kanalı aldı ve ortak yayın istiyor. Kanalın sahibi hükümete yakın.",o:[["Ortak yayını reddet: Bağımsızlığımız pazarlık konusu değil",9,-12,8,8],["Ortak yayın yap: Büyüme fırsatı",-10,18,-8,-4],["Ortak yayını denemeli yap: Haber içeriğine sınır koy",-2,5,2,-1]]},
+{t:"Yerel bir banka, esnafın kredilerini açıklama yapmadan iptal etti. Çarşıda kepenkler iniyor.",o:[["Esnafın kredisi iptal: Çarşıda kepenk indi",13,-4,5,8],["Banka: Riskli krediler gözden geçirildi",-10,12,-6,-3],["Kredi iptalleri: Hukukçular ve esnaf ne diyor?",3,0,5,2]]},
+{t:"Okul servisinin şoförü kazadan sonra ehliyetsiz çıktı. Servis şirketi, gazetenin yıllık reklam vereni.",o:[["Ehliyetsiz şoför, çocukların servisi: Şirket sorgulanıyor",13,-12,6,7],["Şirket: Şoför tek hatalı kişi",-10,14,-6,-3],["Servis denetimi nasıl yapılır? Veliler için rehber",4,0,5,1]]},
+{t:"Bakanlık, “yerli yazılım” için bir şirkete 200 milyon ödedi. Yazılım üç yıldır çalışmıyor.",o:[["200 milyonluk yazılım hiç çalışmadı: İhale belgeleri",14,-5,7,16],["Bakanlık: Proje sürüyor, ödemeler yasal",-11,9,-6,-5],["Kamu yazılım projelerinde neler yanlış gidiyor?",3,0,5,2]]},
+{t:"Tarihî tren garı yıkılıp yerine otel yapılacak. Mimarlar Odası dava açtı.",o:[["Tarihî gar yıkılmasın: Mimarlar mahkemede",11,-3,5,7],["Yatırımcı: Otel şehre turizm getirecek",-8,10,-4,-3],["Gar yıkımı: Plan ve itirazlar",3,0,5,2]]},
+{t:"“Akıllı kent” projesi, vatandaşların konum verilerini sürekli kaydediyor. Belediye “güvenlik için” diyor.",o:[["Şehir seni izliyor: Konum verileri kimde?",12,-5,6,10],["Belediye: Akıllı kent güvenliği artırıyor",-10,10,-5,-4],["Akıllı kent teknolojisi: Kişisel veriler nasıl korunur?",4,0,5,2]]},
+{t:"Hastane inşaatı dört yıldır bitmiyor. Müteahhit, önceki belediye başkanının akrabası çıktı.",o:[["Dört yıldır bitmeyen hastane: Müteahhit kim?",13,-5,6,13],["Müteahhit: Gecikme malzeme krizinden",-10,9,-5,-4],["Hastane inşaatında süreç: Ne zaman bitecek?",3,0,5,2]]},
+{t:"Tekstil fabrikası üç aydır maaş ödemiyor. İşçiler fabrika önünde çadır kurdu.",o:[["Üç aydır maaşsız işçiler fabrika önünde çadırda",14,-5,5,11],["Fabrika sahibi: Siparişler azaldı, ödemeler yakında",-10,10,-5,-4],["Maaş ödenmeyince işçi ne yapabilir? Hukuki yollar",4,0,5,1]]},
+{t:"Üniversite yurtlarının kapasitesi yetmiyor. Öğrenciler sokakta kalıyor, valilik “kontenjan yeterli” diyor.",o:[["Yurt bulamayan öğrenciler sokakta: Valilik yanıt versin",13,-3,5,9],["Valilik: Yurtlar yeterli",-10,7,-5,-4],["Yurt ve kira: Öğrenciler ne yapıyor?",4,0,4,1]]},
+{t:"Bir futbol kulübü başkanının, seçimden önce taraftar derneğine para dağıttığı iddia ediliyor.",o:[["Taraftar derneğine seçim parası iddiası",9,-3,6,5],["Kulüp: İddialar rakip adayın oyunu",-7,6,-5,-2],["Kulüp seçimi: Aday programları",3,0,5,1]]},
+{t:"Rakip gazetenin başyazarı, seni canlı yayında “ticari kaygılarla yazan” biri diye hedef aldı.",o:[["Başyazara cevap: Gelir kaynaklarımız ortada",5,-3,8,4],["Canlı yayına çık, karşılıklı tartışalım",4,4,3,1],["Cevap verme, haberlerinle konuş",-1,0,-2,-1]]},
+{t:"İzinsiz çekilmiş bir gizli kamera kaydı, şehir müdürünün ihale sonrası hediye aldığını gösteriyor. Kaydın hukuki durumu belirsiz.",o:[["Kamerada hediye: Müdür ihale sonrası paketle çıktı",12,-5,-2,16],["Kaydın hukuki durumunu araştır, sonra yayınla",4,-2,8,5],["Kaydı müdürün yanıtıyla birlikte yayınla",5,0,7,6]]},
+{t:"Şehrin tek ambulans şirketi greve gitti. Vatandaşlar taksiyle hastaneye gidiyor.",o:[["Ambulans grevi: Hasta taksiyle hastaneye",13,-3,5,9],["Şirket: Zam talepleri karşılanamıyor",-10,8,-5,-3],["Ambulans grevi: Taraflar masada",3,0,5,2]]},
+{t:"Belediye kütüphaneyi kapatıp yerine kafe açacak. Kitaplar kamyonlarla taşınıyor.",o:[["Kütüphane kafeye dönüştü: Kitaplar kamyonda",11,-3,5,6],["Belediye: Kafe gelirleri kütüphaneye aktarılacak",-8,7,-4,-3],["Kütüphane kapanırsa şehir ne kaybeder?",4,0,5,1]]},
+{t:"Bir huzurevinde ihmal iddiası: Ailelerden biri sana yaşlıların haftalarca ısıtılmayan odada kaldığı videoyu getirdi.",o:[["Huzurevinde ihmal: Video ortada",13,-4,7,10],["Huzurevi yönetimi: Video bağlamından koparıldı",-10,9,-6,-3],["Huzurevleri nasıl denetlenir? Uzmanlar anlatıyor",4,0,5,1]]},
+{t:"Muhabirin, gazete sahibinin yakın arkadaşının belediyedeki işlerini araştırıyor. Sahibi “vazgeç” dedi.",o:[["Sahibe rağmen yayınla: Arkadaşının işleri ortada",13,-14,9,12],["Haberi rafa kaldır, muhabire başka iş ver",-9,10,-9,-4],["Haberi sahibe göster, tepkisini ölç",0,-3,-2,5]]},
+{t:"Sanayi bölgesinde patlama oldu. Resmî açıklama “küçük bir arıza” diyor ama pencereler kilometrelerce uzaktan kırıldı.",o:[["Küçük arıza mı? Patlamanın ardından görüntüler",13,-4,6,12],["Yetkili: Patlama kontrol altında, kimse yaralanmadı",-10,8,-5,-4],["Patlama sonrası sahadan canlı bilgiler",5,0,4,1]]},
+{t:"Bir anket şirketi, seçimden önce kendi anketini sana ücretsiz verdi: “Yarın yayınla.” Metodoloji belirsiz.",o:[["Anketi olduğu gibi manşet yap",-5,10,-10,-2],["Metodolojiyi sor, yayınlama",4,-2,8,1],["Anketi yöntem eleştirisiyle yayınla",3,0,6,2]]},
+{t:"Sosyal güvenlik kurumu emekli maaşlarını üç gündür yatıramadı. “Sistem arızası” deniyor.",o:[["Emekli maaşı yatmadı: Kuyruklar bankalara taştı",14,-3,5,10],["Kurum: Teknik sorun giderildi",-10,8,-5,-3],["Maaş neden gecikir? Uzmanlar anlatıyor",4,0,5,1]]},
+{t:"Dağ yolunda ölümlü kazalar arttı. Yetkililer “yol denetlendi” diyor ama bir mühendisin raporu sana ulaştı.",o:[["Ölüm yolu: Mühendis raporu ortada",14,-3,8,12],["Yetkili: Yol standartlara uygun",-11,8,-6,-4],["Dağ yolundaki kazalar: Rakamlar ve sebepler",4,0,5,2]]},
+{t:"Gazetenin muhabirleri sendika kurmak istiyor. Sahibi “bu gazetede sendika olmaz” dedi.",o:[["Muhabirlerin yanında dur: Sendika hakkı",8,-10,7,6],["Sahibin yanında dur: Gazete özel mülk",-8,10,-8,-3],["İki tarafı oturt, ortak bir yol bul",3,-3,3,0]]},
+{t:"Bir gıda bankası bağışları topluyor ama dağıtımın yapılmadığı iddia ediliyor. Bağışçılar sana geldi.",o:[["Gıda bankası bağışları nerede?",11,-3,6,6],["Gıda bankası: Dağıtım listeleri hazır",-8,6,-5,-2],["Bağışların kaydı: Kayıtlar ne diyor?",4,0,5,1]]},
+{t:"Muhtarlık seçiminde iki aday da kazandığını ilan etti. Oy sandıkları belediye binasında bekliyor.",o:[["Muhtarlık seçiminde iki kazanan",9,1,2,2],["Seçim kurulu: Sayım yeniden yapılacak",-5,4,-1,-1],["Muhtarlık seçimi nasıl işler? Sayım kuralları",4,0,5,0]]},
+{t:"Belediye, parktaki ördeklere “izinsiz gösteri” cezası kesti. Ördekler yüzmeye devam ediyor.",o:[["Ördeklere ceza kesildi: Göl gösteri alanı mı?",10,1,2,2],["Belediye: Ceza sembolik, hata düzeltilecek",-5,5,-2,-1],["Parktaki hayvanlar kimin sorumluluğunda?",4,0,5,0]]},
+{t:"Yeni açılan baklavacının önünde kuyruk 400 metreyi buldu. Polis, kuyruk sırasını düzenliyor.",o:[["Baklava kuyruğu 400 metre: Polis sıra veriyor",9,3,0,0],["Baklavacı: Kuyruk reklam sayılmaz",-3,5,-2,-1],["Baklavanın kuyruğu: Kaç lira, kaç saat?",4,2,4,0]]},
+{t:"Bir vatandaş trafik cezasına itiraz dilekçesi yazdı. Dilekçe, cezadan uzun çıktı ve belediye şiir sandı.",o:[["Ceza dilekçesi şiir çıktı: Belediye ne yanıt verdi?",9,2,0,0],["Belediye: Dilekçeler okunuyor",-4,4,-2,-1],["Trafik cezasına itiraz nasıl yapılır?",4,2,4,0]]},
+{t:"Çarşıda bir kedi, balıkçı tezgâhından balık çaldı. Balıkçı “Kamerada izledim, tebrik ettim” dedi.",o:[["Kedi balığı çaldı: Balıkçıdan şok açıklama",9,2,0,0],["Esnaf: Kedilere artık tezgâh üstü yasak",-4,4,-2,-1],["Kedi ve balıkçı: Çarşının en eski dostluğu",6,3,3,0]]},
+{t:"Gece yarısı mahallenin tüm Wi-Fi şifreleri “komşu123” oldu. Kimse nedenini bilmiyor.",o:[["Mahalle ortak şifreye geçti: Gizemi kim çözecek?",9,2,0,0],["Telekom: Teknik hata, mağduriyet giderilecek",-4,5,-2,-1],["Wi-Fi güvenliği: Şifre nasıl seçilir?",4,1,5,0]]},
+{t:"Meydan saati kırk dakika geri kalıyor. Belediye “Herkes kendi saatine baksın” dedi.",o:[["Meydan saati geri kaldı: Belediye: Herkes kendi saatine baksın",10,0,2,2],["Belediye: Saat bakım programına alındı",-4,5,-2,-1],["Meydan saati ne zamandır bozuk? Mahalleli anlatıyor",5,1,4,0]]},
+{t:"Bir ilkokul öğrencisi ödevini köpeğin yediğini söyledi. Köpek ise konuya ilişkin açıklama yapmadı.",o:[["Ödevi köpek mi yedi? Öğretmen ve öğrenci anlatıyor",8,2,0,0],["Okul müdürlüğü: Ödevler artık çift nüsha",-4,4,-1,-1],["Ödev ve çocuk: Aileler ne diyor?",4,1,4,0]]},
+{t:"Su sayacı okuma görevlisi apartmanın kapısında üç gündür bekliyor. Sakinler “Evdeyiz ama açmıyoruz” diyor.",o:[["Sayaç okuyucusu üç gündür kapıda: Apartman direniyor",9,1,0,1],["Su idaresi: Sayaç okuma zorunlu",-5,5,-2,-1],["Sayaç okuma nasıl yapılır? Hakların neler?",4,1,5,0]]},
+{t:"Hava durumu uygulaması “yağmur yok” dedi, şehir sırılsıklam oldu. Şirket “Biz şemsiye satmıyoruz” yanıtı verdi.",o:[["Uygulama yağmur yok dedi, şehir ıslandı",10,1,1,1],["Uygulama şirketi: Tahmin sadece tahmindir",-5,5,-2,-1],["Hava tahmini nasıl yapılır? Meteorolog anlatıyor",4,1,5,0]]},
+{t:"Mahalle bakkalı borç defterini dijitale taşıdı. Sistem üç saatte çöktü, defter eskisinden daha güvenilir çıktı.",o:[["Bakkalın dijital defteri çöktü: Kâğıt defter geri geldi",9,2,1,0],["Bakkal: Bir sonraki sürüm hatasız olacak",-4,5,-1,-1],["Esnaf ve dijitalleşme: Neler yanlış gidiyor?",4,1,4,0]]},
+{t:"Amatör bir şair belediye hoparlöründen şiir okudu. Mahalle iki gruba ayrıldı: “Bis!” diyenler ve “Yeter!” diyenler.",o:[["Hoparlörde şiir: Mahalle ikiye bölündü",9,2,0,0],["Belediye: Hoparlör sadece duyuru içindir",-4,4,-2,-1],["Şair konuşuyor: Neden hoparlör?",5,1,4,0]]},
+{t:"Taksi şoförü müşteriye üç saat siyaset anlattı, sonunda bahşiş istedi. Müşteri “Önce ben konuşayım” dedi.",o:[["Taksi şoförü üç saat siyaset anlattı",9,2,0,0],["Taksiciler odası: Şoförler müşteriyle sohbet etmeli",-3,4,-1,-1],["Taksicinin gözünden şehir: Üç saatlik yolculuk",5,1,4,0]]},
+{t:"Pazar yerindeki karpuz yarışmasında birinci olan karpuz 41 kilo çıktı. Pazarcı “Ben de şaşırdım” dedi.",o:[["41 kiloluk karpuz pazarı salladı",9,3,1,0],["Yarışma yönetimi: Tartı yeniden kontrol edilecek",-4,4,-1,-1],["Karpuz nasıl seçilir? Pazarcı ipuçlarını verdi",5,2,4,0]]},
+{t:"Sahilde bulunan şişenin içinden 1987 tarihli bir mektup çıktı: “Borcumu öde.”",o:[["Şişeden çıkan mektup: 1987’den borç hatırlatması",9,2,0,0],["Sahil belediyesi: Şişe bulunduğu yerde bırakılmalı",-4,4,-2,-1],["Şişe mektupları: Denizden gelen hikâyeler",5,1,4,0]]},
+{t:"Belediye otobüsü şoförü yolcuları durakta bırakıp çay molası verdi. Yolcular da çaya katıldı.",o:[["Şoför çay molası verdi: Yolcular da katıldı",9,3,0,0],["Belediye: Çay molası mesai kuralına aykırı",-5,4,-2,-1],["Şoförlerin molası: Çalışma saatleri ne diyor?",4,1,5,0]]},
+{t:"İlçe sinemasında jeneratör bozuldu. Seyirciler cep telefonu fenerleriyle “canlı oyun” izledi, bilet parası iade edilmedi.",o:[["Sinemada fenerli oyun: Seyirci filmi kendi çekti",9,3,0,0],["Sinema yönetimi: Teknik arıza için özür dileriz",-4,4,-1,-1],["Küçük ilçelerde sinema: Neden kapanıyor?",5,1,4,0]]},
+{t:"Şehrin en eski çınar ağacı, bir seçim kampanyasında “muhtar adayı” olarak önerildi. Ağaç henüz açıklama yapmadı.",o:[["Çınar ağacı aday olabilir mi? Mahalle bölündü",9,2,0,0],["Seçim kurulu: Ağaçlar aday olamaz",-4,4,-2,-1],["Çınar ağacının hikâyesi: Şehir ne kaybederdi?",5,1,5,0]]},
+{t:"Lokantada “günün çorbası” altı aydır aynı. Müşteri “Bu çorba heykel oldu” dedi.",o:[["Altı aydır aynı çorba: Müşteri heykel diyor",9,2,0,0],["Lokantacı: Tarifimiz bozulmaz",-4,4,-1,-1],["Çorba kültürü: Hangi şehirde ne içilir?",5,1,4,0]]},
+{t:"Mahalle derneğinin “en güzel balkon” yarışmasında birinci olan balkon yıkılmak üzere çıktı.",o:[["Birinci balkon yıkılmak üzere: Yarışma ne diyor?",10,1,2,3],["Dernek: Balkon çiçekleriyle güzel",-4,4,-2,-1],["Balkon güvenliği: Mühendis ne diyor?",4,0,6,1]]},
+{t:"Bir vatandaş belediyeye 200 sayfalık şikâyet dilekçesi yazdı. Belediye “Okuyana teşekkür ederiz” diye yanıtladı.",o:[["200 sayfalık dilekçe: Belediye okudu mu?",9,2,0,1],["Belediye: Dilekçe sistemine alındı",-4,4,-2,-1],["Şikâyet nasıl yazılır? Kısa ve etkili dilekçe rehberi",4,1,5,0]]}
+];
+
+var TE0=E.filter(function(e){return e.t.indexOf("Belediye otobüs")==0})[0]||E[0],TE5=E.filter(function(e){return e.t.indexOf("Tanımadığın")==0})[0]||E[5];
+var SP=[
+{id:"yb",m:12,d:30,tag:"Yılbaşı",t:"Yılbaşına günler kaldı. Büyük bir mağaza zinciri, yılbaşı eki için sana özel bütçe ayırdı.",o:[["Yılbaşı eki hazırla: Hediye rehberi",-3,14,-3,-2],["Yılbaşı alışverişinin ardındaki zamlara bak",8,-6,5,4],["Tatil haftasının gündemini toparla",2,2,2,0]]},
+{id:"gz",m:1,d:10,tag:"10 Ocak Çalışan Gazeteciler Günü",t:"Meslek örgütleri, gazetecilerin iş güvencesi ve cezaevindeki meslektaşları için ortak bildiri yayımladı.",o:[["Cezaevindeki gazeteciler: Bildiriyi manşete taşı",12,-3,6,14],["Gazetecilerin maaş ve iş güvencesi sorununu yaz",8,-2,6,4],["Günü anlatan sade bir yazı yayınla",2,1,3,0]]},
+{id:"sv",m:2,d:14,tag:"Sevgililer Günü",t:"Sevgililer Günü yaklaşırken çiçek ve restoran fiyatları uçtu. Esnaf şikâyetçi, tüketici öfkeli.",o:[["Fahiş fiyatlar: Sevgililer Günü cebi yaktı",10,-4,3,5],["Esnaf: Maliyetler arttı, fiyat kaçınılmaz",-6,8,-2,-2],["Sevgililer Günü rehberi: Ne kadar harcanıyor?",2,3,2,0]]},
+{id:"km",m:3,d:8,tag:"8 Mart Dünya Kadınlar Günü",t:"Kadın örgütleri 8 Mart’ta yürüyüş yapmak istiyor. Valilik güvenlik gerekçesiyle sınırlama düşünüyor.",o:[["Yürüyüş yasağına karşı kadınlar sokakta",15,-3,5,16],["Valilik: Güvenlik gerekçesiyle sınırlama",-10,6,-4,-5],["Kadınlar Günü: Rakamlarla kadınların durumu",5,1,6,2]]},
+{id:"çb",m:4,d:23,tag:"23 Nisan",t:"23 Nisan öncesi bir ilkokulda gösteri provası için velilerden para toplandığı ortaya çıktı.",o:[["Çocuk bayramı gösterisi için veliden para toplandı",12,-2,5,8],["Okul idaresi: Bağışlar gönüllüydü",-8,4,-4,-3],["23 Nisan hazırlıkları: Okullar neler yaşıyor?",3,1,4,1]]},
+{id:"im",m:5,d:1,tag:"1 Mayıs",t:"Sendikalar 1 Mayıs’ta meydanlarda toplanmak istiyor. Yetkililer güvenlik önlemi alacağını söyledi.",o:[["İşçiler meydanda: 1 Mayıs yasağına tepki",15,-4,5,18],["Yetkililer: Toplantı için güvenlik önlemleri alındı",-10,6,-4,-5],["1 Mayıs: Talepler ve güvenlik hazırlığı",4,1,5,2]]},
+{id:"bp",m:5,d:3,tag:"3 Mayıs Dünya Basın Özgürlüğü Günü",t:"Uluslararası bir kuruluşun yeni raporu, ülkenin basın özgürlüğünde geriye düştüğünü söylüyor.",o:[["Basın özgürlüğü sıralamasında düştük: Rapor ortada",14,-3,7,18],["Rapor taraflı: Yetkililer yanıt verdi",-10,8,-6,-5],["Basın özgürlüğü raporu: Sıralama nasıl hesaplanıyor?",4,0,6,2]]},
+{id:"çv",m:6,d:5,tag:"5 Haziran Dünya Çevre Günü",t:"Sahilde plastik atık yığınları kıyıyı kapladı. Belediye temizlik için bütçe olmadığını söylüyor.",o:[["Sahil çöplüğe döndü: Sorumlular nerede?",12,-3,5,8],["Belediye: Temizlik planı hazırlanıyor",-6,4,-3,-2],["Plastik atık sorunu: Çözüm önerileri",4,0,5,1]]},
+{id:"yg",m:7,d:20,tag:"Yaz",t:"Şehre yakın ormanda yangın çıktı. Müdahalenin geç kaldığı iddia ediliyor.",o:[["Orman yanarken müdahale neden gecikti?",14,-4,6,12],["İtfaiye: Müdahale hızla başladı",-8,5,-4,-3],["Yangın sürerken sahadan ilk bilgiler",4,1,5,1]]},
+{id:"ok",m:9,d:8,tag:"Okullar açılıyor",t:"Okullar açılırken kırtasiye ve servis fiyatları uçtu. Veliler tepkili.",o:[["Okul masrafı aileleri bunalttı: Fiyatlar nereye?",12,-4,4,6],["Esnaf: Fiyat artışı maliyetten kaynaklanıyor",-6,8,-3,-2],["Okul alışverişi rehberi: Nasıl tasarruf edilir?",3,2,3,0]]},
+{id:"cb",m:10,d:29,tag:"29 Ekim Cumhuriyet Bayramı",t:"Cumhuriyet Bayramı kutlamaları sürerken tören masrafları tartışma yarattı.",o:[["Tören bütçesi: Bu para nereye gitti?",10,-3,4,10],["Cumhuriyet Bayramı coşkuyla kutlandı",-4,6,-2,-3],["Bayram programı: Kentte neler var?",3,2,3,0]]},
+{id:"ög",m:11,d:24,tag:"24 Kasım Öğretmenler Günü",t:"Atama bekleyen binlerce öğretmen, Öğretmenler Günü’nde eylem yapacağını duyurdu.",o:[["Atama bekleyen öğretmenler: Umut tükeniyor",12,-3,5,10],["Eğitim yetkilileri: Atamalar planlı yapılıyor",-8,5,-4,-3],["Öğretmenler Günü: Mesleğin sorunları ne?",4,1,5,1]]},
+{id:"sk",m:5,d:15,tag:"Genel seçime 9 gün var",f:secimKamp},
+{id:"ss",m:5,d:24,tag:"24 Mayıs Genel Seçimi",f:secimSonuc}
+];
+/* ---------- ön sayfa, tepkiler, tiraj, viral ---------- */
+var RXP=["Sonunda biri söyledi. Elinize sağlık!","Bu haberi okuyunca gazeteye abone oldum.","Böyle habercilik istiyoruz, bırakmayın.","Mahallede herkes bunu konuşuyor.","Kaynakları açıkça yazmanız çok iyi olmuş.","Başlık da haber de yerinde. Tebrikler."];
+var RXM=["İlginç ama bir de diğer tarafı dinlemek isterdim.","Başlık sert olmuş, haber o kadar değil.","Fena değil, daha derin bir inceleme bekliyorum.","Evde ikiye bölündük, ben katılıyorum ama babam değil.","Okudum, düşünüyorum.","Yarın devamı gelir umarım."];
+var RXN=["Bu haber sipariş gibi kokuyor.","Başlığı okudum, haberi yazmamışsınız sanki.","Eski gazeteciliği özledim.","Reklam mı haber mi anlayamadım.","Abonelikten çıkıyorum.","Bunu mu manşet yaptınız?"];
+var RXR=["Dikkatli ol, bunu birileri not alır.","Bu kadar açık yazmak cesaret ister ama arkanı kolla.","Bir tanıdık aradı: “Gazeteni konuşuyorlar.”","Haberin çok sert, kapıya biri gelmeden önlem al."];
+var RXH=["@mahalleli_ayse","@kemal.34","@haberavcisi","@zeynepinnotlari","@eskimuhabir","@cayocagi_sohbet","@gozlemci06","@sokak_sesi","@demir_kalem","@ankara_okur","@izmirli_deniz","@bursadan_ali","@kitapkurdu","@gece_nobeti"];
+var RXA=["🧑","👩","👨","🧓","👩‍🦱","🧔","👵","🧑‍💼"];
+function vRnd(k){return S.m=="d"?rng(seedOf(tkey()+k+S.d))():Math.random()}
+function tirajV(){return Math.round((S.h*.5+S.i*.3+S.g*.2)*140+1500)}
+function tiraj(t0){S.tj=S.tj||[];var t=tirajV();if(S.vr)t=Math.round(t*(S.vr.t=="v"?1.25:.9));if(!S.tj.length)S.tj.push(t0);var p=S.tj[S.tj.length-1];S.tj.push(t);if(S.tj.length>15)S.tj.shift();S.tjd=Math.round((t-p)/p*100)}
+function viral(x,n){S.vr=null;
+var pv=x[1]>=5&&x[3]>=0?Math.min(.38,.14+(x[1]-5)*.025-(S.e&&S.e.kose?.04:0)):0,
+pb=(x[3]<=-3||(x[2]>=10&&x[3]<0)||(x[4]>=8&&x[1]<3))?.3:0,sh=Math.round(12+vRnd("vs")*88);
+if(vRnd("vr")<pv){S.h=cl(S.h+4);S.g=cl(S.g+3);S.vr={t:"v",s:sh};binc("vir")}
+else if(vRnd("vb")<pb){S.h=cl(S.h-3);S.i=cl(S.i-3);S.vr={t:"b",s:sh};binc("tep")}}
+function reacts(x){var s=x[1]+x[3],v=S.vr&&S.vr.t=="v",b=S.vr&&S.vr.t=="b",
+plan=v?["p","p","p"]:b?["n","n","m"]:s>=6?["p","p","m"]:s>=0?["p","m","m"]:s>=-4?["m","n","n"]:["n","n","n"];
+if(x[4]>=6&&!v)plan[2]="r";
+var pool={p:RXP,m:RXM,n:RXN,r:RXR},used={},hb=Math.floor(vRnd("rh")*RXH.length),L=[];
+plan.forEach(function(t,i){var a=pool[t],j=Math.floor(vRnd("rx"+i+t)*a.length),c=0;while(used[t+j]&&c<10){j=(j+1)%a.length;c++}used[t+j]=1;
+L.push([RXA[Math.floor(vRnd("ra"+i)*RXA.length)],RXH[(hb+i*5)%RXH.length],a[j],Math.round((v?800:b?200:20)*(.2+vRnd("rl"+i)*(v?10:b?3:12)))])});return L}
+function fpEmoji(x){return S.e&&S.e.pe?S.e.pe: S.vr&&S.vr.t=="v"?"📣":x[4]>=6?"🚨":x[2]>=10?"💼":x[1]>=8?"👥":x[3]>=6?"🔍":"📰"}
+var SCB='<defs><linearGradient id="fpg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2ded0"/><stop offset="1" stop-color="#a7a394"/></linearGradient></defs><rect width="360" height="120" fill="url(#fpg)"/><polygon points="0,90 20,60 40,70 70,40 95,65 130,35 160,70 200,45 235,75 270,50 300,72 330,55 360,80 360,120 0,120" fill="#8a867b"/><rect y="98" width="360" height="22" fill="#4a4a46"/>';
+function scCrowd(){var h="";for(var i=0;i<13;i++){var cx=18+i*27,cy=80+(i%3)*5;h+='<circle cx="'+cx+'" cy="'+cy+'" r="8" fill="#222"/><rect x="'+(cx-9)+'" y="'+(cy+8)+'" width="18" height="40" rx="7" fill="#2c2c2c"/>'}return h+'<rect x="150" y="14" width="80" height="34" fill="#eee" stroke="#222" stroke-width="2"/><rect x="188" y="48" width="4" height="34" fill="#222"/>'}
+function scCols(n,x0,y0){var h="";for(var i=0;i<n;i++)h+='<rect x="'+(x0+i*36)+'" y="'+y0+'" width="14" height="48" fill="#262626"/>';return h}
+function scTrees(){var h="";[[50,30],[110,24],[175,34],[240,26],[305,32]].forEach(function(t){h+='<rect x="'+(t[0]-4)+'" y="70" width="8" height="30" fill="#222"/><circle cx="'+t[0]+'" cy="'+(66-t[1]/2)+'" r="'+t[1]+'" fill="#2a2a2a"/><circle cx="'+(t[0]-8)+'" cy="'+(58-t[1]/2)+'" r="'+(t[1]/3)+'" fill="#555"/>'});return h}
+function scBooks(){var h='<rect x="60" y="14" width="240" height="86" fill="#2a2a2a"/><rect x="60" y="44" width="240" height="4" fill="#111"/><rect x="60" y="72" width="240" height="4" fill="#111"/>',c=["#eee","#999","#ccc","#666","#ddd"];[[18,44],[48,72],[76,100]].forEach(function(r,ri){var x=68;for(var i=0;x<286;i++){var w=7+((i*5+ri*3)%4)*3,ht=18+((i*7+ri*5)%3)*4;h+='<rect x="'+x+'" y="'+(r[0]+(r[1]-r[0]-4)-ht)+'" width="'+w+'" height="'+ht+'" fill="'+c[(i+ri)%5]+'"/>';x+=w+2}});return h}
+function scFence(){var h="";for(var i=0;i<15;i++)h+='<rect x="'+(24+i*22)+'" y="30" width="3" height="70" fill="#222"/>';return h+'<rect x="20" y="42" width="320" height="4" fill="#222"/><rect x="20" y="80" width="320" height="4" fill="#222"/><path d="M20 24 l12 -8 l12 8 l12 -8 l12 8 l12 -8 l12 8 l12 -8 l12 8 l12 -8 l12 8 l12 -8 l12 8 l12 -8 l12 8 l12 -8 l12 8 l12 -8 l12 8 l12 -8 l12 8 l12 -8 l12 8 l12 -8 l12 8" stroke="#222" stroke-width="2" fill="none"/>'}
+function scRain(){var h="";for(var i=0;i<9;i++)h+='<path d="M'+(132+i*11)+' '+(66+(i%3)*6)+' l-5 16" stroke="#222" stroke-width="3"/>';return h}
+var SCN=[
+[/yangın|deprem|sel\b|afet|patlama/,"Olay yerinden","FOTO: Olay yeri · Muhabir",'<path d="M140 100 Q120 70 150 48 Q152 68 172 58 Q196 84 184 100Z" fill="#1e1e1e"/><path d="M196 100 Q186 78 212 62 Q218 84 236 100Z" fill="#555"/><circle cx="170" cy="30" r="14" fill="#ccc" opacity=".8"/><circle cx="195" cy="20" r="18" fill="#ddd" opacity=".7"/>'],
+[/stadyum|futbol|taraftar|kulüp|hakem|turnuva|şampiyon/,"","FOTO: Stadyum · Maç günü",'<polygon points="20,98 60,50 300,50 340,98" fill="#3a3a36"/><path d="M60 64H300M44 80H316" stroke="#555" stroke-width="3"/><rect x="26" y="14" width="4" height="70" fill="#222"/><rect x="16" y="8" width="24" height="12" fill="#ccc"/><rect x="330" y="14" width="4" height="70" fill="#222"/><rect x="320" y="8" width="24" height="12" fill="#ccc"/><rect x="140" y="62" width="80" height="36" fill="none" stroke="#eee" stroke-width="4"/><path d="M160 62V98M180 62V98M200 62V98M140 80H220" stroke="#eee" stroke-width="1.5"/><circle cx="262" cy="88" r="8" fill="#eee" stroke="#222" stroke-width="2"/>'],
+[/elektrik|enerji|doğal gaz|jeneratör|fatura|kablo|şebeke/,"","FOTO: Trafo merkezi · Arşiv",'<polygon points="165,98 180,20 195,98" fill="none" stroke="#222" stroke-width="4"/><path d="M150 40H210M158 60H202M172 80H188" stroke="#222" stroke-width="4"/><path d="M150 40Q80 56 10 44M210 40Q280 56 350 44M158 60Q90 76 10 64M202 60Q270 76 350 64" stroke="#222" stroke-width="2" fill="none"/><polygon points="290,10 270,46 286,46 276,80 312,36 294,36 306,10" fill="#eee" stroke="#222" stroke-width="2"/>'],
+[/baraj|musluk|su idare|kuraklık|kuruyor|su kayna|içme suyu/,"","FOTO: Baraj gölü · Muhabir",'<polygon points="50,98 90,36 270,36 310,98" fill="#2a2a2a"/><path d="M96 50H264M80 66H280" stroke="#555" stroke-width="3"/><path d="M130 36V98M180 36V98M230 36V98" stroke="#1e1e1e" stroke-width="2"/><path d="M180 12Q168 32 180 38Q192 32 180 12Z" fill="#ddd" stroke="#222" stroke-width="2"/><path d="M0 98Q30 88 60 98T120 98" stroke="#ccc" stroke-width="3" fill="none"/>'],
+[/liman|gemi|ihracat|balıkçı|deniz|konteyner/,"","FOTO: Liman · Muhabir",'<polygon points="70,78 290,78 266,98 94,98" fill="#262626"/><rect x="150" y="54" width="62" height="24" fill="#3a3a36"/><rect x="170" y="38" width="12" height="16" fill="#222"/><rect x="190" y="38" width="12" height="16" fill="#222"/><rect x="100" y="66" width="26" height="12" fill="#999"/><rect x="128" y="66" width="20" height="12" fill="#ccc"/><rect x="316" y="14" width="5" height="84" fill="#222"/><rect x="250" y="14" width="80" height="5" fill="#222"/><path d="M262 19V40" stroke="#222" stroke-width="2"/><rect x="256" y="40" width="14" height="10" fill="#555"/><path d="M0 100Q40 90 80 100T160 100T240 100T320 100" stroke="#eee" stroke-width="3" fill="none"/>'],
+[/fabrika|işçi|maden|sanayi|işten çıkar|sendika|tekstil/,"","FOTO: Fabrika kapısı · Muhabir",'<rect x="50" y="58" width="190" height="40" fill="#262626"/><polygon points="50,58 80,38 80,58 110,38 110,58 140,38 140,58 170,38 170,58 200,38 200,58 230,38 240,58" fill="#2a2a2a"/><rect x="262" y="22" width="18" height="76" fill="#222"/><rect x="292" y="38" width="14" height="60" fill="#2a2a2a"/><circle cx="270" cy="14" r="10" fill="#ccc" opacity=".8"/><circle cx="288" cy="6" r="13" fill="#ddd" opacity=".7"/><rect x="66" y="70" width="14" height="10" fill="#ddd"/><rect x="96" y="70" width="14" height="10" fill="#ddd"/><rect x="126" y="70" width="14" height="10" fill="#ddd"/>'],
+[/ağaç|çınar|orman|yeşil alan|bahçe|(^|[\s"“(])park|taş ocağı|plastik|atık|kirlilik/,"","FOTO: Park · Muhabir",'__TREES__'],
+[/konut|inşaat|müteahhit|yıkım|tapu|kaçak yapı|bina/,"","FOTO: İnşaat sahası · Muhabir",'<rect x="50" y="40" width="120" height="58" fill="none" stroke="#222" stroke-width="4"/><path d="M50 60H170M50 80H170M90 40V98M130 40V98" stroke="#222" stroke-width="3"/><rect x="226" y="8" width="6" height="90" fill="#222"/><rect x="176" y="12" width="150" height="5" fill="#222"/><rect x="176" y="8" width="14" height="14" fill="#555"/><path d="M300 17V54" stroke="#222" stroke-width="2"/><rect x="292" y="54" width="16" height="8" fill="#555"/>'],
+[/banka|kredi|faiz|borç|kart faiz/,"","FOTO: Banka şubesi · Arşiv",'<rect x="90" y="46" width="180" height="52" fill="#262626"/><rect x="82" y="40" width="196" height="8" fill="#1e1e1e"/><circle cx="180" cy="22" r="16" fill="#eee" stroke="#222" stroke-width="3"/><text x="180" y="29" font-size="20" font-weight="bold" text-anchor="middle" fill="#222" font-family="Georgia,serif">₺</text><rect x="168" y="66" width="24" height="32" fill="#ddd"/><rect x="104" y="58" width="26" height="14" fill="#ddd"/><rect x="230" y="58" width="26" height="14" fill="#ddd"/>'],
+[/kedi|köpek|ördek|hayvan|barınak|kaplumbağa/,"","FOTO: Sokak · Muhabir",'<rect x="90" y="88" width="180" height="10" fill="#2a2a2a"/><ellipse cx="180" cy="72" rx="28" ry="22" fill="#222"/><circle cx="180" cy="42" r="16" fill="#222"/><polygon points="166,34 168,18 178,30" fill="#222"/><polygon points="194,34 192,18 182,30" fill="#222"/><circle cx="174" cy="42" r="3" fill="#eee"/><circle cx="187" cy="42" r="3" fill="#eee"/><path d="M206 80Q240 80 236 52" stroke="#222" stroke-width="7" fill="none"/>'],
+[/göçmen|mülteci|sınır|yabancı uyruk|vize|pasaport/,"","FOTO: Sınır kapısı · Muhabir",'__FENCE__<circle cx="250" cy="70" r="7" fill="#eee"/><rect x="244" y="78" width="12" height="20" rx="4" fill="#eee"/><circle cx="272" cy="76" r="6" fill="#eee"/><rect x="267" y="83" width="10" height="15" rx="4" fill="#eee"/><circle cx="290" cy="82" r="5" fill="#eee"/><rect x="286" y="88" width="8" height="10" rx="3" fill="#eee"/>'],
+[/tarihî|tarihi|heykel|saat kulesi|meydan saati|hamam|çarşı|gar\b/,"","FOTO: Tarihî yapı · Arşiv",'<rect x="160" y="22" width="40" height="76" fill="#262626"/><polygon points="154,22 180,4 206,22" fill="#1e1e1e"/><circle cx="180" cy="42" r="13" fill="#eee" stroke="#222" stroke-width="3"/><path d="M180 42V34M180 42L187 46" stroke="#222" stroke-width="2.5"/><path d="M172 98V80Q180 68 188 80V98Z" fill="#ddd"/><rect x="70" y="66" width="86" height="32" fill="#3a3a36"/><rect x="204" y="66" width="86" height="32" fill="#3a3a36"/><path d="M84 98V82Q96 70 108 82V98M120 98V82Q132 70 144 82V98M216 98V82Q228 70 240 82V98M252 98V82Q264 70 276 82V98" fill="#ddd"/>'],
+[/hava durumu|meteoroloji|yağmur|yağış|dolu\b|şemsiye/,"","FOTO: Yağmurlu şehir · Arşiv",'<rect x="132" y="40" width="96" height="22" rx="11" fill="#ddd"/><circle cx="150" cy="42" r="20" fill="#ddd"/><circle cx="182" cy="34" r="25" fill="#eee"/><circle cx="214" cy="44" r="18" fill="#ccc"/>__RAIN__<path d="M250 78Q280 46 310 78Z" fill="#222"/><path d="M280 78V96Q280 100 275 100" stroke="#222" stroke-width="3" fill="none"/>'],
+[/matbaa|sansür|basın kartı|kaynak gizliliği|dezenformasyon|gazete kapan|yayın durdur/,"","FOTO: Matbaa · Arşiv",'<rect x="110" y="24" width="140" height="70" fill="#ccc" stroke="#222" stroke-width="3" transform="rotate(-6 180 60)"/><rect x="112" y="24" width="140" height="72" fill="#eee" stroke="#222" stroke-width="3"/><rect x="122" y="32" width="120" height="14" fill="#222"/><rect x="122" y="52" width="42" height="30" fill="#555"/><path d="M172 54H242M172 62H242M172 70H242M172 78H230M122 88H242" stroke="#222" stroke-width="3"/>'],
+[/dinleme|ses kaydı|gözetim|izleme|kamera|konum/,"","FOTO: Güvenlik kamerası · Arşiv",'<rect x="52" y="30" width="6" height="68" fill="#222"/><rect x="52" y="30" width="72" height="22" rx="5" fill="#222"/><circle cx="128" cy="41" r="9" fill="#ccc" stroke="#222" stroke-width="3"/><polygon points="138,41 310,86 310,0" fill="#eee" opacity=".35"/><circle cx="252" cy="60" r="8" fill="#222"/><rect x="244" y="70" width="16" height="28" rx="5" fill="#222"/>'],
+[/rüşvet|zimmet|hediye|bağış|hayır kampanya/,"","FOTO: Zarf · Arşiv",'<rect x="132" y="22" width="92" height="30" fill="#ccc" stroke="#222" stroke-width="2"/><circle cx="178" cy="37" r="8" fill="none" stroke="#222" stroke-width="2"/><rect x="110" y="44" width="136" height="54" fill="#eee" stroke="#222" stroke-width="3"/><path d="M110 44L178 80L246 44" stroke="#222" stroke-width="3" fill="none"/><circle cx="288" cy="88" r="10" fill="#ddd" stroke="#222" stroke-width="2"/><circle cx="288" cy="76" r="10" fill="#ccc" stroke="#222" stroke-width="2"/><circle cx="288" cy="64" r="10" fill="#ddd" stroke="#222" stroke-width="2"/>'],
+[/çiftçi|tarla|tarım|köy|traktör|hasat|kuraklık/,"","FOTO: Tarla · Muhabir",'<path d="M0 102Q180 82 360 102" stroke="#3a3a36" stroke-width="3" fill="none"/><path d="M0 90Q180 70 360 90" stroke="#3a3a36" stroke-width="3" fill="none"/><rect x="130" y="58" width="72" height="28" fill="#262626"/><rect x="168" y="38" width="34" height="24" fill="#2a2a2a"/><rect x="174" y="42" width="22" height="14" fill="#ddd"/><rect x="134" y="42" width="5" height="18" fill="#222"/><circle cx="188" cy="88" r="17" fill="#111" stroke="#ccc" stroke-width="3"/><circle cx="142" cy="92" r="10" fill="#111" stroke="#ccc" stroke-width="3"/>'],
+[/kitap|kütüphane|şair|yazar|şiir|fuar/,"","FOTO: Kütüphane · Arşiv",'__BOOKS__'],
+[/sinema|konser|festival|film\b|tiyatro|müzik|jüri|yarışma/,"","FOTO: Sahne · Muhabir",'<polygon points="90,0 60,98 140,98" fill="#eee" opacity=".35"/><polygon points="270,0 220,98 300,98" fill="#eee" opacity=".35"/><circle cx="180" cy="36" r="11" fill="#222"/><path d="M172 36H188M172 31H188M172 41H188" stroke="#999" stroke-width="1.5"/><rect x="178" y="47" width="4" height="46" fill="#222"/><rect x="164" y="92" width="32" height="6" fill="#222"/><circle cx="40" cy="96" r="8" fill="#222"/><circle cx="76" cy="98" r="8" fill="#222"/><circle cx="290" cy="96" r="8" fill="#222"/><circle cx="326" cy="98" r="8" fill="#222"/>'],
+[/emekli|yaşlı|huzurevi|bakımevi|sosyal güvenlik/,"","FOTO: Park bankı · Muhabir",'<rect x="110" y="56" width="140" height="6" fill="#222"/><rect x="110" y="74" width="140" height="6" fill="#222"/><rect x="116" y="74" width="5" height="24" fill="#222"/><rect x="239" y="74" width="5" height="24" fill="#222"/><circle cx="165" cy="44" r="10" fill="#eee"/><rect x="154" y="55" width="24" height="26" rx="7" fill="#eee"/><circle cx="203" cy="46" r="9" fill="#ccc"/><rect x="193" y="56" width="22" height="25" rx="7" fill="#ccc"/><path d="M232 66V98M232 66Q232 58 224 58" stroke="#222" stroke-width="4" fill="none"/>'],
+[/çocuk|bebek|ilkokul|anaokul|oyuncak|oyun alanı/,"","FOTO: Oyun parkı · Arşiv",'<rect x="90" y="18" width="180" height="6" fill="#222"/><path d="M90 24L68 98M270 24L292 98" stroke="#222" stroke-width="5"/><path d="M140 24V72M220 24V72" stroke="#222" stroke-width="2"/><rect x="128" y="72" width="24" height="5" fill="#222"/><rect x="208" y="72" width="24" height="5" fill="#222"/><circle cx="220" cy="58" r="6" fill="#222"/><rect x="214" y="63" width="12" height="9" rx="3" fill="#222"/>'],
+[/hastane|sağlık|ilaç|doktor|hasta|salgın|tedavi/,"","FOTO: Hastane önü · Arşiv",'<rect x="120" y="32" width="120" height="68" fill="#2a2a2a"/><rect x="170" y="44" width="20" height="40" fill="#eee"/><rect x="160" y="54" width="40" height="20" fill="#eee"/>'],
+[/mahkeme|dava|yargı|avukat|savcı|hapis|yolsuzluk|tutuk|beraat|soruşturma|iddianame/,"","FOTO: Adliye binası · Arşiv",'<polygon points="70,48 180,14 290,48" fill="#2a2a2a"/>'+'__COLS__'+'<rect x="60" y="94" width="240" height="8" fill="#1e1e1e"/>'],
+[/seçim|referandum|aday|oy |belediye başkan|sandık/,"","FOTO: Sandık başı · Arşiv",'<rect x="130" y="52" width="100" height="46" fill="#262626"/><rect x="160" y="50" width="40" height="5" fill="#ddd"/><rect x="166" y="22" width="30" height="36" fill="#eee" stroke="#222" transform="rotate(-8 180 40)"/>'],
+[/öğretmen|okul|üniversite|öğrenci|sınav|atama|eğitim/,"","FOTO: Okul bahçesi · Arşiv",'<polygon points="90,50 180,20 270,50" fill="#2a2a2a"/><rect x="100" y="50" width="160" height="48" fill="#3a3a36"/><rect x="170" y="70" width="20" height="28" fill="#ddd"/><rect x="278" y="18" width="3" height="80" fill="#222"/><rect x="281" y="18" width="30" height="18" fill="#eee"/>'],
+[/platform|internet|erişim|yazılım|telefon|siber|dijital|yapay|uygulama|veri/,"","FOTO: Ekran görüntüsü · Arşiv",'<rect x="150" y="10" width="60" height="100" rx="10" fill="#222"/><rect x="157" y="22" width="46" height="72" fill="#cfcfc8"/><path d="M165 66 Q180 50 195 66M171 74 Q180 64 189 74" stroke="#222" fill="none" stroke-width="3"/><circle cx="180" cy="82" r="3" fill="#222"/>'],
+[/otobüs|ulaşım|metro|trafik|yol|köprü|tren|durak/,"","FOTO: Durak önü · Muhabir",'<rect x="80" y="46" width="200" height="48" rx="8" fill="#262626"/>'+'__WIN__'+'<circle cx="120" cy="96" r="11" fill="#111" stroke="#ccc" stroke-width="3"/><circle cx="240" cy="96" r="11" fill="#111" stroke="#ccc" stroke-width="3"/>'],
+[/bahis|zam|enflasyon|borsa|hisse|halka arz|ihale|bütçe|vergi|maaş|kira|ekonomi|dolar|sponsor|reklam|şirket/,"","FOTO: Piyasa · Arşiv",'<circle cx="110" cy="88" r="16" fill="#2a2a2a" stroke="#ccc" stroke-width="2"/><circle cx="110" cy="70" r="16" fill="#3a3a36" stroke="#ccc" stroke-width="2"/><circle cx="110" cy="52" r="16" fill="#2a2a2a" stroke="#ccc" stroke-width="2"/><polyline points="190,92 225,70 250,82 320,30" stroke="#1e1e1e" stroke-width="6" fill="none"/><polygon points="320,18 336,38 306,38" fill="#1e1e1e"/>'],
+[/market|mutfak|şef|gıda|restoran|yemek|malzeme/,"","FOTO: Mutfak · Arşiv",'<circle cx="180" cy="64" r="38" fill="#eee" stroke="#222" stroke-width="3"/><circle cx="180" cy="64" r="25" fill="none" stroke="#999" stroke-width="2"/><rect x="118" y="26" width="5" height="64" fill="#222"/><rect x="238" y="26" width="9" height="64" rx="4" fill="#222"/>'],
+[/eylem|protesto|grev|sokak|kalabalık|halk |miting|tepki/,"","FOTO: Kalabalık · Muhabir",'__CROWD__'],
+[/.*/,"","FOTO: Haber servisi · Arşiv",'<circle cx="180" cy="40" r="17" fill="#222"/><rect x="176" y="56" width="8" height="40" fill="#222"/><rect x="160" y="94" width="40" height="6" fill="#222"/><path d="M130 30 L150 36M135 56 L152 50M230 30 L210 36M225 56 L208 50" stroke="#fff" stroke-width="4"/><rect x="50" y="68" width="44" height="28" fill="#2a2a2a"/><circle cx="72" cy="82" r="8" fill="#ccc"/><rect x="266" y="68" width="44" height="28" fill="#2a2a2a"/><circle cx="288" cy="82" r="8" fill="#ccc"/>']];
+function scn(e,x){var q=((e.t||"")+" "+x[0]).toLocaleLowerCase("tr")+" ",k=SCN[SCN.length-1];for(var i=0;i<SCN.length;i++)if(SCN[i][0].test(q)){k=SCN[i];break}
+var g=k[3].replace("__COLS__",scCols(5,90,48)).replace("__CROWD__",scCrowd()).replace("__TREES__",scTrees()).replace("__BOOKS__",scBooks()).replace("__FENCE__",scFence()).replace("__RAIN__",scRain()).replace("__WIN__",[0,1,2,3,4].map(function(i){return'<rect x="'+(92+i*36)+'" y="54" width="28" height="18" fill="#ddd"/>'}).join(""));
+return{s:'<svg viewBox="0 0 360 120" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">'+SCB+g+'</svg>',c:k[2]}}
+function frontPage(x){var e=S.e||{},nm=S.m=="k"?S.K.n:GN(),full=e.t||"",m=full.match(/^[^.!?]*[.!?]/),sp=m?m[0]:full;if(sp.length>120)sp=sp.slice(0,117)+"…";
+var sc=e.sp?null:scn(e,x),d=new Date(S.dt),tp=[5,6,10,15,20,25,29,29,24,18,12,7][d.getMonth()]+(d.getDate()%5-2),wi=tp>=26?"☀️":tp<=8?"❄️":"⛅";
+var bi=(S.d*13+Math.floor(S.dt/864e5))%E.length,br=[E[bi],E[(bi+7)%E.length]].map(function(z){return z&&z.o&&z.o[0]?z.o[0][0]:""}).filter(Boolean);
+return'<div class="fp'+(e.sp?' spor':'')+'">'+(S.vr?'<span class="fpv'+(S.vr.t=="b"?' neg':'')+'">'+(S.vr.t=="v"?'🔥 VİRAL':'⚠️ TEPKİ')+'</span>':'')
++'<div class="fpe">'+(e.sp?'<span>⚽ Spor Eki</span>':'<span>'+wi+' '+tp+'° İstanbul</span>')+'<span>Fiyatı 15 ₺</span></div>'
++'<div class="fpm"><b>'+esc(nm)+(e.sp?' SPOR':'')+'</b><span>'+trDate(S.dt).replace(" · "," · ")+' · Sayı '+S.d+' · 8 Sayfa</span></div>'
++'<div class="fpk">'+(e.sp?'SPOR · MANŞET':e.kose?'KÖŞE · '+esc(String(A.ad).toUpperCase()):'MANŞET')+'</div><div class="fph">'+esc(x[0])+'</div><div class="fps">'+esc(sp)+'</div>'
++'<div class="fpi">'+(e.sp?'<i>'+fpEmoji(x)+'</i>':sc.s)+'</div><div class="fpc">'+(e.pc||sc.c)+'</div>'
++'<div class="fpb"><p>'+esc(full)+'</p><div class="fpl"></div></div>'
++(br.length?'<div class="fpk2">KISA KISA</div>'+br.map(function(z){return'<div class="fpq">■ '+esc(z)+'</div>'}).join(""):'')
++'<div class="fpf"><span>Tiraj '+tirajV().toLocaleString("tr-TR")+'</span><i class="bc"></i></div></div>'}
+function spark(a){if(a.length<2)return"";var mn=Math.min.apply(null,a),mx=Math.max.apply(null,a),r=(mx-mn)||1,
+p=a.map(function(v,i){return Math.round(i*200/(a.length-1))+","+Math.round(42-(v-mn)/r*36)}).join(" ");
+return'<svg class="tjg" viewBox="0 0 200 46" preserveAspectRatio="none"><polygon points="0,46 '+p+' 200,46" style="fill:var(--red);opacity:.12"/><polyline points="'+p+'" style="fill:none;stroke:var(--red);stroke-width:2;vector-effect:non-scaling-stroke"/></svg>'}
+function resCard(){var x=S.res,v=S.vr&&S.vr.t=="v",h='<div class="card"><div class="st">'+(S.e&&S.e.kose?'Köşen yayında':'Manşetin yayında')+'</div>'+frontPage(x);
+if(S.vr)h+='<div class="vr'+(v?'':' neg')+'"><span style="font-size:26px">'+(v?'🔥':'⚠️')+'</span><div>'+(v?'Haberin viral oldu!':'Haber tepki çekti')+'<small>'+S.vr.s+' bin '+(v?'paylaşım · Halk +4, gelir +3':'tepki · Halk −3, itibar −3')+'</small></div></div>';
+h+=chip("Halk",x[1])+chip("Gelir",x[2])+chip("İtibar",x[3]);
+(S.notes||[]).forEach(function(m){h+='<p class="nt">'+m+'</p>'});
+if(S.tj&&S.tj.length>1){var t=S.tj[S.tj.length-1],d=S.tjd||0;h+='<div class="tj"><div class="tjh"><span>📈 Günlük tiraj</span><b>'+t.toLocaleString("tr-TR")+' <small style="color:'+(d>0?'var(--grn)':d<0?'var(--red)':'var(--mute)')+'">'+(d>0?'▲ %'+d:d<0?'▼ %'+(-d):'–')+'</small></b></div>'+spark(S.tj)+'</div>'}
+if(S.rx&&S.rx.length){h+='<div class="rc"><div class="rct">💬 Okur tepkileri</div>';S.rx.forEach(function(r){h+='<div class="rci"><span class="rca">'+r[0]+'</span><div style="flex:1"><b>'+r[1]+'</b><p>'+r[2]+'</p></div><em>♥ '+r[3].toLocaleString("tr-TR")+'</em></div>'});h+='</div>'}
+if(S.mk)h+='<div class="lt"><b>✉️ Okur mektubu</b><p>“'+S.mk+'”</p></div>';
+return h+'<button class="b" data-a="nx">Sonraki gün</button></div>'}
+/* ---------- kariyer modu ---------- */
+var KL=[["Stajyer Muhabir","🎒"],["Köşe Yazarı","✍️"],["Haber Müdürü","📋"],["Genel Yayın Yönetmeni","🏛️"]];
+var KT=[0,18,42,70],KS=[1,1,2,2],KHP=[.10,.22,.45,1],KF=.30;
+var KGN=["Akşam Yıldızı","Şehir Postası","Ulusal Kuryer","Yeni Haberci","Başkent Günlüğü"];
+var KD=["Haber odasının çaylak üyesisin. Çoğunlukla köşe yazarsın, manşet arada bir sana kalır.","Artık imzalı bir köşen var. Okur seni tanıyor, manşet fırsatları artıyor.","Haber müdürüsün. Manşetlerin yarısını sen seçiyorsun, redaksiyon kararları sende.","Manşeti artık sen atıyorsun. Ekip ve Yatırım sekmeleri açıldı, gazete senin sorumluluğunda."];
+var KU=["Çoğunlukla köşe, nadiren manşet","Kendi köşen, daha çok manşet fırsatı","Manşetlerin yarısı senin","Her manşet senin, ekip ve yatırım açık"];
+var KPR=[null,
+{tag:"🎉 Terfi",t:"Editör seni odasına çağırdı: “Okurun seni tanımaya başladı. Artık sana ait bir köşen var.” Yazıların imzalı çıkacak, maaşın artıyor.",o:[["Teşekkür et, köşeyi kabul et",3,6,3,0],["Zam iste",0,12,-3,0],["Köşenin adını ve çizgisini sen belirle",4,3,4,2]]},
+{tag:"🎉 Terfi",t:"Haber müdürü emekli oldu. Genel yayın yönetmeni yerine seni önerdi: “Haber toplantılarını sen yöneteceksin, manşet kararlarında da sözün geçecek.”",o:[["Görevi kabul et, ekibi topla",4,6,4,2],["Maaş ve kadro şartı koş",0,12,-3,0],["Önce muhabirlerle konuş",5,3,5,0]]},
+{tag:"🎉 Terfi",t:"Gazete sahibi seni odasına çağırdı: “Tirajı yükselten sensin. Genel yayın yönetmenliği senin. Manşeti artık sen atacaksın, ekibi ve yatırımı da sen yöneteceksin.” 👥 Ekip ve 🏢 Yatırım sekmeleri açıldı.",o:[["Kabul et: Manşet artık benim",5,8,5,3],["Tam yetki iste, yoksa kabul etme",2,2,3,5],["İlk iş olarak tüm ekibe konuş",7,4,4,0]]}];
+var KE=[
+{lv:[0,0],t:"İlk haftan: Haber müdürü sana sıkıcı bir mahkeme haberi verdi. Herkes kantine gitti, haberi senin bitirmen bekleniyor.",o:[["Haberi titizlikle yaz, kaynakları ara",3,-1,5,0],["Hızlıca bitir, kantine yetiş",0,1,-3,0],["Dosyada gizli kalmış bir ayrıntı bul",6,-2,6,3]]},
+{lv:[0,1],t:"Emekli olan köşe yazarı Nuri Bey, köşesini sana devretmeyi öneriyor ama ilk yazını ona okutmanı istiyor.",o:[["Okut, tavsiyelerini dinle",2,4,4,-1],["Okutma, kendi sesinle yaz",6,-2,3,3],["Zaman iste, önce okurları dinle",3,0,3,0]]},
+{lv:[0,2],t:"Dün yazdığın yazı sosyal medyada viral oldu. Binlerce paylaşım var ama bir kaynağın doğruluğu tartışılıyor.",o:[["Kaynağı kontrol et, gerekirse düzelt",3,0,8,-1],["Viral olsun, sessiz kal",10,3,-6,2],["Bu akımla yeni bir yazı yaz",7,1,0,3]]},
+{lv:[1,3],t:"Rakip bir gazete sana şimdikinin iki katı maaşla geçmeyi teklif ediyor.",o:[["Reddet, burada kal",2,-3,6,0],["Teklifi koz yap, zam iste",0,10,-4,0],["Teklifi kamuoyuyla paylaş",5,2,-3,2]]},
+{lv:[0,2],t:"Editör yazını yayından kaldırdı: “Büyük bir reklam veren rahatsız oldu.”",o:[["Sessizce kabul et",-2,3,2,-1],["Yazıyı kendi sosyal medyanda paylaş",8,-3,-4,5],["Editörle yüz yüze konuş, yazıyı yumuşatıp geri ver",3,0,3,1]]},
+{lv:[1,2],t:"Yazarlar toplantısı: Gazetenin tirajı düşüyor, herkes fikir sunuyor.",o:[["Okur mektupları sayfası öner",5,2,4,0],["Magazin köşesi öner",3,6,-6,0],["Uzun soluklu bir soruşturma dizisi öner",6,-3,5,4]]},
+{lv:[0,3],t:"Üniversitede gazetecilik öğrencilerine konuşma yapman istendi.",o:[["Cesur bir konuşma yap: Basın susmamalı",6,0,5,3],["Güvenli bir konuşma yap",2,0,1,0],["Daveti geri çevir",0,2,-2,0]]},
+{lv:[0,1],t:"Yazı işlerinde söylenti dolaşıyor: Yakında yeni bir köşe yazarı alınacak ve içinde senin adın da geçiyor.",o:[["Sessiz kal, işine bak",1,0,3,0],["Söylentiyi sen de yay",2,0,-5,0],["Editörle açıkça konuş",1,0,3,0]]},
+{lv:[1,3],t:"Yılın köşe yazarı ödülüne aday gösterildin. Törende konuşma hakkın var.",o:[["Gazeteyi öv, minnettar kal",4,1,3,0],["Eleştirel bir konuşma yap",8,-2,2,5],["Törene katılma",-2,0,-2,0]]},
+{lv:[2,3],t:"Genç bir muhabir senin haberini kendi adıyla yayınladı.",o:[["Muhabirle yüz yüze konuş, düzeltmesini iste",1,0,4,0],["Haberi herkese duyur, kurum içinde sorun çıkar",-2,0,-5,0],["Görmezden gel",0,0,-2,0]]},
+{lv:[2,3],t:"Muhabirler maaş zammı istiyor. Yönetim ise kısıtlı bütçeden söz ediyor.",o:[["Zam için yönetimle mücadele et",4,-6,5,0],["Prim dağıt, zammı ertele",1,-3,2,0],["Bütçeyi gerekçe göster, reddet",-3,4,-5,0]]},
+{lv:[2,2],t:"Genel yayın yönetmeni hastalandı, bu haftaki sayıyı sen yöneteceksin.",o:[["Cesur manşetlerle çık",7,-2,3,6],["Güvenli bir sayı hazırla",2,3,2,0],["Ekibe danış, birlikte karar ver",4,0,5,0]]},
+{lv:[3,3],t:"Gazete sahibi bütçeyi kısmak istiyor ve kıdemli bir muhabiri çıkarmanı söylüyor.",o:[["Reddet, gerekirse istifayı göze al",3,-5,6,0],["Kısıntı yap ama kimseyi çıkarma",1,-2,2,0],["Kabul et, kadroyu daralt",-5,8,-5,0]]},
+{lv:[3,3],t:"Kamu görevlisi seni “kahve içmeye” davet etti. Niyeti belli: Manşetleri yumuşatmak.",o:[["Git, dinle, hiçbir söz verme",-1,2,-2,-3],["Gitme, daveti kamuoyuyla paylaş",6,-2,3,6],["Avukatını da yanına al",1,0,2,-2]]},
+{lv:[3,3],t:"Gazete sahibi: “Manşetleri reklam verenlere göre ayarlayalım.”",o:[["Reddet",5,-8,6,3],["Kabul et",-5,12,-8,-2],["Ortak yol bul: Reklam sayfalarını ayır",1,3,2,0]]},
+{lv:[1,3],t:"Bir yayıncı sana kitap yazmayı teklif etti.",o:[["İmzala, geceleri yaz",3,8,3,0],["Reddet, gazeteye odaklan",1,-1,2,0],["Gazete adına ortak kitap öner",4,4,0,0]]},
+{lv:[0,1],t:"Gece nöbetindesin. Yangın ihbarı geldi ama editör de fotoğrafçı da yok.",o:[["Olay yerine koş, telefonla çek",8,-2,5,2],["Editöre haber ver, bekle",-2,0,0,0],["Haberi sosyal medyada duyur",5,1,-3,0]]},
+{lv:[1,3],t:"Okurlardan toplu bir mektup geldi: “Yazıların bizi anlatıyor.”",o:[["Mektubu köşende yayınla",6,0,3,0],["Her birine tek tek yanıt yaz",4,0,5,0],["Mektubu arşive kaldır",0,0,0,0]]}
+];
+KE.forEach(function(e){e.kk=1;e.kx=1;e.tag="🏢 Redaksiyon"});
+function kStart(){var d=new Date(),y=d.getFullYear(),a=new Date(y,0,6).getTime();return t0()>=a?new Date(y+1,0,6).getTime():a}
+function kInit(){S.h=Math.max(25,S.h-15);S.g=Math.max(30,S.g-20);S.dt=kStart();
+S.K={f:0,l:0,p:0,n:KGN[Math.floor(Math.random()*KGN.length)],h:[],c:0,hc:0}}
+function kHist(k){var h=S.K.h;h.push(k);if(h.length>45)h.shift()}
+function kCur(){var K=S.K,pool=KE.map(function(e,i){return i}).filter(function(i){var e=KE[i];return K.l>=e.lv[0]&&K.l<=e.lv[1]&&K.h.indexOf("k"+i)<0});
+if(pool.length&&Math.random()<.28){var i=pool[Math.floor(Math.random()*pool.length)];kHist("k"+i);return KE[i]}
+var j,t=0;do{j=Math.floor(Math.random()*E.length);t++}while(K.h.indexOf("e"+j)>=0&&t<80);kHist("e"+j);return E[j]}
+function kcp(e){var c={};for(var q in e)c[q]=e[q];return c}
+function kWrap(e){var K=S.K,l=K.l;if(!e||e.kk||/Sonuç/.test(e.tag||""))return e;
+var c=kcp(e);
+if(l>=3||Math.random()<KHP[l]){if(l<3){c.tag="📰 Manşet fırsatı"+(e.tag?" · "+e.tag:"");c.kx=1}}
+else{c.kose=1;c.kx=1;c.tag="✍️ Köşe yazısı"+(e.tag?" · "+e.tag:"");c.t=e.t+" Köşende nasıl yazarsın?";
+c.o=e.o.map(function(x){var y=x.slice();y[1]=Math.round(x[1]*.6);y[2]=Math.round(x[2]*.5);y[3]=Math.round(x[3]*.6);y[4]=Math.round(x[4]*.5);return y})}
+return c}
+function kPromo(){var K=S.K;if(!K||!K.p)return null;var e=KPR[K.p];return{tag:e.tag+" · "+KL[K.p][1]+" "+KL[K.p][0],t:e.t,o:e.o,kk:1,kx:1,kp:1}}
+function kAfter(x,n){var K=S.K,e=S.e;if(!K||!e)return;
+if(e.kose)K.c++;else if(!e.kk)K.hc++;
+var g=(x[1]+x[3])/2;g=g>0?g:g*.4;
+K.f=Math.min(100,Math.max(KT[K.l],K.f+g*KF));if(S.vr&&S.vr.t=="v")K.f=Math.min(100,K.f+2);
+if(e.kp){K.l=K.p;K.p=0;bst("kl",K.l);n.push("🎉 Yeni görev: "+KL[K.l][1]+" "+KL[K.l][0]+(K.l>=3?". 👥 Ekip ve 🏢 Yatırım sekmeleri açıldı.":". Maaşın arttı."))}
+if(!K.p&&K.l<3&&K.f>=KT[K.l+1])K.p=K.l+1}
+function kBar(){var K=S.K,l=K.l,nx=KT[l+1]||100,lo=KT[l],pc=Math.max(0,Math.min(100,Math.round((K.f-lo)/(nx-lo)*100)));
+return'<div class="kb"><div class="kt"><b>'+KL[l][1]+' '+KL[l][0]+'</b><span>🌟 Şöhret '+Math.round(K.f)+(l<3?' · '+KL[l+1][0]+' için '+nx:' · zirve için 100')+'</span></div><div class="pb"><i style="width:'+pc+'%"></i></div></div>'}
+function kariyer(){var K=S.K,l=K.l,h='<div class="card"><div class="ch"><span class="av" style="width:60px;height:60px;font-size:30px">'+KL[l][1]+'</span><div class="ci"><b>'+esc(A.ad)+'</b><small>'+KL[l][0]+' · '+esc(K.n)+'</small></div></div><p class="nt">'+KD[l]+'</p>'
++'<div class="sg"><div><b>'+Math.round(K.f)+'</b><small>Şöhret</small></div><div><b>'+K.c+'</b><small>Köşe</small></div><div><b>'+K.hc+'</b><small>Manşet</small></div><div><b>+'+KS[l]+'</b><small>Maaş/gün</small></div></div></div>'
++'<div class="sect">Kariyer basamakları</div><div class="card">';
+KL.forEach(function(x,i){h+='<div class="sec"><div><b>'+x[1]+' '+x[0]+'</b><br><small style="color:var(--mute)">'+KU[i]+'</small></div><span>'+(l>=i?'✓ ':'')+'Şöhret '+KT[i]+'</span></div>'});
+return h+'</div><p class="hint">Şöhret, iyi seçimlerle artar ve bulunduğun basamağın eşiğinin altına düşmez. Genel yayın yönetmeniyken şöhretin 100’e ulaşırsa kariyerin zirvesine çıkarsın. Redaksiyon olayları (editör, sahibi, rakip teklifleri) arada bir karşına çıkar. İlk iki basamakta editör baskıyı her gün biraz azaltır.</p>'}
+function kSave(){if(S&&S.m!="d"&&!S.over){try{localStorage.setItem("manset_oyun",JSON.stringify({S:S,o:(order||[]).map(function(e){return E.indexOf(e)})}))}catch(e){}}}
+/* ---------- sonucu sonradan belli olan olaylar ---------- */
+/* s: tuttuğun taraf (a/b/n). same: doğru taraf, diff: yanlış taraf, neu: tarafsız. [halk, gelir, itibar, baskı] */
+var CH={
+derbi:{n:"Derbi",w:[2,3],p:.5,ta:"Şehir takımı derbiyi aldı",tb:"Derbide rakip güldü",A:"Derbi sonuçlandı: Şehir takımı rakibini yendi, kent sokağa döküldü.",B:"Derbi sonuçlandı: Rakip takım kazandı, şehirde sessizlik hâkim.",same:[7,8,3,-1],diff:[-6,-4,-5,0],neu:[3,2,2,0]},
+arz:{n:"Halka arz",w:[3,4],p:.5,ta:"Halka arz uçtu: Hisseler rekor kırdı",tb:"Halka arz çöktü: Küçük yatırımcı mağdur",A:"Gıda şirketinin halka arzı büyük ilgi gördü, hisseler uçtu.",B:"Gıda şirketinin hisseleri çöktü, küçük yatırımcı mağdur oldu.",same:[6,8,8,-1],diff:[-6,-8,-10,0],neu:[2,0,3,0]},
+ref:{n:"Referandum",w:[3,5],p:.5,ta:"Referandumda park korundu",tb:"Referandumda AVM kazandı",A:"Referandum sonuçlandı: Park korundu, AVM projesi iptal edildi.",B:"Referandum sonuçlandı: AVM projesi onaylandı, park yerine inşaat başlıyor.",same:[6,6,5,-2],diff:[-5,-5,-5,4],neu:[3,0,4,0]},
+dava:{n:"Yolsuzluk davası",w:[3,4],p:.5,ta:"Karar çıktı: İş insanı beraat etti",tb:"Karar çıktı: İş insanı mahkûm oldu",A:"Karar çıktı: İş insanı beraat etti.",B:"Karar çıktı: İş insanı mahkûm oldu.",same:[5,6,6,0],diff:[-5,-6,-8,2],neu:[2,0,3,0]},
+konser:{n:"Hayır konseri",w:[2,4],p:.5,ta:"Hayır konseri bağış rekoru kırdı",tb:"Hayır konseri iptal: Bağışlar nerede?",A:"Hayır konseri büyük ilgi gördü, bağış hedefi aşıldı.",B:"Hayır konseri iptal edildi, bağışların nereye gittiği tartışılıyor.",same:[7,5,8,-1],diff:[-5,-8,-6,0],neu:[2,0,3,0]},
+yerel:{n:"Yerel seçim",w:[4,5],p:.5,ta:"Genç aday kazandı: Belediyede rüzgâr değişiyor",tb:"Mevcut başkan kazandı: Düzen sürüyor",A:"Yerel seçimde genç aday kazandı, belediyede rüzgâr değişiyor.",B:"Yerel seçimde mevcut başkan kazandı, belediyede düzen sürüyor.",same:[4,10,3,-8],diff:[-5,-10,-5,10],neu:[2,0,3,0]}
+};
+var SC={same:[3,14,-2,-12],diff:[-6,-12,-6,16],neu:[4,3,6,-2]};
+function chRoll(id){return S.m=="d"?rng(seedOf(tkey()+id))():Math.random()}
+function chOpts(v,l){var h=function(z){return Math.round(z/2)};
+return[[l[0],v[0],v[1],v[2],v[3]],[l[1],h(v[0]),h(v[1]),h(v[2]),h(v[3])],[l[2],v[0],v[1]-2,v[2]+3,v[3]+2]]}
+function chSet(x){var e=S.e;if(!e||!e.ch||!x[5])return;var c=CH[e.ch];S.chs=S.chs||{};
+S.chs[e.ch]={s:x[5],due:c?S.d+(S.m=="d"?c.w[0]:c.w[0]+Math.floor(Math.random()*(c.w[1]-c.w[0]+1))):-1}}
+function chEvent(id,s){var c=CH[id],w=chRoll(id)<c.p?"A":"B",k=s=="n"?"neu":(s.toUpperCase()==w?"same":"diff");
+binc("chn");if(k=="same")binc("chw");
+return{tag:"Sonuç: "+c.n,t:c[w]+" "+(k=="same"?"Tuttuğun taraf kazandı.":k=="diff"?"Tuttuğun taraf kaybetti.":"Tarafsız kaldın.")+" Nasıl yazacaksın?",
+o:chOpts(c[k],[w=="A"?c.ta:c.tb,"Sonucu kısa haberle geç","Sonuç üzerine yorum: Şimdi ne olacak?"])}}
+function chDue(){if(!S.chs)return null;for(var k in CH){var s=S.chs[k];if(s&&!s.done&&s.due>=0&&S.d>=s.due){s.done=1;return chEvent(k,s.s)}}return null}
+/* 24 Mayıs genel seçimi: A Partisi (değişim) / B Partisi (istikrar) */
+function secimKamp(){if(S.chs)delete S.chs.secim;
+return{tag:"Genel seçime 9 gün var",ch:"secim",t:"24 Mayıs’ta genel seçim var. Anketler başa baş: A Partisi “değişim”, B Partisi “istikrar” diyor. İkisi de gazeteni yanına çekmek istiyor. Kazanan taraf sana kapıyı açar, kaybeden taraf bedelini ister.",
+o:[["A Partisi’ni destekle: Değişim zamanı",2,8,-4,0,"A"],["B Partisi’ni destekle: İstikrar şart",-2,8,-4,0,"B"],["İki partinin programını yan yana koy",3,-2,6,1,"n"]]}}
+function secimSonuc(){var s=S.chs&&S.chs.secim?S.chs.secim.s:"n",w=chRoll("secim")<.5?"A":"B",k=s=="n"?"neu":(s==w?"same":"diff");
+S.pw={p:w,s:s,n:6};if(S.chs)delete S.chs.secim;
+binc("sec");if(k=="same"){binc("secw");binc("chw")}
+return{tag:"24 Mayıs Genel Seçimi · Sonuç",t:"Sandıklar açıldı: "+w+" Partisi seçimi kazandı. "+(k=="same"?"Desteklediğin parti iktidara geldi, kapılar sana açık.":k=="diff"?"Desteklediğin parti kaybetti, yeni iktidar seni unutmayacak.":"Tarafsız kaldın, iki taraf da sana mesafeli.")+" İlk sayıyı nasıl yazacaksın?",
+o:chOpts(SC[k],[w+" Partisi kazandı: Seçim sonuçları","Seçim sonucunu kısa haberle geç","Yeni dönem: Neler değişecek?"])}}
+function spec(){S.sp=S.sp||{};var yr=new Date(S.dt).getFullYear();
+for(var i=0;i<SP.length;i++){var e=SP[i];for(var y=yr-1;y<=yr;y++){var a=new Date(y,e.m-1,e.d).getTime(),k=e.id+y;
+if(!S.sp[k]&&S.dt>=a&&S.dt<=adv(a,2)){S.sp[k]=1;return e.f?e.f():e}}}
+return null}
+/* [başlık, açıklama, simge] */
+var EN={
+hapis:["Hapis","Hükümet sabrını yitirdi. Sabaha karşı kapı çalındı. Gazeten kapandı, sen içerdesin.","⛓️"],
+iflas:["İflas","Kasa boşaldı. Matbaa kapandı, maaşlar ödenemedi.","💸"],
+satilmis:["Satılmış","Okur güvenini tamamen kaybetti. Artık kimse gazeteni almıyor.","🏷️"],
+kovuldun:["Kovuldun","İtibarın çöktü. Yönetim kurulu seni görevden aldı.","🚪"],
+surgun:["Sürgün","Hapse girmeden son anda ülkeyi terk ettin. Gazete hâlâ yayında ama sen uzaktasın.","✈️"],
+efsane:["Efsane editör","Tüm olayları atlattın. Gazete ayakta, okur seninle, sen hâlâ yazıyorsun.","🏆"],
+sembol:["Sembol isim","Hapse girdin ama halk seni unutmadı. Adın, susturulan basının sembolü oldu.","🕯️"],
+onurlu:["Onurlu iflas","Kasa boşaldı, matbaa kapandı. Ama itibarın yerinde. Okurlar seni hâlâ saygıyla anıyor.","🎖️"],
+patron:["Medya patronu","Kasa dolu, itibar yerlerde. Kimse sana güvenmiyor ama herkes reklam vermek istiyor.","🎩"],
+halk:["Halkın sesi","Gazeten halkın yanında, halk da senin. Sokaklarda adın anılıyor, destek her yerden yağıyor.","📣"],
+yandas:["Yandaş gazete","Hiç baskı görmedin, çünkü kimseyi rahatsız etmedin. Gazete ayakta ama kimse ciddiye almıyor.","🐑"],
+duayen:["Duayen","Elli günü aştın. Sonun ne olursa olsun, direnişin basın tarihine yazıldı.","👑"],
+kapatildi:["Kapatıldın","Mahkeme gazetenin yayın hakkını iptal etti. Matbaanın kapısına mühür vuruldu.","🔒"],
+mahkum:["Mahkûm","Hâkim seni hapse mahkûm etti. Gazete avukatlarının elinde, sen parmaklıklar ardındasın.","⚖️"],
+devralindi:["Devralındın","Rakip gazete okurun güvenini kazandı ve yayın hakkını satın aldı. Artık onun yazı işlerinde çalışıyorsun.","🏢"],
+issiz:["İşsiz gazeteci","Maaşın kirayı karşılamadı, borçlar birikti. Mesleği bırakıp başka bir iş aramak zorunda kaldın.","🧳"],
+zirve:["Basının zirvesi","Stajyerken başladığın yolda adın artık bir markaya dönüştü. Genel yayın yönetmenisin ve manşeti belirleyen kişisin: Halk seni tanıyor, meslek seni örnek alıyor.","🏔️"]
+};
+var WIN={efsane:1,halk:1,duayen:1,sembol:1,onurlu:1,surgun:1,zirve:1};
+
+var SL=30,DL=7,VER="3.11",BK=null,KEEP=0;
+var Z={
+k:{n:"Kolay",ic:"🌱",rent:1,pm:.75,s:[60,80,55],d:"Daha yüksek başlangıç değerleri, düşük gider, baskı %25 yavaş artar."},
+n:{n:"Normal",ic:"⚖️",rent:2,pm:1,s:[50,70,50],d:"Dengeli başlangıç, günlük gider 2, baskı normal artar."},
+z:{n:"Zor",ic:"🔥",rent:3,pm:1.25,s:[45,60,45],d:"Düşük başlangıç, günlük gider 3, baskı %25 hızlı artar."}
+};
+var RK=[["Stajyer","🎒",0],["Muhabir","📝",10],["Editör","🖋️",30],["Yazı İşleri Müdürü","📋",70],["Genel Yayın Yönetmeni","🏛️",130],["Basın Efsanesi","👑",220]];
+
+/* ---------- kayıt ve ayarlar ---------- */
+function ld(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function DEF(){return{tema:"auto",ses:1,tit:1,boy:1,anim:1,band:0,zor:"n",ad:"Editör",gad:"",fnt:"r",tem:"k",kag:1}}
+var A=DEF(),sA=ld("manset_ayar",null);
+if(sA){for(var q in sA)A[q]=sA[q]}else{try{var ot=localStorage.getItem("manset_tema");if(ot)A.tema=ot}catch(e){}}
+function saveA(){sv("manset_ayar",A)}
+var got=ld("manset_sonlar",{}),P=ld("manset_profil",{g:0,d:0});
+function rekor(){return +ld("manset_rekor",0)||0}
+var FN=[["r","Rockwell",0,'Rockwell,"Roboto Slab",Georgia,serif'],["g","Georgia",1,'Georgia,serif'],["d","Daktilo",2,'"Courier New",Courier,monospace'],["m","Modern",3,'system-ui,-apple-system,"Segoe UI",sans-serif']];
+var TM=[["k","Kırmızı",0,"#d62839","#ef4456","#8f1624"],["m","Mavi",1,"#2563eb","#4f86f7","#1a3f99"],["y","Yeşil",2,"#2a9d5c","#3fc176","#1b6b3e"],["p","Mor",3,"#7c3aed","#9a63f5","#52259c"],["a","Altın",4,"#c98a00","#e6a81c","#8a5d00"],["s","Kömür",5,"#2b2f3a","#4a5063","#12141a"]];
+var UN=["Başlangıç: Rockwell yazı, kırmızı tema","Gazete adı, Georgia yazı, mavi tema","Daktilo yazı, yeşil tema","Modern yazı, mor tema","Altın tema","Kömür tema"];
+function RN(){var d=0;try{d=(JSON.parse(localStorage.getItem("manset_profil"))||{}).d||0}catch(e){}var i=0;RK.forEach(function(r,k){if(d>=r[2])i=k});return i}
+function GN(){return RN()>=1&&A.gad?A.gad:"Manşet"}
+function kozm(){var rn=RN(),f=FN.filter(function(x){return x[0]==A.fnt&&x[2]<=rn})[0]||FN[0],t=TM.filter(function(x){return x[0]==A.tem&&x[2]<=rn})[0]||TM[0],r=document.documentElement;
+var dkm=A.tema=="dark"||(A.tema=="auto"&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches);if(dkm)r.style.removeProperty("--red");else r.style.setProperty("--red",t[3]);var st=document.getElementById("kz");if(!st){st=document.createElement("style");st.id="kz";document.head.appendChild(st)}
+st.textContent="h1,h2,.sv,.tile b,.mb .mt b,.ec b,.ci b{font-family:"+f[3]+"!important}.big{background:linear-gradient(180deg,"+t[4]+","+t[3]+");box-shadow:0 5px 0 "+t[5]+",0 12px 22px rgba(0,0,0,.22)}.mb.pri{background:linear-gradient(180deg,"+t[4]+","+t[3]+");border-color:"+t[3]+";box-shadow:0 5px 0 "+t[5]+"}.big.sec{background:var(--card);box-shadow:0 5px 0 var(--line)}"+krem()}
+function krem(){var dk=A.tema=="dark"||(A.tema=="auto"&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches);if(!A.kag||dk)return"";
+return':root{--bg:#f2ead8;--bg2:#ebe1ca;--card:#faf5e8;--ink:#1f1b14;--mute:#6a6150;--line:#d3c7aa;--btn:#1f1b14;--btnt:#faf5e8;--bar:#1f1b14;--sh:0 1px 0 #d3c7aa}body{background-image:none}body::before{opacity:.12}.card,.tile,.mb,.up,.ec,.grp,.st3,.prof,.ic,.pill,.tick,.act,.b,.big,.lt,.bub,.nvi,.seg,.in{border-radius:6px}.card,.grp,.ec,.st3{border:1px solid var(--line);box-shadow:0 1px 0 var(--line)}.tile,.mb,.ic,.prof{box-shadow:0 2px 0 var(--line)}.big{box-shadow:0 3px 0 rgba(0,0,0,.35)!important}.big:active{box-shadow:0 0 0 #000!important}.mb.pri{box-shadow:0 3px 0 rgba(0,0,0,.35)!important}.big.sec{box-shadow:0 3px 0 var(--line)!important}.nvi{box-shadow:0 -1px 0 var(--line),0 4px 14px rgba(31,27,20,.12)}.mast h1{letter-spacing:-1px}'}
+if(window.matchMedia)try{matchMedia("(prefers-color-scheme:dark)").addEventListener("change",function(){kozm()})}catch(e){}
+function uygula(){var r=document.documentElement;kozm();
+if(A.tema=="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",A.tema);
+r.style.setProperty("--ts",A.boy);
+r.classList.toggle("noanim",!A.anim)}
+uygula();
+
+/* ---------- ses ve titreşim ---------- */
+var AC=null;
+function snd(t){if(!A.ses)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state=="suspended")AC.resume();
+var seq={tap:[[520,.04]],good:[[523,.08],[784,.12]],bad:[[220,.1],[165,.16]],end:[[392,.12],[330,.12],[262,.25]],win:[[523,.1],[659,.1],[784,.1],[1047,.25]]}[t]||[];
+var at=AC.currentTime;
+seq.forEach(function(n){var o=AC.createOscillator(),g=AC.createGain();o.type=(t=="bad"||t=="end")?"sawtooth":"triangle";o.frequency.value=n[0];
+g.gain.setValueAtTime(.0001,at);g.gain.exponentialRampToValueAtTime(.05,at+.01);g.gain.exponentialRampToValueAtTime(.0001,at+n[1]);
+o.connect(g);g.connect(AC.destination);o.start(at);o.stop(at+n[1]+.02);at+=n[1]*.9})}catch(e){}}
+var NB=null;
+function nz(){if(!NB){NB=AC.createBuffer(1,AC.sampleRate*.2,AC.sampleRate);var d=NB.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2)}return NB}
+function ctx(){AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state=="suspended")AC.resume();return AC.currentTime}
+function nb(t,ft,fq,vol,len){var n=AC.createBufferSource(),f=AC.createBiquadFilter(),g=AC.createGain();n.buffer=nz();f.type=ft;f.frequency.value=fq;g.gain.value=vol;n.connect(f);f.connect(g);g.connect(AC.destination);n.start(t,0,len||.08)}
+function th(t,f0,vol){var o=AC.createOscillator(),g=AC.createGain();o.type="sine";o.frequency.setValueAtTime(f0,t);o.frequency.exponentialRampToValueAtTime(f0*.4,t+.07);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+.005);g.gain.exponentialRampToValueAtTime(.0001,t+.1);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.11)}
+var PV=[[6,.12,1400,700,110],[4,.2,900,500,70],[9,.07,2200,1200,140]];
+function press(v){if(!A.ses)return;try{var at=ctx(),p=PV[v%3];
+for(var k=0;k<p[0];k++){var t=at+k*p[1];nb(t,"lowpass",k%2?p[3]:p[2],.35);th(t,p[4],.3)}}catch(e){}}
+function paper(){if(!A.ses)return;try{var at=ctx();for(var k=0;k<3;k++)nb(at+k*.09,"highpass",2500+k*800,.3,.18)}catch(e){}}
+function ding(){if(!A.ses)return;try{var at=ctx(),o=AC.createOscillator(),g=AC.createGain();o.type="sine";o.frequency.value=1760;g.gain.setValueAtTime(.0001,at);g.gain.exponentialRampToValueAtTime(.18,at+.01);g.gain.exponentialRampToValueAtTime(.0001,at+.7);o.connect(g);g.connect(AC.destination);o.start(at);o.stop(at+.72);nb(at,"lowpass",900,.25)}catch(e){}}
+function ses2(){var r=Math.random();if(r<.5)return;if(r<.65)press(0);else if(r<.77)press(1);else if(r<.88)press(2);else if(r<.95)paper();else ding()}
+function vib(n){if(A.tit&&navigator.vibrate){try{navigator.vibrate(n)}catch(e){}}}
+document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button");if(b&&!b.disabled){vib(8)}});
+
+/* ---------- yardımcılar ---------- */
+var S,order,app=document.getElementById("app");
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+var TAY=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"],THG=["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
+function trDate(t){var d=new Date(t);return d.getDate()+" "+TAY[d.getMonth()]+" "+d.getFullYear()+" · "+THG[d.getDay()]}
+function adv(t,n){var d=new Date(t);d.setDate(d.getDate()+n);return d.getTime()}
+function t0(){var d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate()).getTime()}
+function cl(v){return Math.max(0,Math.min(100,v))}
+function rank(d){var i=0;RK.forEach(function(r,k){if(d>=r[2])i=k});return i}
+function xpinfo(){var i=rank(P.d),nx=RK[i+1];return{i:i,r:RK[i],nx:nx,pct:nx?Math.round((P.d-RK[i][2])/(nx[2]-RK[i][2])*100):100}}
+function gl(n){return S.m=="s"?n+" / "+SL:S.m=="d"?n+" / "+DL:""+n}
+function dk(){return S.res?S.d-1:S.d}
+function bk(){return BK||menu}
+function keep(re){KEEP=window.scrollY;re()}
+
+/* ---------- günlük manşet ---------- */
+function tkey(d){d=d||new Date();return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
+function dno(){var a=new Date(),b=new Date(2026,9,1);return Math.round((new Date(a.getFullYear(),a.getMonth(),a.getDate())-b)/864e5)+1}
+function rng(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function seedOf(k){var h=2166136261;for(var i=0;i<k.length;i++){h^=k.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function sshuf(a,r){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(r()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function MN(m){return m=="s"?"Hikâye":m=="d"?"Günlük":m=="k"?"Kariyer":"Sonsuz"}
+function srNow(){var s=ld("manset_seri",{n:0,last:"",best:0}),y=new Date();y.setDate(y.getDate()-1);return(s.last==tkey()||s.last==tkey(y))?s.n:0}
+function gunBitir(r){var k=tkey(),s=ld("manset_seri",{n:0,last:"",best:0}),y=new Date();y.setDate(y.getDate()-1);
+var n=s.last==k?s.n:(s.last==tkey(y)?s.n+1:1),b=n==3?5:n==7?15:n==14?30:(n>14&&n%7==0?20:0);
+sv("manset_seri",{n:n,last:k,best:Math.max(s.best||0,n)});
+var p=Math.max(0,S.d*10+S.h+S.g+S.i-S.o);
+sv("manset_gunluk",{k:k,no:dno(),t:EN[r][2]+" "+EN[r][0],d:S.d,h:S.h,g:S.g,i:S.i,o:S.o,p:p,n:n});return{n:n,b:b,p:p}}
+function shareD(btn){var g=ld("manset_gunluk",null);if(!g)return;
+var t="Manşet #"+g.no+" · "+g.k+"\n"+g.t+" · "+g.d+" gün\n👥"+g.h+" 💰"+g.g+" ⭐"+g.i+" 🚨"+g.o+"\n🏆 Puan "+g.p+" · 🔥 Seri "+g.n;
+var ok=function(){if(btn){btn.textContent="Kopyalandı ✓";setTimeout(function(){btn.textContent="Sonucu paylaş"},1800)}};
+if(navigator.share){navigator.share({text:t}).catch(function(){})}
+else if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){window.prompt("Kopyala:",t)})}
+else window.prompt("Kopyala:",t)}
+function gunSonuc(){var g=ld("manset_gunluk",null),n=srNow(),nx=n<3?3:n<7?7:n<14?14:(Math.floor(n/7)+1)*7,done=gdn(),dots="";
+for(var q=0;q<7;q++)dots+='<i'+(q<Math.min(n,7)?' class="f"':'')+'></i>';
+var h=done?'<div class="card"><div class="st">Manşet #'+g.no+' · bugün tamamlandı</div><h2>'+g.t+'</h2><p>'+g.d+' gün dayandın · 🏆 '+g.p+' puan</p>'
++'<div class="sg"><div><b>'+g.h+'</b><small>Halk</small></div><div><b>'+g.g+'</b><small>Gelir</small></div><div><b>'+g.i+'</b><small>İtibar</small></div><div><b>'+g.o+'</b><small>Baskı</small></div></div>'
++'<button class="big" id="shr">Sonucu paylaş</button><p class="nt">Yarın yeni olaylar gelir. Arkadaşların da aynı 7 olayı oynuyor, puanları karşılaştırın.</p></div>'
+:'<div class="card"><div class="st">Manşet #'+dno()+' · bugünün olayları</div><h2>7 gün, herkese aynı olaylar</h2><p>Arkadaşlarınla aynı olayları oyna, puanları karşılaştır. Günde bir hakkın var.</p><button class="big" id="gpl">▶ Bugünü oyna</button></div>';
+page("Günlük Manşet",h+'<div class="card" style="margin-top:12px"><div class="st">🔥 Seri: '+n+' gün · sıradaki ödül '+nx+'. günde</div><div class="dots big">'+dots+'</div><p class="nt">Her gün oynarsan seri artar, ödüller rütbe puanı olarak gelir.</p></div>',menu);
+if($("shr"))$("shr").onclick=function(){shareD(this)};if($("gpl"))$("gpl").onclick=function(){start("d")}}
+
+/* ---------- ortak sayfa iskeleti ---------- */
+function page(t,b,back,re){
+var tp={"Günlük Manşet":"d","Sonlar":"s","Profil":"p","Ayarlar":"a"}[t],nv=!BK&&tp;
+app.innerHTML=(nv?'<div class="hd ph"><h1>'+t+'</h1></div>':'<div class="hd"><button class="ic" id="bk" aria-label="Geri">‹</button><h1>'+t+'</h1></div>')+b+(nv?mnav(tp):"");
+if($("bk"))$("bk").onclick=back||menu;if(nv)mbind();anim();
+app.querySelectorAll("[data-seg]").forEach(function(g){g.querySelectorAll("button").forEach(function(x){x.onclick=function(){var v=x.dataset.v;if(v!==""&&!isNaN(v))v=+v;A[g.dataset.seg]=v;saveA();uygula();if(re)keep(re)}})});
+app.querySelectorAll("[data-sw]").forEach(function(x){x.onclick=function(){var k=x.dataset.sw;A[k]=A[k]?0:1;saveA();uygula();if(re)keep(re)}});
+window.scrollTo(0,KEEP);KEEP=0}
+function segc(k,opts,full){return'<div class="seg'+(full?' full':'')+'" data-seg="'+k+'">'+opts.map(function(o){return'<button data-v="'+o[0]+'"'+(A[k]==o[0]?' class="on"':'')+'>'+o[1]+'</button>'}).join("")+'</div>'}
+function cseg(k,L){var rn=RN();return'<div class="seg" data-seg="'+k+'" style="flex-wrap:wrap;max-width:210px">'+L.map(function(o){var lk=o[2]>rn;return'<button data-v="'+o[0]+'"'+(lk?' disabled style="opacity:.45"':'')+(A[k]==o[0]?' class="on"':'')+'>'+(lk?'🔒':o[1])+'</button>'}).join("")+'</div>'}
+function swc(k){var on=A[k];return'<button class="sw'+(on?' on':'')+'" role="switch" aria-checked="'+(on?"true":"false")+'" data-sw="'+k+'"><i></i></button>'}
+function rowc(ic,t,s,ctl){return'<div class="row"><span class="ri">'+ic+'</span><div class="rt"><b>'+t+'</b><small>'+s+'</small></div>'+ctl+'</div>'}
+function mbtn(id,cls,ic,t,s){return'<button class="mb '+cls+'" id="'+id+'"><span class="mi">'+ic+'</span><span class="mt"><b>'+t+'</b><small>'+s+'</small></span><span class="ar">›</span></button>'}
+
+/* ---------- açılış ---------- */
+function splash(){
+app.innerHTML='<div class="splash"><div class="lg">📰</div><h1>Manşet</h1><p>Gazeteni ayakta tut. Hapse girme.</p><div class="ld"><i></i></div><button class="big" id="go" disabled>Yükleniyor…</button><div class="ft">v'+VER+'</div></div>';
+setTimeout(function(){var b=$("go");if(!b)return;b.disabled=false;b.textContent="Başlamak için dokun";b.className="big pulse"},1300);
+$("go").onclick=function(){tgs()?menu():tut()}}
+
+/* ---------- ana menü ---------- */
+function anim(){app.classList.remove("sl");void app.offsetWidth;app.classList.add("sl")}
+function gdn(){var g=ld("manset_gunluk",null);return !!(g&&g.k==tkey())}
+var MT=[["h","🏠","Ana"],["d","📅","Günlük"],["s","★","Sonlar"],["p","🏅","Profil"],["a","⚙️","Ayarlar"]];
+function mnav(t){var dn=gdn();return'<nav class="nv"><div class="nvi">'+MT.map(function(x){return'<button data-m="'+x[0]+'"'+(x[0]==t?' class="on"':'')+'><span>'+x[1]+'</span>'+x[2]+(x[0]=="d"&&x[0]!=t&&!dn?'<i class="bd"></i>':'')+'</button>'}).join("")+'</div></nav>'}
+function mbind(){app.querySelectorAll("[data-m]").forEach(function(b){b.onclick=function(){var k=b.dataset.m;cls();if(k=="h")menu();else if(k=="d")gunSonuc();else if(k=="s")sonlar();else if(k=="p")profil();else ayar()}})}
+function sheet(h,bind){cls();var o=document.createElement("div");o.id="ov";o.innerHTML='<div class="ov"></div><div class="sh"><div class="gp"></div>'+h+'</div>';document.body.appendChild(o);o.firstChild.onclick=cls;if(bind)bind(o)}
+function cls(){var o=$("ov");if(o&&o.remove)o.remove()}
+function menu(){
+BK=null;cls();
+var x=xpinfo(),live=S&&!S.over,gdone=gdn(),sr=srNow(),dots="";
+for(var q=0;q<7;q++)dots+='<i'+(q<Math.min(sr,7)?' class="f"':'')+'></i>';
+var tk=A.band?shuf(E).slice(0,5).map(function(z){return z.t}).join("  ◆  "):"";
+var h='<div class="topbar"><button class="prof" id="pf"><span class="av">'+x.r[1]+'</span><span class="pi"><b>'+esc(A.ad)+'</b><small>'+x.r[0]+' · '+P.d+' gün</small><span class="xp" style="display:block"><i style="width:'+x.pct+'%"></i></span></span></button>'
++'<button class="ic" id="sd" aria-label="Ses">'+(A.ses?'🔊':'🔇')+'</button></div>'
++(A.band?'<div class="tick"><b>SON DAKİKA</b><div><span>'+tk+'  ◆  '+tk+'</span></div></div>':'')
++'<div class="hero2"><div class="hl">'+(live?'OYUN DEVAM EDİYOR':'YENİ GÜN, YENİ MANŞET')+'</div><h1>'+esc(GN())+'</h1><p>Gazeteni ayakta tut. Hapse girme.</p>'
++(live?'<button class="pbtn" id="m0"><span>▶ Devam et</span><small>Gün '+gl(S.d+(S.res?0:1))+' · '+MN(S.m)+' · '+Z[S.z].ic+' '+Z[S.z].n+'</small></button><button class="pbtn alt" id="m1">Yeni oyun</button>'
+:'<button class="pbtn" id="m1"><span>▶ Oyna</span><small>Hikâye ya da Sonsuz · zorluk seç</small></button>')+'</div>'
++'<button class="dc'+(gdone?'':' new')+'" id="dg"><span class="di">📅</span><span class="dt"><b>Günlük Manşet</b><small>'+(gdone?'Bugün tamamlandı ✓':'Herkese aynı 7 olay')+'</small><span class="dots">'+dots+'</span></span><span class="dn2">🔥 '+sr+'</span></button>'
++mbtn("t4","","🏅","Başarımlar",Object.keys(BU).length+" / "+BS.length+" açıldı")+mbtn("t5","","🗂️","Arşiv",AR.length+" manşet saklı")+mbtn("t3","","📖","Nasıl oynanır?","Kurallar ve ipuçları")+mnav("h");
+app.innerHTML=h;
+$("m1").onclick=modsec;if($("m0"))$("m0").onclick=function(){tab("g")};
+$("pf").onclick=profil;$("dg").onclick=gunSonuc;$("t3").onclick=nasil;$("t4").onclick=function(){BK=null;basarim()};$("t5").onclick=function(){BK=null;arsiv()};
+$("sd").onclick=function(){A.ses=A.ses?0:1;saveA();menu()};
+mbind();anim();window.scrollTo(0,0)}
+
+/* ---------- mod ve zorluk ---------- */
+function modsec(){
+var zs=Object.keys(Z).map(function(k){return[k,Z[k].ic+" "+Z[k].n]});
+sheet('<h2 class="sht">Oyun kur</h2>'+mbtn("md1","pri","📰","Hikâye",SL+" gün hayatta kal. 178 olaydan rastgele seçilir, birçok farklı son var.")
++mbtn("md2","","♾️","Sonsuz","Olaylar karışarak tekrar gelir, gider her 8 günde artar. Rekor: "+rekor()+" gün")
++mbtn("md3","","🚀","Kariyer","Stajyerlikten başla: köşe yaz, şöhret kazan, manşeti atan genel yayın yönetmeni ol."+(S&&S.m=="k"&&!S.over?" Kayıtlı kariyerin silinir.":""))
++'<div class="sect">Zorluk</div>'+segc("zor",zs,true)+'<p class="nt">'+Z[A.zor].d+'</p>',function(o){
+o.querySelectorAll("[data-seg] button").forEach(function(b){b.onclick=function(){A.zor=b.dataset.v;saveA();modsec()}});
+$("md1").onclick=function(){cls();start("s")};$("md2").onclick=function(){cls();start("e")};$("md3").onclick=function(){cls();start("k")}})}
+
+/* ---------- başarımlar ve arşiv ---------- */
+var B=ld("manset_stat",{}),BU=ld("manset_basarim",{}),AR=ld("manset_arsiv",[]),BQ=[],AF="a";
+function binc(k,n){B[k]=(B[k]||0)+(n||1)}
+function bst(k,v){if(v>(B[k]||0))B[k]=v}
+function sb(k){return B[k]||0}
+function nsn(){return Object.keys(got).length}
+function sbest(){return +(ld("manset_seri",{best:0}).best)||0}
+function bc(id,ic,n,d,k,mx){return[id,ic,n,d,function(){return sb(k)>=mx},function(){return[sb(k),mx]}]}
+function bf(id,ic,n,d,f,p){return[id,ic,n,d,f,p]}
+var BS=[
+bc("ilk","📰","İlk Sayı","İlk manşetini yayınla.","mn",1),
+bc("m50","🗞️","Matbaa","Toplam 50 manşet yayınla.","mn",50),
+bc("m250","🏭","Rotatif","Toplam 250 manşet yayınla.","mn",250),
+bc("g30","📆","Dayanıklı","Tek oyunda 30 gün yaşa.","dm",30),
+bf("son1","🔓","İlk Final","İlk sonunu aç.",function(){return nsn()>=1}),
+bf("son6","🧩","Koleksiyoncu","6 farklı son aç.",function(){return nsn()>=6},function(){return[nsn(),6]}),
+bf("sonT","🌟","Tam Takım","Tüm sonları aç.",function(){return nsn()>=Object.keys(EN).length},function(){return[nsn(),Object.keys(EN).length]}),
+bf("efs","🏆","Efsane Gazete","Efsane sonuna ulaş.",function(){return !!got.efsane}),
+bf("hap","⛓️","Parmaklıklar","Hapse gir.",function(){return !!got.hapis}),
+bf("ifl","📉","İflas Bayrağı","Gazeteyi iflas ettir.",function(){return !!got.iflas}),
+bc("bsk","🚨","Ateşle Oynamak","Baskıyı 75'e çıkar.","bm",75),
+bc("g100","🤑","Kasa Dolu","Geliri 100'e çıkar.","g100",1),
+bc("h100","❤️","Halkın Sesi","Halk güvenini 100'e çıkar.","h100",1),
+bf("rut1","🎖️","Muhabir","Muhabir rütbesine ulaş.",function(){return P.d>=10},function(){return[P.d,10]}),
+bf("rut4","🏛️","Genel Yayın Yönetmeni","Bu rütbeye ulaş.",function(){return P.d>=130},function(){return[P.d,130]}),
+bf("rut5","👑","Basın Efsanesi","En üst rütbeye ulaş.",function(){return P.d>=220},function(){return[P.d,220]}),
+bf("sns","♾️","Sonsuzluk","Sonsuz modda 25 gün dayan.",function(){return rekor()>=25},function(){return[rekor(),25]}),
+bf("gun3","📅","Alışkanlık","Günlük manşette 3 gün seri yap.",function(){return sbest()>=3},function(){return[sbest(),3]}),
+bf("gun7","🔥","Haftalık Yazar","Günlük manşette 7 gün seri yap.",function(){return sbest()>=7},function(){return[sbest(),7]}),
+bc("yat","🏢","Yatırımcı","İlk yatırımı al.","buy",1),
+bf("yat2","🏗️","Medya Patronu","Tüm yatırımları tek oyunda al.",function(){return sb("ub")>=UP.length},function(){return[sb("ub"),UP.length]}),
+bc("ekip","👥","Takım Ruhu","Ekibe toplam 25 görev ver.","ca",25),
+bf("sad","🤝","Sadık Ekip","Tüm ekibin sadakatini aynı anda 80'e çıkar.",function(){return sb("cr80")>=CR.length}),
+bc("k1","🎲","Acemi Şansı","İlk kumar oyununu oyna.","kp",1),
+bc("k25","🎰","Masa Müdavimi","25 kumar oyunu oyna.","kp",25),
+bc("k30","💰","Şanslı Gün","Tek oyunda 30 gelir kazan.","mx",30),
+bc("kj","🏅","Jackpot!","Çarkta jackpotu kap.","jp",1),
+bc("kmer","🪜","Merdiven Ustası","Merdivende 9x ile çek.","mer",1),
+bc("ks5","🔥","Ateşli Seri","Kumarda 5 galibiyet serisi yap.","ws",5),
+bc("kvip","💼","VIP Üye","Kumarda VIP seviyesine ulaş.","kv",2),
+bc("kkral","🤴","Kumarhane Kralı","Kumarda Kral seviyesine ulaş.","kv",3),
+bc("rvs","🗞️","Rakip Avcısı","Rakip gazeteyi satın al.","rvb",1),
+bc("rvk","📣","Kampanyacı","Rakip olaylarında toplam 10 kez karşı kampanya seç.","rvk",10),
+bc("rvl","📈","Tiraj Kralı","Rakibin önünde üst üste 10 gün kal.","lead",10),
+bc("rvd","😰","Son Anda","Devralma tehdidinden son günde kurtul.","rvs",1),
+bc("dv1","⚖️","İlk Duruşma","İlk kez mahkemede yargılan.","dv",1),
+bc("dvw","🕊️","Beraat!","Bir davayı kazan.","dvw",1),
+bc("dvw3","🧑‍⚖️","Hukuk Dehası","Toplam 3 davayı kazan.","dvw",3),
+bc("dvk","💥","Şirket Çöktü","Davayı öyle kazan ki davacı şirket çöksün.","dvk",1),
+bc("kzr","🤡","Her Şey Bitti","Tek oyunda kumarda 50 gelir kaybet.","kl",50),
+bc("sec","🗳️","Seçim Gecesi","24 Mayıs seçiminin sonucunu gör.","sec",1),
+bc("secw","🎉","Doğru At","Desteklediğin parti seçimi kazansın.","secw",1),
+bc("kah","🔮","Kâhin","Sonuçlu olaylarda toplam 3 kez doğru tarafı tut.","chw",3),
+bc("kr1","✍️","Köşe Sahibi","Kariyer modunda Köşe Yazarı ol.","kl",1),
+bc("kr2","📋","Masa Başı","Kariyer modunda Haber Müdürü ol.","kl",2),
+bc("kr3","🏛️","Manşeti Atan","Kariyer modunda Genel Yayın Yönetmeni ol.","kl",3),
+bf("kzv","🏔️","Stajyerden Zirveye","Kariyer modunu şöhret 100 ile bitir.",function(){return !!got.zirve}),
+bc("vir1","🔥","Viral","Bir haberin viral olsun.","vir",1),
+bc("vir5","📱","Gündem Belirleyen","Toplam 5 haberin viral olsun.","vir",5),
+bc("tep1","🌶️","Ateş Hattı","Bir haberin büyük tepki çeksin.","tep",1)];
+function bkontrol(){var y=BS.filter(function(a){return !BU[a[0]]&&a[4]()});y.forEach(function(a){BU[a[0]]=Date.now();BQ.push(a)});if(y.length)sv("manset_basarim",BU);sv("manset_stat",B);return y}
+function bshow(){bkontrol();if(!BQ.length)return;var q=BQ;BQ=[];var m="🏅 Başarım: "+q.map(function(a){return a[2]}).join(", ");S.toast=S.toast?S.toast+" · "+m:m;snd("good")}
+function bdrain(){bkontrol();var q=BQ;BQ=[];return q}
+function cr80(){return CR.filter(function(c){return !S.gone[c.k]&&S.cr[c.k]>=80}).length}
+function arsivEkle(x,son){var e={id:Date.now()+Math.floor(Math.random()*1000),dt:trDate(S.dt),d:S.d,m:S.m,z:S.z};
+if(son){var n=EN[son];e.s=1;e.t=n[2]+" "+n[0];e.o=n[1]}else{e.t=x[0];e.e=(S.e&&S.e.t)||"";e.v=[x[1],x[2],x[3]]}
+AR.unshift(e);if(AR.length>150)AR.length=150;sv("manset_arsiv",AR)}
+function basarim(){bkontrol();var n=0,h='<div class="eg">';
+BS.forEach(function(a){var u=BU[a[0]],p=(!u&&a[5])?a[5]():null;if(u)n++;
+h+='<div class="ec'+(u?'':' lk')+'"><div class="ei">'+(u?a[1]:'🔒')+'</div><b>'+a[2]+'</b><small>'+a[3]+'</small>'+(u?'<small style="margin-top:4px">✓ '+new Date(u).toLocaleDateString("tr-TR")+'</small>':p?'<small style="margin-top:4px">'+Math.min(p[0],p[1])+' / '+p[1]+'</small>':'')+'</div>'});
+page("Başarımlar",'<div class="hint">'+n+' / '+BS.length+' başarım açıldı.</div>'+h+'</div>',bk())}
+function arsiv(){
+var L=AR.filter(function(e){return AF=="f"?e.f:AF=="s"?e.s:true}),
+h='<div class="hint">'+AR.length+' kayıt arşivde (en son 150 saklanır). Yıldızla işaretlediğin manşetler favori olur.</div>'
++'<div class="seg full" style="margin-bottom:12px">'+[["a","Tümü"],["f","⭐ Favori"],["s","🏁 Sonlar"]].map(function(o){return'<button data-af="'+o[0]+'"'+(AF==o[0]?' class="on"':'')+'>'+o[1]+'</button>'}).join("")+'</div>';
+if(!L.length)h+='<div class="card"><p class="nt">'+(AR.length?'Bu filtrede kayıt yok.':'Arşiv boş. Yayınladığın manşetler ve gazetenin son sayıları buraya eklenir.')+'</p></div>';
+L.forEach(function(e){h+='<div class="card" style="margin-bottom:10px;padding:14px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="st" style="margin:0">'+(e.s?'🏁 SON SAYI · ':'📅 ')+e.dt+'</div>'+(e.s?'':'<button class="ic" data-fv="'+e.id+'" aria-label="Favori">'+(e.f?'⭐':'☆')+'</button>')+'</div>'
++'<h2 style="margin:8px 0">'+(e.s?esc(e.t):'“'+esc(e.t)+'”')+'</h2>'
++(e.s?'<p class="nt">'+esc(e.o)+'</p>':(e.e?'<p class="nt" style="margin-bottom:8px!important">Olay: '+esc(e.e)+'</p>':'')+chip("Halk",e.v[0])+chip("Gelir",e.v[1])+chip("İtibar",e.v[2]))
++'<div class="st" style="margin:6px 0 0">Gün '+e.d+' · '+MN(e.m)+(Z[e.z]?' · '+Z[e.z].ic:'')+'</div></div>'});
+if(AR.length)h+='<button class="big sec" id="ac" style="margin-top:6px">Arşivi temizle</button>';
+page("Arşiv",h,bk());
+app.querySelectorAll("[data-af]").forEach(function(b){b.onclick=function(){AF=b.dataset.af;arsiv()}});
+app.querySelectorAll("[data-fv]").forEach(function(b){b.onclick=function(){var id=+b.dataset.fv;AR.forEach(function(e){if(e.id==id)e.f=e.f?0:1});sv("manset_arsiv",AR);KEEP=window.scrollY;arsiv()}});
+var ac=$("ac");if(ac)ac.onclick=function(){if(ac.dataset.s){AR=[];sv("manset_arsiv",AR);AF="a";arsiv()}else{ac.dataset.s=1;ac.textContent="Emin misin? Hepsi silinir"}}}
+
+/* ---------- rakip gazete ---------- */
+var RN2=["Günün Sesi","Yarın Postası","Akşam Haber","Ulusal Gazete","Büyük Hakikat"];
+var RH=[["“Büyük sızıntı” manşetiyle çıktı",5],["ünlü bir köşe yazarını transfer etti",4],["yanlış haber yaptı, düzeltme yayınladı",-6],["büyük bir reklam kampanyası başlattı",3],["magazin ağırlıklı çıktı",1],["muhabiri darp edildi, okur sempatiyle baktı",4],["yönetimi iktidara yakınlıkla suçlandı",-4],["fiyat indirimine gitti",3],["sansür iddiasıyla gündemde, okurlar tepkili",-5],["sakin bir gün geçirdi",0],["yanlış alıntı yüzünden tepki topladı",-3],["özel bir araştırma dosyası yayınladı",5]];
+function rvNew(zk){return{n:RN2[Math.floor(Math.random()*RN2.length)],b:{k:40,n:50,z:58}[zk]||50,t:0,l:0,own:0,h:"",cd:2,bo:0}}
+function rvbar(l,v,lo){return'<div class="sn" style="margin-top:6px"><span>'+l+'</span><b>%'+v+'</b></div><div class="tr"><i class="'+(lo?'lo':'')+'" style="width:'+v+'%"></i></div>'}
+function rvBars(){var R=S.rv;return'<div style="margin:-6px 0 14px">'+rvbar("Senin okur güvenin",S.h,S.h<R.b)+rvbar(esc(R.n)+" okur güveni",R.b,R.b>S.h)+'</div>'}
+function rvLine(){var R=S.rv;if(!R||S.m=="d")return"";
+return'<div class="hint" style="margin:0 2px 8px">🗞️ '+(R.own?esc(R.n)+' senin · günlük +2 gelir':esc(R.n)+': %'+R.b+' · Sen: %'+S.h+(R.t>=3?' · ⚠️ devralmaya '+(6-R.t)+' gün':''))+'</div>'}
+/* rakip olayları: [manşet, halk, gelir, itibar, baskı, rakip, özel] */
+function rvMove(){var R=S.rv,n=R.n,a=RH[Math.floor(Math.random()*RH.length)];R.h=a[0];
+return{tag:"Rakip gazete",rv:1,t:n+" "+a[0]+". Okur bunu konuşuyor, ne yapacaksın?",o:[
+["“"+n+" okurunu kandırıyor mu? Dosya bizde”",4,-3,-4,0,-10],
+["“Okurumuza söz: Daha fazla haber, aynı fiyat”",3,-8,2,0,-8,"camp"],
+["“Kendi işimize bakıyoruz: Günün en önemli haberi”",2,2,0,0,a[1]]]}}
+function rvOffer(){var n=S.rv.n;
+return{tag:"Rakip gazete",rv:1,t:n+" gazetesi seni satın almak istiyor. Teklif masada, okur ikiye bölündü.",o:[
+["“Satılık değiliz!”",8,-3,6,0,-10],
+["“Teklifi dinledik, kararı okur verecek”",-8,12,-8,0,6],
+["“"+n+" ile açık tartışma: Kim doğru söylüyor?”",5,-6,0,6,-6]]}}
+function rvBuy(){var n=S.rv.n;
+return{tag:"Rakip gazete",rv:1,t:n+" batıyor. Sahipleri gazeteyi satmak için seninle görüşmek istiyor. Satın alırsan bedeli 40 gelir.",o:[
+["“"+n+" artık bizim!”",8,-40,4,0,0,"buy"],
+["“Sessiz kalıyoruz, kendi okurumuza odaklanıyoruz”",0,2,0,0,-3]]}}
+function rvTetik(){var R=S.rv;if(!R||S.m=="d"||R.own)return null;
+R.cd=Math.max(0,(R.cd||0)-1);if(R.b>35)R.bo=0;if(S.d<2)return null;
+var e=null;
+if(R.t==3||R.t==5)e=rvOffer();
+else if(R.b<=30&&S.h>=55&&S.g-40>=10&&!R.bo){e=rvBuy();R.bo=1}
+else if(R.cd<=0&&Math.random()<.5)e=rvMove();
+if(e)R.cd=3;return e}
+function rivalGun(x,n){var R=S.rv;if(!R||S.m=="d")return;
+if(R.own){S.g=cl(S.g+2);n.push("Satın aldığın "+R.n+" gazetesinden gelir: +2");return}
+if(S.e&&S.e.rv){R.b=Math.max(5,Math.min(95,R.b+(x[5]||0)));if(x[6]=="camp")binc("rvk");
+if(x[6]=="buy"){R.own=1;R.t=0;binc("rvb");n.push(R.n+" gazetesi artık senin! Her gün +2 gelir.");return}}
+else{var a=RH[Math.floor(Math.random()*RH.length)];R.h=a[0];
+R.b=Math.max(5,Math.min(95,R.b+a[1]-Math.round(x[1]*.3)+Math.round((50-R.b)*.05)));
+if(Math.abs(a[1])>=4)n.push(R.n+" "+a[0]+".")}
+var df=S.h-R.b;
+if(df<=-15){var ls=Math.min(4,Math.ceil((-df-10)/10));S.g=cl(S.g-ls);n.push("Okur "+R.n+" gazetesine geçiyor: gelir −"+ls)}
+else if(df>=15){var gn=df>=35?2:1;S.g=cl(S.g+gn);n.push("Okur seni tercih ediyor: gelir +"+gn)}
+R.l=df>0?R.l+1:0;bst("lead",R.l);
+if(R.b-S.h>=20){R.t++;if(R.t>=3&&R.t<6)n.push(R.n+" satın alma teklifi hazırlıyor! "+(6-R.t)+" gün içinde önüne geçmezsen seni devralır.")}
+else{if(R.t>=5)bst("rvs",1);R.t=Math.max(0,R.t-1)}}
+
+/* ---------- dava ve mahkeme ---------- */
+var DV=[["Büyük market zinciri",0,"Bereket Market","ticari itibarı zedeleme ve iftira",1,1],
+["Dev bir fabrika nehre",0,"Akarsu Kimya","iftira ve ticari itibarı zedeleme",2,2],
+["Dev telekom şirketi",0,"TeleNet İletişim","iftira ve ticari itibarı zedeleme",2,2],
+["Özel hastane zincirinde",0,"Şifa Hastaneleri","hakaret ve iftira",2,2],
+["Maden ocağında göçük",0,"Derin Maden A.Ş.","iftira ve ticari itibarı zedeleme",2,3],
+["Büyük bir enerji şirketi",1,"Enerya Enerji","ticari itibarı zedeleme",2,2],
+["Şehirde elektrikler",0,"Işık Dağıtım A.Ş.","ticari itibarı zedeleme",1,1],
+["Meşhur bir YouTuber",0,"YouTuber Kaan Efe","hakaret ve iftira",1,1],
+["İç kaynaklar, gazete sahibinin",0,"Taş İnşaat","iftira ve ticari itibarı zedeleme",1,2]];
+/* cevap: [metin, [kanıt yok, kısmi kanıt, güçlü kanıt] puanı] */
+var QS=[
+{q:"Haberde yazdıklarınızın tamamını belgeleyebiliyor musunuz?",a:[["Evet sayın hâkim, belgelerim dosyada.",[-3,0,2]],["Bir kısmını belgeleyebilirim, kalanı kamuoyundaki iddialara dayanıyor.",[1,1,0]],["Kaynaklarımı açıklamam ama haberin arkasındayım.",[-2,-1,0]]]},
+{q:"Haberi yayınlamadan önce {n} yetkililerinin görüşünü aldınız mı?",a:[["Evet, aradık ama yanıt vermediler.",[-1,1,1]],["Hayır, haber acildi.",[0,-1,-2]],["Aldık, açıklamaları haberde yer aldı.",[-1,1,2]]]},
+{q:"{n} için ağır bir manşet attınız. Bunun sonuçlarını öngörmediniz mi?",a:[["Halkın bilmesi gereken bir konuydu.",[-1,0,1]],["Öngördüm, gerekirse manşeti yumuşatırdım.",[1,0,-1]],["Onların zararı benim işim değil.",[-2,-2,-2]]]},
+{q:"Davacı avukat, haberin tiraj için abartıldığını söylüyor. Ne diyorsunuz?",a:[["Tiraj kaygısı yok; belge ve tanık var.",[-2,0,2]],["Başlık sert olabilir ama içerik doğru.",[0,1,1]],["Haklı, manşet fazla oldu. Düzeltme yayınlarım.",[2,1,-1]]]},
+{q:"İddiaları kimden duydunuz? Tanıklar mahkemeye gelebilir mi?",a:[["Tanıklar hazır, çağırabilirsiniz.",[-3,0,2]],["Kaynak gizliliği anayasal bir haktır.",[-1,0,1]],["Hatırlamıyorum, ekibimden biri getirdi.",[-2,-2,-2]]]},
+{q:"Bu haber yüzünden {n} çalışanları işsiz kalabilir. Vicdanınız rahat mı?",a:[["Kamu yararı önce gelir; ihmalin hesabını sormak görevimdi.",[-1,0,2]],["Üzülürüm ama gerçeği yazmak zorundaydım.",[0,1,1]],["Bunun benimle ilgisi yok.",[-2,-2,-2]]]},
+{q:"Son savunmanızı alalım. Sakin ve saygılı olmanızı bekliyorum.",a:[["Saygıyla: Haber doğru, kamu yararı var.",[-1,1,2]],["Buraya cezalandırılmak için getirildim!",[-2,-2,-2]],["Karar sizin hâkim bey; adaletten başka bir şey istemiyorum.",[0,1,1]]]}];
+var M=null,DT=null;
+function dvTetik(x,n){if(S.dv||S.m=="d"||(S.m=="k"&&S.K.l<3)||S.d<1||!S.e)return;var d=null;
+if(S.e.rv&&S.rv&&x===S.e.o[0]&&!x[6])d={n:S.rv.n,c:"haksız rekabet ve iftira",ev:0,sev:1};
+else DV.forEach(function(v){if(S.e.t&&S.e.t.indexOf(v[0])==0&&S.e.o[v[1]]===x)d={n:v[2],c:v[3],ev:v[4],sev:v[5]}});
+if(d&&Math.random()<.75){d.g=S.d+2;S.dv=d;n.push("⚖️ "+d.n+" sana dava açtı! Duruşma 2 gün sonra. Avukatına ve itibarına dikkat et.")}}
+function dvBase(){var b=(S.i-50)/25;if(S.up.hb)b+=1.5;if(!S.gone.av&&S.cr.av>=60)b+=1;if(!S.gone.av&&S.cr.av>=80)b+=.5;return b}
+function dvCard(){var d=S.dv,l=[];if(S.up.hb)l.push("🏛️ Hukuk bürosu yanında");if(!S.gone.av&&S.cr.av>=60)l.push("⚖️ Avukat Selin hazır");
+return'<div class="card"><div class="st">⚖️ Duruşma günü</div><h2>'+esc(d.n)+' davası</h2><p>İddia: '+d.c+'. Hâkim seni salonda bekliyor.</p><p class="nt">'+(l.length?l.join(" · "):'Yanında avukat yok. Hukuk bürosu almak ve Avukat Selin\'in sadakatini yükseltmek şansını artırır.')+'</p><button class="b" data-a="dv:go">Mahkemeye gir</button></div>'}
+function dvCss(){if($("dvcss"))return;var st=document.createElement("style");st.id="dvcss";
+st.textContent=".dvrg{transform-box:fill-box;transform-origin:center;animation:dvrg 1s infinite}@keyframes dvrg{50%{opacity:.3;transform:scale(1.15)}}.dvmo{transform-box:fill-box;transform-origin:center;animation:dvmo .22s infinite}@keyframes dvmo{50%{transform:scaleY(2.6)}}.dvgl{transform-box:fill-box;transform-origin:50% 100%}.dvgl.hit{animation:dvgv .45s 3}@keyframes dvgv{0%{transform:rotate(0)}45%{transform:rotate(-55deg)}60%{transform:rotate(8deg)}100%{transform:rotate(0)}}.dvb{background:var(--card);border-radius:18px;padding:14px;margin-top:10px;box-shadow:var(--sh)}.dvs{font-size:13px;font-weight:800;color:var(--mute);margin-bottom:6px}.dvt{font-size:calc(17px*var(--ts));line-height:1.45;min-height:64px;margin-bottom:4px}@media (prefers-reduced-motion:reduce){.dvrg,.dvmo,.dvgl.hit{animation:none}}";
+document.head.appendChild(st)}
+function dvSvg(sp,mood,gv){var ring=function(x,y){return'<circle class="dvrg" cx="'+x+'" cy="'+y+'" r="21" fill="none" stroke="#e9a820" stroke-width="3"/>'},sg='';
+for(var i=0;i<9;i++)sg+='<circle cx="'+(24+i*39)+'" cy="216" r="10"/>';
+return'<svg viewBox="0 0 360 224" style="width:100%;display:block;border-radius:18px" role="img" aria-label="Mahkeme salonu">'
++'<defs><linearGradient id="dvw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dccaa6"/><stop offset="1" stop-color="#b79d73"/></linearGradient></defs>'
++'<rect width="360" height="224" fill="url(#dvw)"/><rect y="104" width="360" height="46" fill="#7a5636"/><rect y="150" width="360" height="74" fill="#8a6a47"/>'
++'<g stroke="#5b4630" stroke-width="2" fill="none"><line x1="180" y1="10" x2="180" y2="28"/><line x1="162" y1="17" x2="198" y2="17"/></g><path d="M154 20q8 14 16 0z M190 20q8 14 16 0z" fill="#5b4630"/>'
++'<rect x="30" y="38" width="3" height="70" fill="#5b4630"/><path d="M33 40h28v18h-28z" fill="#d62839"/><rect x="327" y="38" width="3" height="70" fill="#5b4630"/><path d="M327 40h-28v18h28z" fill="#1d3a73"/>'
++'<rect x="160" y="72" width="40" height="28" rx="9" fill="#1d1d26"/><circle cx="180" cy="62" r="13" fill="#f0c9a0"/><path d="M166 60q14-22 28 0q-14-8-28 0z" fill="#ececf2"/>'
++'<circle cx="175" cy="62" r="3.2" fill="none" stroke="#333"/><circle cx="185" cy="62" r="3.2" fill="none" stroke="#333"/><rect class="'+(sp=="j"?'dvmo':'')+'" x="176" y="69" width="8" height="2" rx="1" fill="#7a3b2e"/>'
++'<rect x="104" y="92" width="152" height="46" rx="4" fill="#5a3b22"/><rect x="98" y="88" width="164" height="8" rx="3" fill="#7a5636"/>'
++'<g class="dvgl'+(gv?' hit':'')+'"><rect x="222" y="76" width="18" height="8" rx="2" fill="#3b2614"/><rect x="229" y="83" width="4" height="14" fill="#6b4a2f"/></g>'
++'<rect x="20" y="170" width="112" height="32" rx="4" fill="#5a3b22"/><rect x="56" y="146" width="34" height="30" rx="9" fill="#2a4a8a"/><circle cx="73" cy="136" r="12" fill="#f0c9a0"/><path d="M61 134q12-16 24 0z" fill="#3a2a1a"/><rect class="'+(sp=="p"?'dvmo':'')+'" x="69" y="141" width="8" height="2" rx="1" fill="#7a3b2e"/><rect x="94" y="163" width="24" height="8" fill="#fff"/>'
++'<rect x="228" y="170" width="112" height="32" rx="4" fill="#5a3b22"/><rect x="262" y="146" width="34" height="30" rx="9" fill="#3b3b44"/><rect x="277" y="150" width="4" height="14" fill="#d62839"/><circle cx="279" cy="136" r="12" fill="#e3b88e"/><path d="M267 134q12-16 24 0z" fill="#8a8a92"/><rect class="'+(sp=="l"?'dvmo':'')+'" x="275" y="141" width="8" height="2" rx="1" fill="#7a3b2e"/><rect x="236" y="162" width="20" height="10" rx="2" fill="#2b1d12"/>'
++'<g fill="#4a3a2a">'+sg+'</g>'
++(sp=="j"?ring(180,62):sp=="p"?ring(73,136):ring(279,136))
++(mood?'<text x="214" y="54" font-size="22">'+mood+'</text>':'')+'</svg>'}
+function dvType(el,t){clearInterval(DT);if(!el)return;if(!A.anim){el.textContent=t;return}var i=0;DT=setInterval(function(){i+=2;el.textContent=t.slice(0,i);if(i>=t.length)clearInterval(DT)},22);el.onclick=function(){clearInterval(DT);el.textContent=t}}
+function dvScreen(o){clearInterval(DT);var k=Math.max(0,Math.min(100,Math.round(50+M.s*9)));
+app.innerHTML='<div class="top"><h1>⚖️ Duruşma</h1><span class="pill">'+esc(M.d.n)+'</span></div>'+dvSvg(o.sp,o.mood||"",o.gv)
++'<div style="margin-top:10px">'+rvbar("Hâkimin kanaati (lehine)",k,k<40)+'</div>'
++'<div class="dvb"><div class="dvs">'+o.who+'</div><div class="dvt" id="dvt"></div>'+(o.btns||[]).map(function(b,i){return'<button class="b opt" data-i="'+i+'">'+b[0]+'</button>'}).join("")+'</div>';
+app.querySelectorAll("[data-i]").forEach(function(b){b.onclick=function(){o.btns[+b.dataset.i][1]()}});
+dvType($("dvt"),o.txt);window.scrollTo(0,0)}
+function mahkeme(){dvCss();var d=S.dv,q=QS.slice(0,6).sort(function(){return Math.random()-.5}).slice(0,2);q.push(QS[6]);
+M={d:d,i:0,s:dvBase(),nz:Math.random()*2-1,q:q};
+dvScreen({sp:"j",who:"🧑‍⚖️ Hâkim",txt:"Dosya "+(100+Math.floor(Math.random()*800))+". Davacı: "+d.n+". İddia: "+d.c+". Sanık, haberin sahibi olarak savunmanızı vereceksiniz. Sizi dinliyorum.",btns:[["Savunmaya başla",dvQ]]})}
+function dvQ(){var q=M.q[M.i];dvScreen({sp:"j",who:"🧑‍⚖️ Hâkim · Soru "+(M.i+1)+" / 3",txt:q.q.replace("{n}",M.d.n),btns:q.a.map(function(a){return[a[0],function(){dvAns(a)}]})})}
+function dvAns(a){var dl=a[1][M.d.ev];M.s+=dl;var bad=dl<0,t=dl>=2?"Hâkim notlar alıyor: “Belgeler tutarlı görünüyor.”":dl==1?"Hâkim başını salladı: “Kayda geçti.”":dl==0?"Hâkim: “Mahkeme bunu değerlendirecek.”":dl==-1?"Hâkim: “Bu yanıt yetersiz.”":"Davacı avukat itiraz etti: “Sayın hâkim, sanık kendi içinde çelişiyor!”";
+snd(bad?"bad":"good");vib(bad?60:20);
+dvScreen({sp:bad&&dl<=-2?"l":"j",who:bad&&dl<=-2?"👔 Davacı avukat":"🧑‍⚖️ Hâkim",mood:dl>=1?"🙂":dl==0?"😐":"😠",txt:t,btns:[[M.i<2?"Sıradaki soru":"Karara geç",function(){M.i++;M.i<3?dvQ():dvKarar()}]]})}
+function dvKarar(){var s=M.s+M.nz,d=M.d,sv=d.sev,r=null,v;
+if(s>=5)v={ic:"🎉",t:"BERAAT! "+d.n+" davası düştü. Haberin ardından soruşturma başladı, şirket faaliyetlerini durdurdu.",h:15,g:10,i:10,o:-5,w:1,k:1};
+else if(s>=3)v={ic:"🕊️",t:"BERAAT. Mahkeme haberini haklı buldu.",h:10,g:0,i:8,o:0,w:1};
+else if(s>=1)v={ic:"📄",t:"DAVANIN REDDİ. Haber kamu yararı kapsamında sayıldı, ama avukat masrafı çıktı.",h:4,g:-3,i:3,o:0,w:1};
+else if(s>=-1)v={ic:"💸",t:"PARA CEZASI. Mahkeme haberi hatalı buldu.",h:-3,g:-(8+5*sv),i:-4,o:0};
+else if(s>=-3)v={ic:"🔨",t:"AĞIR TAZMİNAT VE YAYIN YASAĞI. Hâkim sert konuştu.",h:-6,g:-(14+7*sv),i:-10,o:8};
+else if(S.o>=40||sv>=3){r=S.i>=80?"sembol":"mahkum";v={ic:"⛓️",t:"HAPİS CEZASI. Hâkim kararı okudu, jandarma seni salondan çıkardı.",h:0,g:0,i:0,o:0}}
+else{r="kapatildi";v={ic:"🔒",t:"GAZETE KAPATILDI. Mahkeme yayın hakkını iptal etti.",h:0,g:0,i:0,o:0}}
+S.h=cl(S.h+v.h);S.g=cl(S.g+v.g);S.i=cl(S.i+v.i);S.o=cl(S.o+v.o);S.dv=null;
+binc("dv");if(v.w)binc("dvw");if(v.k)binc("dvk");bkontrol();
+snd(v.w?"good":"bad");vib(v.w?[30,30,30]:[200]);
+var end=r||endc();
+dvScreen({sp:"j",gv:1,mood:v.ic,who:"🧑‍⚖️ Hâkim · Karar",txt:v.t+(v.h||v.g||v.i||v.o?"  (Halk "+(v.h>0?"+":"")+v.h+", Gelir "+(v.g>0?"+":"")+v.g+", İtibar "+(v.i>0?"+":"")+v.i+(v.o?", Baskı "+(v.o>0?"+":"")+v.o:"")+")":""),
+btns:[[end?"Sonucu gör":"Devam",function(){clearInterval(DT);if(end){finish(end)}else{S.toast="⚖️ "+v.t.split(".")[0];bshow();tab("g")}}]]})}
+
+/* ---------- sonlar, profil, nasıl, ayarlar ---------- */
+function sonlar(){
+var h='<div class="eg">';
+Object.keys(EN).forEach(function(k){var g=got[k];h+='<div class="ec'+(g?'':' lk')+'"><div class="ei">'+(g?EN[k][2]:'🔒')+'</div><b>'+(g?EN[k][0]:'???')+'</b><small>'+(g?EN[k][1]:'Henüz açılmadı.')+'</small></div>'});
+page("Sonlar",'<div class="hint">'+Object.keys(got).length+' / '+Object.keys(EN).length+' son açıldı.</div>'+h+'</div>',bk())}
+function profil(){
+var x=xpinfo(),n=Object.keys(got).length;
+var h='<div class="card"><div class="ch"><span class="av" style="width:60px;height:60px;font-size:30px">'+x.r[1]+'</span><div class="ci"><b>'+esc(A.ad)+'</b><small>'+x.r[0]+'</small></div></div><div class="xp"><i style="width:'+x.pct+'%"></i></div><p class="nt">'+(x.nx?'Sonraki rütbe: '+x.nx[0]+' ('+P.d+' / '+x.nx[2]+' gün)':'En üst rütbedesin.')+'</p>'
++'<div class="sg"><div><b>'+P.g+'</b><small>Oyun</small></div><div><b>'+P.d+'</b><small>Gün</small></div><div><b>'+rekor()+'</b><small>Rekor</small></div><div><b>'+n+'</b><small>Son</small></div></div></div>'
++'<div class="sect">Rütbeler</div><div class="card">';
+RK.forEach(function(r,i){h+='<div class="sec"><div><b>'+r[1]+' '+r[0]+'</b><br><small style="color:var(--mute)">🎨 '+UN[i]+'</small></div><span>'+(P.d>=r[2]?'✓ ':'')+r[2]+' gün</span></div>'});
+page("Profil",h+'</div><p class="hint">Her oyunda yaşadığın günler rütbe puanı olarak eklenir.</p>',bk())}
+function nasil(){
+function r(i,t,s){return'<div class="how"><span class="hi">'+i+'</span><div><b>'+t+'</b><span>'+s+'</span></div></div>'}
+page("Nasıl oynanır?",'<div class="card">'
++r("📰","Manşet seç","Her gün bir olay gelir. Üç manşetten birini seç. Günü sadece manşet seçimin bitirir.")
++r("📊","Üç gösterge","Halk güveni, gelir ve itibar. Biri sıfıra düşerse oyun biter.")
++r("🚨","Gizli baskı","Hükümeti çok eleştirirsen baskı artar, 100 olursa hapse girersin. Uyarılara dikkat et.")
++r("👥","Ekip","Her gün her kişiye bir görev ver. Sadakat 80 ve üstündeyken günlük bonus kazanırsın. Sadakat 0 olursa ayrılırlar.")
++r("✉️","Okur mektupları","Her üç günde bir manşetin altında kısa bir okur yorumu çıkar. Seçimlerinin sonucunu okurun ağzından duyarsın.")
++r("🏢","Yatırım","Gelirle kalıcı geliştirmeler al. Kasada en az 10 kalmalı.")
++r("💸","Gider","Her gün kira ve maaş yüzünden gelirin düşer. Zorluğa göre 1, 2 veya 3.")
++r("🌱","Zorluk","Kolay, Normal ve Zor. Başlangıç değerlerini, günlük gideri ve baskının artış hızını değiştirir.")
++r("📖","Hikâye",SL+" günü atlatırsan hikâye biter ve bir son kazanırsın. Son, bitişte halk güveni, gelir, itibar ve baskının durumuna göre değişir.")
++r("♾️","Sonsuz","Son yoktur, gazeten ayakta kaldığı sürece devam edersin. Kaç gün dayandığın rekor olarak kaydedilir. 50 güne ulaşırsan gizli bir son seni bekler.")
++r("🗞️","Rakip gazete","Rakip arada bir olay olarak karşına çıkar: hamle yapar, devralma teklifi gönderir ya da batarken satılığa çıkar. Seçtiğin manşet rakibin okur güvenini değiştirir. Halk güvenin rakipten 15 puan düşükse okur ona geçer ve gelirin azalır, yüksekse gelirin artar. Rakip 6 gün boyunca 20 puan öndeyse seni devralır. Çok zayıfladığında onu satın alabilirsin. Günlük modda rakip yoktur.")
++r("⚖️","Dava ve mahkeme","Bir şirketi sert eleştirirsen dava açabilir. İki gün sonra duruşmaya girer, hâkimin 3 sorusuna yanıt verirsin. Cevaplar, itibarın, avukatın ve Hukuk bürosu sonucu belirler: beraat, para cezası, tazminat, gazetenin kapatılması ya da hapis. Günlük modda dava yoktur.")
++r("🗳️","Seçim ve sonuçlu olaylar","Bazı olaylarda taraf tutarsın: derbi, halka arz, referandum, dava, konser, yerel seçim. Sonuç birkaç gün sonra gelir. Doğru tarafı tutarsan ödül, yanlışı tutarsan bedel ödersin; tarafsız kalmak güvenlidir ama az kazandırır. 24 Mayıs’ta genel seçim vardır: A ya da B Partisi’ni desteklersen kazanan taraf sana günlük gelir ve baskı avantajı (ya da dezavantajı) bırakır. Seçim, oyundaki tarih 15–26 Mayıs’a denk gelirse çıkar.")
++r("📈","Ön sayfa, tiraj ve viral","Yayınladığın manşet gazetenin ön sayfasında görünür, altında okur tepkileri ve günlük tiraj grafiği çıkar. Halkı kazandıran temiz haberler bazen viral olur (halk ve gelir bonusu, kariyerde şöhret bonusu). Sert ya da itibarı zedeleyen haberler bazen tepki çeker (halk ve itibar kaybı). Tiraj halk, itibar ve gelire bağlıdır.")
++r("🚀","Kariyer","Sıfırdan başlarsın: Stajyer Muhabir. Çoğunlukla köşe yazarsın (etkiler daha küçüktür), arada bir manşet fırsatı çıkar. İyi seçimler şöhretini artırır: Köşe Yazarı, Haber Müdürü ve Genel Yayın Yönetmeni olursun; manşet payın artar. Genel yayın yönetmeni olunca ekip ve yatırım açılır. Şöhret 100 olursa zirveye çıkarsın. Kariyer otomatik kaydedilir, kapatıp kaldığın yerden devam edebilirsin.")
++r("🏅","Başarımlar","Oynarken görevleri tamamla, rozet kazan. Kilitli rozetlerde nasıl açılacağı yazar.")
++r("🗂️","Arşiv","Yayınladığın her manşet ve gazetenin son sayıları saklanır. Beğendiklerini ⭐ ile favorile.")
++'</div>',bk());
+app.insertAdjacentHTML("afterbegin",mbtn("tg","pri","👨‍💼","Hakan Usta ile eğitim","1 dakikada oynayarak öğren"));
+$("tg").onclick=function(){tut()}}
+function ayar(){
+var notvib=!navigator.vibrate;
+var h='<div class="sect">Görünüm</div><div class="grp">'
++rowc("🎨","Tema","Otomatik cihaz ayarını izler.",segc("tema",[["auto","Oto"],["light","Açık"],["dark","Koyu"]]))
++rowc("📜","Arka plan","Açık temada krem gazete kâğıdı ya da eski mavi.",segc("kag",[[1,"Krem"],[0,"Mavi"]]))
++rowc("🔤","Yazı boyutu","Haber ve menü metinleri.",segc("boy",[[.9,"A-"],[1,"A"],[1.15,"A+"]]))
++rowc("✨","Animasyonlar","Kapatırsan geçiş efektleri durur.",swc("anim"))
++rowc("📰","Son dakika bandı","Ana menüde kayan haber bandı.",swc("band"))
++'</div><div class="sect">Ses ve titreşim</div><div class="grp">'
++rowc("🔊","Ses efektleri","Dokunma, sonuç ve oyun sonu sesleri.",swc("ses"))
++rowc("📳","Titreşim",notvib?"Bu cihaz titreşimi desteklemiyor.":"Dokunma ve uyarılarda titreşir.",swc("tit"))
++'</div><div class="sect">Oyun</div><div class="grp">'
++rowc("✍️","Editör adı","Menüde ve oyunda görünür.",'<input class="in" id="adi" maxlength="16" value="'+esc(A.ad)+'">')
++rowc("🎯","Varsayılan zorluk","Yeni oyunlarda geçerli. Süren oyun etkilenmez.",segc("zor",[["k","🌱"],["n","⚖️"],["z","🔥"]]))
++'</div><div class="sect">Kozmetik · rütbeyle açılır</div><div class="grp">'
++rowc("🏷️","Gazete adı",RN()>=1?"Menüde ve oyunda görünür.":"🔒 Muhabir rütbesinde açılır.",'<input class="in" id="gad" maxlength="14" placeholder="Manşet"'+(RN()>=1?'':' disabled')+' value="'+esc(A.gad||"")+'">')
++rowc("🔤","Başlık fontu","Her yeni rütbede yenisi açılır.",cseg("fnt",FN))
++rowc("🎨","Renk teması","Vurgu rengini değiştirir.",cseg("tem",TM))
++'</div><div class="sect">Veri</div><div class="grp">'
++rowc("🗑️","İlerlemeyi sıfırla","Sonlar, rekor, rütbe, başarım ve arşiv silinir.",'<button class="dng" id="rs">Sıfırla</button>')
++rowc("↩️","Ayarları sıfırla","Tüm ayarlar varsayılana döner.",'<button class="dng" id="rd">Sıfırla</button>')
++'</div><div class="ft">MANŞET v'+VER+'</div>';
+page("Ayarlar",h,bk(),ayar);
+if($("gad"))$("gad").oninput=function(){A.gad=this.value.trim();saveA()};
+$("adi").oninput=function(){A.ad=this.value.trim()||"Editör";saveA()};
+function conf(id,fn){var b=$(id);b.onclick=function(){if(b.dataset.s){fn()}else{b.dataset.s=1;b.textContent="Emin misin?"}}}
+conf("rs",function(){got={};P={g:0,d:0};B={};BU={};AR=[];try{["manset_sonlar","manset_rekor","manset_profil","manset_gunluk","manset_seri","manset_arsiv","manset_basarim","manset_stat"].forEach(function(k){localStorage.removeItem(k)})}catch(e){}menu()});
+conf("rd",function(){A=DEF();saveA();uygula();ayar()})}
+
+/* ---------- oyun mantığı ---------- */
+function start(m){
+var zk=m=="d"?"n":A.zor,z=Z[zk];
+S={h:z.s[0],g:z.s[1],i:z.s[2],o:0,d:0,m:m,z:zk,e:null,res:null,notes:[],cr:{mu:60,av:60,re:60},gone:{},up:{},a:{},pv:null,dt:t0(),rv:m=="d"||m=="k"?null:rvNew(zk)};if(m=="k")kInit();
+order=m=="s"?shuf(E).slice(0,SL):m=="d"?sshuf(E,rng(seedOf(tkey()))).slice(0,DL):m=="k"?[]:shuf(E);BK=null;tab("g")}
+function cur(ns){
+if(S.m=="k")return kCur();
+var sp=ns?null:spec();if(sp)return sp;
+if(S.m=="s"||S.m=="d")return order[S.d];
+var n=order.length;
+if(S.d>0&&S.d%n==0){var last=order[n-1];do{order=shuf(E)}while(order[0]===last)}
+return order[S.d%n]}
+function warn(){return S.o>=75?"Savcılıktan celp haberi geldi!":S.o>=50?"Bir tanıdık aradı: “Dikkat et, seni konuşuyorlar.”":S.g<=15?"Kasa tükeniyor: matbaa faturası kapıda!":S.h<=15?"Okur güveni dibe vurdu: abonelikler iptal ediliyor.":S.i<=15?"Yazı işleri sana güvenmiyor: itibarın kritik.":""}
+var CR=[
+{k:"mu",n:"Muhabir Deniz",ic:"🕵️",r:"Soruşturma dosyası",e:"halk +3, itibar +4, baskı +4",c:6,pd:"her gün itibar +1",f:function(){S.h=cl(S.h+3);S.i=cl(S.i+4);S.o=cl(S.o+4)},p:function(){S.i=cl(S.i+1)}},
+{k:"av",n:"Avukat Selin",ic:"⚖️",r:"Hukuki koruma",e:"baskı -10",c:8,pd:"her gün baskı -1",f:function(){S.o=cl(S.o-10)},p:function(){S.o=cl(S.o-1)}},
+{k:"re",n:"Reklam sorumlusu Cemal",ic:"📢",r:"Reklam kampanyası",e:"gelir +7, itibar -3",c:0,pd:"her gün gelir +1",f:function(){S.g=cl(S.g+7);S.i=cl(S.i-3)},p:function(){S.g=cl(S.g+1)}}
+];
+var UP=[
+{k:"dij",n:"Dijital yayın",ic:"🌐",c:25,d:"Her gün gelir +1"},
+{k:"gz",n:"Şifreli iletişim",ic:"🔐",c:15,d:"Baskı artışları %25 azalır"},
+{k:"ok",n:"Okur panosu",ic:"💬",c:18,d:"Her gün halk güveni +1"},
+{k:"hb",n:"Hukuk bürosu",ic:"🏛️",c:22,d:"Her gün baskı -1"}
+];
+function mek(x){
+var L=S.o>=50?["Sayın Editör, çevremde “gazeteyi kapatırlar” diyorlar. Lütfen kendinizi koruyun. — Ayşe, Kadıköy","Kapınıza bir gün biri gelirse biz arkanızdayız ama biraz yavaş gidin. — Orhan, Eskişehir"]
+:S.i<30?["Eskiden size körü körüne güvenirdim, şimdi her haberde bir hesap arıyorum. — Mehmet, Konya"]
+:S.g<30?["Gazete zor durumda diye duydum. Abonelik ücretini artırın, biz ödeyeriz. — Fatma, İzmir"]
+:x[3]>=8?["Dünkü manşetinizi mahalledeki herkese okuttum. Cesaretiniz için sağ olun. — Hasan, Bursa","Böyle haber istiyoruz. Bırakmayın. — Neşe, Samsun"]
+:x[2]>=15?["Bu manşet sipariş gibi kokuyor. Haber mi, reklam mı? — Zeynep, Ankara"]
+:S.h>=70?["Sokakta herkes gazetenizi konuşuyor. Aynı çizgide devam. — Ali, Mersin"]
+:["Dengeli yayınınız hoşuma gitti ama biraz daha cesaret isteriz. — Selma, Trabzon","Bu hafta hangi tarafsınız, bir türlü çıkaramadım. — Kemal, Antalya"];
+return L[Math.floor(Math.random()*L.length)]}
+function endc(){var r=S.o>=100?"hapis":S.g<=0?"iflas":S.h<=0?"satilmis":S.i<=0?"kovuldun":null;if(r=="hapis"&&S.i>=80)r="sembol";if(r=="iflas"&&S.m=="k"&&S.K.l<3)r="issiz";if(r=="iflas"&&S.i>=60)r="onurlu";if(!r&&S.rv&&S.rv.t>=6)r="devralindi";return r}
+function chip(n,v){return v?'<span class="chip'+(v<0?' dn':'')+'">'+n+' '+(v>0?'▲ +':'▼ ')+v+'</span>':''}
+function gz(){
+var h;
+if(S.res)return resCard();
+if(S.dv&&S.d>=S.dv.g)return dvCard();
+if(!S.e||S.ed!==S.d){var kp=S.m=="k"?kPromo():null,sp0=kp?null:spec();S.e=kp||sp0||chDue()||rvTetik()||cur(1);if(S.m=="k"&&!kp)S.e=kWrap(S.e);S.ed=S.d}
+h='<div class="card">'+(S.e.tag?'<div class="st">'+(S.e.kx?'':'🗓️ ')+S.e.tag+'</div>':'')+'<h2>'+S.e.t+'</h2>'+(S.e.rv?rvBars():'');S.e.o.forEach(function(x,k){h+='<button class="b opt" data-a="h:'+k+'">'+x[0]+hint(x)+'</button>'});return mgLine()+h+'</div>'}
+function hint(x){if(S.z=="z")return"";var a=[];[["👥",1],["💰",2],["⭐",3]].forEach(function(p){var v=x[p[1]];if(v>=4)a.push(p[0]+"▲");else if(v<=-4)a.push(p[0]+"▼")});if(x[4]>=4)a.push("⚠️");return a.length?'<span class="hn">'+a.join("  ")+'</span>':""}
+function mgOn(){return !(S.m=="k"&&S.K.l<3)&&CR.some(function(c){return !S.gone[c.k]})}
+function mgLine(){if(!mgOn())return"";var d=dk(),ok=S.mgc===d;return'<div class="mg'+(ok?' ok':'')+'">🎯 Günün hedefi: '+(d%2?'Birine prim ver':'Bir ekip görevi ver')+' · '+(ok?'Tamamlandı ✓':'+3 gelir')+'</div>'}
+function mgDone(t){if(!mgOn())return;var d=dk();if(S.mgc===d)return;if((d%2&&t=="p")||(!(d%2)&&t=="a")){S.mgc=d;S.g=cl(S.g+3);S.toast+=" · 🎯 Hedef +3 gelir"}}
+function hafta(){var w=S.d/7;sheet('<h2 style="margin:8px 0 4px">📋 '+w+'. hafta bilançosu</h2><div class="sg"><div><b>'+S.h+'</b><small>Halk</small></div><div><b>'+S.g+'</b><small>Gelir</small></div><div><b>'+S.i+'</b><small>İtibar</small></div><div><b>'+S.o+'</b><small>Baskı</small></div></div>'+(S.tj&&S.tj.length>1?'<div class="hint" style="margin-top:12px">Tiraj seyri</div>'+spark(S.tj):'')+'<div class="hint" style="margin-top:12px">Haftanın ödülünü seç:</div><button class="b opt" data-w="g">💰 Reklam geliri · gelir +5</button><button class="b opt" data-w="h">👥 Okur buluşması · halk +5</button>',function(o){o.querySelectorAll("[data-w]").forEach(function(b){b.onclick=function(){if(b.dataset.w=="g")S.g=cl(S.g+5);else S.h=cl(S.h+5);snd("good");vib(20);cls();tab("g")}})})}
+function head(){var P0=S.pv||{h:S.h,g:S.g,i:S.i};
+function t(ic,n,v,p){var d=v-p;return'<div class="st3"><div class="sn"><span>'+ic+' '+n+'</span>'+(d?'<em class="dd '+(d>0?'pos':'neg')+'">'+(d>0?'+':'')+d+'</em>':'')+'</div><div class="sv">'+v+'</div><div class="tr"><i class="'+(v<25?'lo':'')+'" style="width:'+v+'%"></i></div></div>'}
+var h='<div class="top"><div><h1>'+esc(S.m=="k"?S.K.n:GN())+'</h1><div class="day">📅 '+trDate(S.dt)+' · '+Z[S.z].ic+'</div></div><span class="pill">Gün '+gl(S.res?S.d:S.d+1)+'</span></div>'
++(S.m=="k"?kBar():S.m!="e"?'<div class="pb"><i style="width:'+Math.round(S.d/(S.m=="d"?DL:SL)*100)+'%"></i></div>':'')
++'<div class="g3">'+t("👥","Halk",S.h,P0.h)+t("💰","Gelir",S.g,P0.g)+t("⭐","İtibar",S.i,P0.i)+'</div><div class="warn'+(warn()?' on':'')+'">'+warn()+'</div>';
+S.pv={h:S.h,g:S.g,i:S.i};return h}
+function nav(t){var a=S.m=="k"?[["g","📰","Gazete"],["r","🌟","Kariyer"]].concat(S.K.l>=3?[["e","👥","Ekip"],["y","🏢","Yatırım"]]:[],[["m","☰","Menü"]]):[["g","📰","Gazete"],["e","👥","Ekip"],["y","🏢","Yatırım"]].concat(S.m=="d"?[]:[["k","🎲","Kumar"]],[["m","☰","Menü"]]);
+var bg={e:CR.some(function(c){return !S.gone[c.k]&&S.a[c.k+"a"]!==dk()}),y:UP.some(function(u){return !S.up[u.k]&&S.g-u.c>=10})};
+return'<nav class="nv"><div class="nvi">'+a.map(function(x){return'<button data-n="'+x[0]+'"'+(x[0]==t?' class="on"':'')+'><span>'+x[1]+'</span>'+x[2]+(bg[x[0]]&&x[0]!=t?'<i class="bd"></i>':'')+'</button>'}).join("")+'</div></nav>'}
+function ab(a,t,s,key,cost){var dn=S.a[key]===dk(),no=!dn&&cost>0&&S.g-cost<10;return'<button class="act'+(key.slice(-1)=="p"?' alt':'')+'" data-a="'+a+'"'+(dn||no?' disabled':'')+'><b>'+t+'</b><small>'+(dn?'Bugün yapıldı ✓':no?'Kasa yetersiz':s)+'</small></button>'}
+function ekip(){
+var h='<div class="hint">Her gün her kişiye bir görev ver. Sadakat 80 ve üstündeyken günlük bonus kazanırsın, 0 olursa ayrılırlar.</div>';
+CR.forEach(function(c){var v=S.cr[c.k],gn=S.gone[c.k];
+h+='<div class="card cr'+(gn?' off':'')+'"><div class="ch"><span class="av">'+c.ic+'</span><div class="ci"><b>'+c.n+'</b><small>'+(gn?'Gazeteden ayrıldı':v>=80?'Bonus aktif: '+c.pd:'Sadakat '+v+' / 100')+'</small></div></div>';
+if(!gn)h+='<div class="tr"><i class="'+(v<25?'lo':'')+'" style="width:'+v+'%"></i></div>'+ab("c:"+c.k+":a",c.r,c.e+(c.c?" · −"+c.c+" gelir":""),c.k+"a",c.c)+ab("c:"+c.k+":p","Prim ver","sadakat +15 · −4 gelir",c.k+"p",4);
+h+='</div>'});return h}
+function yat(){
+var h='<div class="hint">Kasa: <b>'+S.g+'</b> · Satın almalar kalıcıdır, kasada en az 10 kalmalı.</div><div class="gr">';
+UP.forEach(function(u){var own=S.up[u.k],no=!own&&S.g-u.c<10;h+='<button class="up'+(own?' own':'')+'" data-a="u:'+u.k+'"'+(own||no?' disabled':'')+'><span class="ui">'+u.ic+'</span><b>'+u.n+'</b><small>'+u.d+'</small><em>'+(own?'Alındı ✓':'−'+u.c+' gelir')+'</em></button>'});
+return h+'</div>'}
+/* ---------- kumar masası v2 ---------- */
+function kb0(){if(!S.kb||S.kb.d!==dk())S.kb={d:dk(),n:0};return S.kb}
+var VL=[["Çaylak",0],["Müdavim",150],["VIP",500],["Kral",1200]],KM=[1,1.5,2.2,3.4,5.5,9];
+function kvl(){var w=S.kw||0,i=0;VL.forEach(function(v,k){if(w>=v[1])i=k});return i}
+function kmax(){return 3+kvl()}
+function kluck(){return Math.min(.15,(S.sz||0)/600)}
+function kcn(c){return c==1?"A":c==11?"J":c==12?"Q":c==13?"K":""+c}
+var KG=[["yt","🪙","Yazı-Tura","%46 şans · kazanırsan 2x"],
+["cark","🎡","Şans Çarkı","Boş, 1x'ten 10x'e · %0,5 JACKPOT havuzu"],
+["zar","🎲","Zar Atışı","7 hariç alt/üst · kazanırsan 2,4x",[["alt","Alt (2-6)"],["ust","Üst (8-12)"]]],
+["kk","🎟️","Kazı Kazan","3 sembolü tut: 1x'ten 10x'e"],
+["mer","🃏","Merdiven","Yüksek mi alçak mı? 5 adımda 9x, istediğin an çek"],
+["kb","🎯","Kaçak Bahis","%36 şans · 3x · baskı +6, %15 baskın riski"]];
+function kumar(){var b=S.bet||10,k=kb0(),mx=kmax(),left=mx-k.n,net=S.kn||0,lv=kvl(),z=S.kz,h='';
+if(S.kr){var r=S.kr;h+='<div class="card" style="text-align:center;margin-bottom:12px"><div class="eb">'+r.ic+'</div><h2>'+r.t+'</h2>'+chip("Gelir",r.d)+(r.x?'<p class="nt">'+r.x+'</p>':'')+'</div>';S.kr=null}
+h+='<div class="hint">Kasa: <b>'+S.g+'</b> · Bugünkü hak: <b>'+left+' / '+mx+'</b> · Toplam: <b>'+(net>0?'+':'')+net+'</b><br>'
++'Seviye: <b>'+VL[lv][0]+'</b>'+(lv<3?' (sonraki için '+(VL[lv+1][1]-(S.kw||0))+' bahis)':' (en üst)')+(lv>0?' · +'+lv+' hak, %'+lv*10+' iade':'')
++'<br>Seri: <b>'+(S.ws||0)+'</b> · 🏆 Jackpot: <b>'+(S.jp||50)+'</b> · En büyük kazanç: <b>'+(S.kbw||0)+'</b><br>'
++'Şans ölçer %'+(S.sz||0)+' (kaybettikçe dolar, kazanınca yarıya iner)</div>'
++'<div style="height:6px;border-radius:3px;background:var(--line);margin:0 2px 12px"><div style="height:100%;width:'+(S.sz||0)+'%;background:var(--ink);border-radius:3px"></div></div>';
+if(z){var cur=KM[z.n];h+='<div class="card" style="text-align:center;margin-bottom:12px"><div class="eb">🃏 '+kcn(z.c)+'</div><h2>Merdiven: '+z.n+'/5 adım · '+cur+'x</h2><p class="nt">Şimdi çekersen: +'+Math.round(z.b*cur)+' gelir. Aynı kart gelirse hamle sayılmaz.</p>'
++'<div style="display:flex;gap:8px"><button class="act" style="text-align:center;flex:1" data-a="kh:u"><b>Yüksek ▲</b></button><button class="act" style="text-align:center;flex:1" data-a="kh:d"><b>Alçak ▼</b></button></div>'
++'<button class="act" style="text-align:center" data-a="kc"><b>Parayı çek</b><small>'+Math.round(z.b*cur)+' gelir</small></button></div>'}
+h+='<div class="sect">Bahis miktarı</div><div class="seg full">'+[5,10,20,50].map(function(v){return'<button data-a="bs:'+v+'"'+(b==v?' class="on"':'')+'>'+v+' gelir</button>'}).join("")+'</div>';
+KG.forEach(function(g){var dis=left<=0||S.g-b<10||z,lbl=left<=0?'Bugünlük hak bitti':S.g-b<10?'Kasa yetersiz':z?'Merdiven sürüyor':'Oyna';
+h+='<div class="card cr"><div class="ch"><span class="av">'+g[1]+'</span><div class="ci"><b>'+g[2]+'</b><small>'+g[3]+'</small></div></div>';
+if(g[4])h+='<div style="display:flex;gap:8px">'+g[4].map(function(o){return'<button class="act" style="text-align:center;flex:1" data-a="b:'+g[0]+':'+o[0]+'"'+(dis?' disabled':'')+'><b>'+(dis?lbl:o[1])+'</b><small>bahis: −'+b+'</small></button>'}).join("")+'</div>';
+else h+='<button class="act" data-a="b:'+g[0]+'"'+(dis?' disabled':'')+'><b>'+lbl+'</b><small>bahis: −'+b+' gelir</small></button>';
+h+='</div>'});
+return h}
+function kpay(b,m,ic,t,x,pre){
+var g0=S.g,lv=kvl(),pay=0,cb=0;
+if(m>1){S.ws=(S.ws||0)+1;var sb=Math.min(.5,(S.ws-1)*.1);pay=Math.round(b*m*(1+sb));S.sz=Math.floor((S.sz||0)/2);if(sb>0)x+=(x?" ":"")+"Seri bonusu: +%"+Math.round(sb*100)+"."}
+else if(m==1)pay=b;
+else{S.ws=0;S.sz=Math.min(100,(S.sz||0)+12);S.jp=(S.jp||50)+Math.ceil(b/2);cb=Math.round(b*lv*.1);if(cb>0)x+=(x?" ":"")+"VIP iadesi: +"+cb+"."}
+if(S.kc>=6&&Math.random()<.12){S.i=cl(S.i-6);S.h=cl(S.h-3);x+=(x?" ":"")+"Kumar masası haberi sızdı: itibar −6, halk −3."}
+S.g=cl(S.g+pay+cb-(pre?0:b));
+var net=S.g-g0-(pre?b:0);if(net>(S.kbw||0))S.kbw=net;
+S.kn=(S.kn||0)+net;S.kr={ic:ic,t:t,d:net,x:x};
+binc("kp");bst("mx",net);bst("ws",S.ws||0);bst("kv",kvl());if(S.kn<0)bst("kl",-S.kn);
+snd(net>=0?"good":"bad");vib(net>0?[30,30,30]:60);
+var e=endc();e?finish(e):(bshow(),tab("k"))}
+function bahis(g,o){var b=S.bet||10,k=kb0();if(S.m=="d"||k.n>=kmax()||S.kz||S.g-b<10)return;
+k.n++;S.kc=(S.kc||0)+1;S.kw=(S.kw||0)+b;
+var m=0,ic,t,x="",lk=kluck(),r=Math.random();
+if(g=="mer"){S.g=cl(S.g-b);S.kz={b:b,c:1+Math.floor(Math.random()*13),n:0};tab("k");return}
+if(g=="yt"){var w=r<.46+lk;m=w?2:0;ic=w?"🪙":"💸";t=w?"Yazı geldi, kazandın!":"Tura geldi, kaybettin."}
+else if(g=="cark"){r=Math.min(.9999,r+lk);ic="🎡";
+if(r>=.995){var jp=S.jp||50;S.jp=50;m=jp/b;ic="🏆";binc("jp");t="JACKPOT! Havuz sende: "+jp+" gelir!"}
+else{m=r<.5?0:r<.75?1:r<.88?2:r<.95?3:r<.985?5:10;t=m==0?"Çark boş durdu.":m==1?"Paran geri geldi.":"Çark "+m+"x gösterdi!"}}
+else if(g=="zar"){var d1=1+Math.floor(Math.random()*6),d2=1+Math.floor(Math.random()*6),s=d1+d2,w=o=="alt"?s<7:s>7;
+if(!w&&Math.random()<lk*2){d1=1+Math.floor(Math.random()*6);d2=1+Math.floor(Math.random()*6);s=d1+d2;w=o=="alt"?s<7:s>7}
+m=w?2.4:0;ic="🎲";t="Zarlar "+d1+" + "+d2+" = "+s+(w?" — kazandın!":s==7?" — 7 hep kasanın.":" — kaybettin.")}
+else if(g=="kk"){r=Math.min(.9999,r+lk);m=r<.55?0:r<.77?1:r<.89?2:r<.95?3:r<.985?6:10;
+var SY={1:"🍒",2:"🍋",3:"🔔",6:"⭐",10:"💎"},al=["🍒","🍋","🔔","⭐","💎","🍀"];
+if(m>0)ic=SY[m]+SY[m]+SY[m];else{al.sort(function(){return Math.random()-.5});ic=al[0]+al[1]+al[2]}
+t=m==0?"Eşleşme yok.":m==1?"Üçlü tuttu ama sadece paran geri geldi.":"Üçlü tuttu: "+m+"x!"}
+else{var w=r<.36+lk;m=w?3:0;ic=w?"🎯":"🎲";t=w?"Bahis tuttu, 3 kat kazandın!":"Bahis yattı.";S.o=cl(S.o+6);
+if(Math.random()<.15){S.o=cl(S.o+14);S.i=cl(S.i-10);x="Kaçak bahis baskını: baskı +20, itibar −10."}}
+kpay(b,m,ic,t,x,false)}
+function kzg(d){var z=S.kz;if(!z)return;var c=1+Math.floor(Math.random()*13);
+if(c==z.c){S.kr={ic:"🃏 "+kcn(c),t:"Aynı kart! Hamle sayılmadı.",d:0,x:""};tab("k");return}
+var w=d=="u"?c>z.c:c<z.c;
+if(w){z.n++;z.c=c;if(z.n>=5){kcash();return}S.kr={ic:"🃏 "+kcn(c),t:"Doğru bildin! Çarpan "+KM[z.n]+"x.",d:0,x:""};tab("k")}
+else{S.kz=null;kpay(z.b,0,"🃏 "+kcn(c),"Yanlış tahmin, merdiven yıkıldı.","",true)}}
+function kcash(){var z=S.kz;if(!z)return;S.kz=null;var m=KM[z.n];if(m>=9)binc("mer");
+kpay(z.b,m,m>1?"💰":"🃏",m>1?"Parayı zamanında çektin: "+m+"x!":"Bahsini geri çektin.","",true)}
+function daha(){
+return mbtn("dm1","","★","Sonlar","Açtığın sonlar: "+Object.keys(got).length+"/"+Object.keys(EN).length)
++mbtn("dm6","","🏅","Başarımlar",Object.keys(BU).length+" / "+BS.length+" açıldı")
++mbtn("dm7","","🗂️","Arşiv",AR.length+" manşet saklı")
++mbtn("dm2","","👤","Profil","Rütbe ve istatistikler")
++mbtn("dm3","","📖","Nasıl oynanır?","Kurallar ve ipuçları")
++mbtn("dm4","","⚙️","Ayarlar","Görünüm, ses, oyun")
++mbtn("dm5","","⌂","Ana menü","Oyun senin için bekler")}
+function tab(t){
+var c=t=="g"?rvLine()+gz():t=="e"?ekip():t=="y"?yat():t=="k"?kumar():t=="r"?kariyer():daha();
+app.innerHTML=head()+c+nav(t)+(S.toast?'<div class="toast">'+S.toast+'</div>':'');S.toast=null;kSave();
+app.querySelectorAll("[data-n]").forEach(function(b){b.onclick=function(){vib(8);tab(b.dataset.n)}});
+app.querySelectorAll("[data-a]").forEach(function(b){b.onclick=function(){act(b.dataset.a)}});
+if(t=="m"){var back=function(){tab("m")};
+$("dm1").onclick=function(){BK=back;sonlar()};$("dm2").onclick=function(){BK=back;profil()};
+$("dm3").onclick=function(){BK=back;nasil()};$("dm4").onclick=function(){BK=back;ayar()};$("dm5").onclick=menu;$("dm6").onclick=function(){BK=back;basarim()};$("dm7").onclick=function(){BK=back;arsiv()}}
+window.scrollTo(0,0)}
+function act(s){var p=s.split(":"),t=p[0];
+if(t=="h")pick(+p[1]);
+else if(t=="nx"){S.res=null;S.notes=[];S.dt=adv(S.dt,S.m=="d"?(S.d%2?3:2):2+Math.floor(Math.random()*2));tab("g");if(S.m!="d"&&S.d>0&&S.d%7==0)hafta()}
+else if(t=="c")cact(p[1],p[2]);
+else if(t=="u")buy(p[1]);
+else if(t=="b")bahis(p[1],p[2]);
+else if(t=="kh")kzg(p[1]);
+else if(t=="kc")kcash();
+else if(t=="dv")mahkeme();
+else if(t=="bs"){S.bet=+p[1];tab("k")}}
+function cact(k,t){var c=CR.filter(function(z){return z.k==k})[0],key=k+t,cost=t=="a"?c.c:4;
+if(S.gone[k]||S.a[key]===dk()||(cost>0&&S.g-cost<10))return;
+S.a[key]=dk();S.g=cl(S.g-cost);
+if(t=="a"){c.f();S.cr[k]=Math.min(100,S.cr[k]+5)}else S.cr[k]=Math.min(100,S.cr[k]+15);
+S.toast=t=="a"?c.r+": "+c.e:c.n+" memnun: sadakat +15";
+mgDone(t);snd("good");binc("ca");bst("cr80",cr80());var r=endc();r?finish(r):(bshow(),tab("e"))}
+function buy(k){var u=UP.filter(function(z){return z.k==k})[0];if(S.up[k]||S.g-u.c<10)return;S.up[k]=1;binc("buy");bst("ub",Object.keys(S.up).length);S.g=cl(S.g-u.c);S.toast="Satın alındı: "+u.n;snd("good");vib(20);bshow();tab("y")}
+function pick(k){
+var z=Z[S.z],x=S.e.o[k],o=x[4],w0=warn(),tj0=tirajV();
+if(o>0)o=Math.round(o*z.pm*(S.up.gz?.75:1));
+S.h=cl(S.h+x[1]);S.g=cl(S.g+x[2]-z.rent-(S.m=="e"?Math.floor(S.d/8):0));S.i=cl(S.i+x[3]);S.o=cl(S.o+o);S.d++;
+var n=[];
+if(S.up.dij)S.g=cl(S.g+1);
+if(S.up.ok)S.h=cl(S.h+1);
+if(S.up.hb)S.o=cl(S.o-1);
+if(S.m=="k"){S.g=cl(S.g+KS[S.K.l]);if(S.K.l<3)S.o=cl(S.o-1)}
+if(S.pw&&S.pw.n>0){S.pw.n--;if(S.pw.s!="n"){if(S.pw.s==S.pw.p){S.g=cl(S.g+1);S.o=cl(S.o-1)}else{S.g=cl(S.g-1);S.o=cl(S.o+1)}}if(S.pw.n==0)n.push("Seçim sonrası ilk dönem sona erdi.")}
+CR.forEach(function(c){if(S.gone[c.k])return;var v=S.cr[c.k]-2;S.cr[c.k]=v;
+if(v<=0){S.gone[c.k]=1;S.i=cl(S.i-8);n.push(c.n+" gazeteden ayrıldı. İtibar -8.")}
+else if(v>=80)c.p()});
+rivalGun(x,n);dvTetik(x,n);chSet(x);viral(x,n);tiraj(tj0);S.rx=reacts(x);if(S.m=="k")kAfter(x,n);
+S.res=x;S.notes=n;S.mk=S.d%3==0?mek(x):null;
+binc("mn");bst("dm",S.d);bst("bm",S.o);if(S.g>=100)B.g100=1;if(S.h>=100)B.h100=1;bst("cr80",cr80());arsivEkle(x);bkontrol();
+var r=endc();if(!r&&S.m=="k"&&S.K.l>=3&&S.K.f>=100)r="zirve";
+if(!r&&((S.m=="s"&&S.d>=SL)||(S.m=="d"&&S.d>=DL)))r=S.o>=70?"surgun":(S.g>=85&&S.i<40)?"patron":(S.h>=85&&S.i>=70)?"halk":(S.o<=10&&S.i<60)?"yandas":"efsane";
+if(r){finish(r);return}
+snd(x[1]+x[3]>=0?"good":"bad");
+if(warn()&&warn()!==w0)vib([80,50,80]);else vib(15);
+bshow();tab("g");if(S.vr&&S.vr.t=="v")setTimeout(konfeti,200)}
+function konfeti(){
+if(!A.anim||(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches))return;
+var c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9";document.body.appendChild(c);
+var w=c.width=innerWidth,h=c.height=innerHeight,x=c.getContext("2d"),cs=["#d62839","#e9a820","#2a9d5c","#2563eb","#7c3aed","#fff"],p=[];
+for(var i=0;i<130;i++)p.push({x:w/2+(Math.random()-.5)*80,y:h*.35,vx:(Math.random()-.5)*14,vy:-Math.random()*13-3,r:Math.random()*6+3,c:cs[i%6],a:Math.random()*6,va:(Math.random()-.5)*.4});
+var t0=Date.now();(function f(){var t=Date.now()-t0;x.clearRect(0,0,w,h);p.forEach(function(q){q.vy+=.35;q.x+=q.vx;q.y+=q.vy;q.vx*=.99;q.a+=q.va;x.save();x.translate(q.x,q.y);x.rotate(q.a);x.globalAlpha=Math.max(0,1-t/2800);x.fillStyle=q.c;x.fillRect(-q.r,-q.r/2,q.r*2,q.r);x.restore()});
+if(t<2800)requestAnimationFrame(f);else c.remove()})()}
+function finish(r){
+S.over=true;try{localStorage.removeItem("manset_kariyer");localStorage.removeItem("manset_oyun")}catch(e){}
+if(S.m=="e"&&S.d>=50){got[r]=1;r="duayen"}
+var yeni=!got[r];got[r]=1;sv("manset_sonlar",got);
+var rk=rekor(),nr=false;
+if(S.m=="e"&&S.d>rk){rk=S.d;nr=true;sv("manset_rekor",rk)}
+var dg=S.m=="d"?gunBitir(r):null;var r0=rank(P.d);P.g++;P.d+=S.d+(dg?dg.b:0);sv("manset_profil",P);var r1=rank(P.d);
+arsivEkle(null,r);bst("dm",S.d);var bq=bdrain();
+snd(WIN[r]?"win":"end");vib(WIN[r]?[40,40,40]:[250]);
+if(WIN[r]||r1>r0){kozm();setTimeout(konfeti,250);if(r1>r0)setTimeout(function(){vib([60,40,60,40,160])},400)}
+var n=Object.keys(got).length,e=EN[r];
+app.innerHTML='<div class="top"><h1>Manşet</h1><span class="pill">'+MN(S.m)+' · '+Z[S.z].ic+' '+Z[S.z].n+'</span></div>'
++'<div class="card end"><div class="eb">'+e[2]+'</div><h2>'+e[0]+'</h2><p>'+e[1]+'</p>'
++(yeni?'<span class="nw">✨ Yeni son açıldı</span>':'')+(nr?'<span class="nw">🏁 Yeni rekor</span>':'')+(r1>r0?'<span class="nw">🎉 Yeni rütbe: '+RK[r1][1]+' '+RK[r1][0]+'</span><span class="nw">🎨 Yeni kozmetik açıldı</span>':'')
++(dg?'<span class="nw">🔥 Seri: '+dg.n+' gün'+(dg.b?' · +'+dg.b+' XP':'')+'</span><span class="nw">🏆 Puan: '+dg.p+'</span>':'')+bq.map(function(a){return'<span class="nw">🏅 Başarım: '+a[2]+'</span>'}).join("")+'<div class="sg"><div><b>'+S.h+'</b><small>Halk</small></div><div><b>'+S.g+'</b><small>Gelir</small></div><div><b>'+S.i+'</b><small>İtibar</small></div><div><b>'+S.o+'</b><small>Baskı</small></div></div>'
++'<div class="st">'+(S.m=="k"?'Kariyerin '+S.d+' gün sürdü. Ulaştığın makam: '+KL[S.K.l][1]+' '+KL[S.K.l][0]+', şöhret '+Math.round(S.K.f)+'. Son sayı: ':'Gazeten '+S.d+' gün yaşadı. Son sayı: ')+trDate(S.dt)+'.'+(S.m=="e"?' Rekor: '+rk+' gün':'')+'<br>Açılan sonlar: '+n+' / '+Object.keys(EN).length+'</div>'
++(S.m=="d"?'<button class="big" id="shr">Sonucu paylaş</button>':'<button class="big" id="again">Tekrar oyna</button>')+'<button class="big sec" id="mm">Ana menü</button></div>';
+if($("again"))$("again").onclick=function(){start(S.m)};if($("shr"))$("shr").onclick=function(){shareD(this)};$("mm").onclick=menu;
+window.scrollTo(0,0)}
+
+/* ---------- öğretici: Hakan Usta ---------- */
+var T;
+function tgs(){return ld("manset_ogr",0)}
+function tut(s){
+if(s===undefined)s=0;
+if(s==0)T={h:50,g:70,i:50,o:0,c:0};
+var bub="",body="",hl=s==1?" hl":"";
+function ga(ic,n,v){return'<div class="st3'+hl+'"><div class="sn"><span>'+ic+' '+n+'</span></div><div class="sv">'+v+'</div><div class="tr"><i style="width:'+v+'%"></i></div></div>'}
+function ev(e){var h='<div class="card"><h2>'+e.t+'</h2>';e.o.forEach(function(x,k){h+='<button class="b opt" data-k="'+k+'">'+x[0]+'</button>'});return h+'</div>'}
+function res(x){var h='<div class="card"><div class="st">Manşetin yayında</div><h2>“'+x[0]+'”</h2>'+chip("Halk",x[1])+chip("Gelir",x[2]-2)+chip("İtibar",x[3])+chip("Baskı",x[4]>0?x[4]:0)+'</div>';return h+'<button class="big" id="tn">Devam</button>'}
+var nx=function(){tut(s+1)};
+if(s==0){bub="Selam evlat, ben <b>Hakan Usta</b>. Otuz yıl gazete yönettim, iki kez de hapis yattım. Sana işin sırrını bir dakikada öğreteyim.";
+body='<button class="big" id="tn">Öğret bakalım</button><button class="big sec" id="tx">Biliyorum, atla</button>'}
+else if(s==1){bub="Gazeteni üç şey ayakta tutar: 👥 <b>Halk</b> güveni, 💰 <b>Gelir</b> ve ⭐ <b>İtibar</b>. Biri <b>sıfıra</b> inerse gazete biter. Şimdi bir olay gelecek.";body='<button class="big" id="tn">Devam</button>'}
+else if(s==2){bub="Her gün bir olay gelir, sen bir <b>manşet</b> seçersin. Gün sadece manşetle biter. Sert manşet halkı kazandırır ama hükümeti kızdırır. Birini seç, bak ne olacak.";body=ev(TE0)}
+else if(s==3){var x=T.x,sert=x[4]>5;bub=(sert?"Gördün mü? Halk sevindi ama <b>baskı</b> arttı. Hükümeti çok eleştirirsen baskı 100 olur ve hapse girersin.":"Güvenli yol: baskı artmadı ama kazanç da az. Sürekli yumuşak olursan kimse seni ciddiye almaz.")+" Gerçek oyunda baskıyı görmezsin, yalnızca uyarı gelir: <i>“Dikkat et, seni konuşuyorlar.”</i>";body=res(x)}
+else if(s==4){bub="Para her zaman cazip. Şu teklife bak: kasayı doldurur ama <b>itibarını</b> yer. Kararı sen ver.";body=ev(TE5)}
+else if(s==5){var x=T.x;bub=x[2]>10?"Parayı aldın: kasa doldu ama halk ve itibar düştü. Bunu sık yaparsan <b>Satılmış</b> ya da <b>Kovuldun</b> sonuna gidersin.":"Temiz kaldın. Kasa az büyüdü ama günlük gider var, gelir de sıfıra inerse gazete biter. Dengeyi koru.";body=res(x)}
+else if(s==6){bub="Baskı yükselirse ekibin yardım eder. Oyunda <b>👥 Ekip</b> sekmesinden her gün her kişiye görev verirsin. Avukat Selin baskıyı düşürür. Dene.";
+body='<div class="card cr"><div class="ch"><span class="av">⚖️</span><div class="ci"><b>Avukat Selin</b><small>Sadakat 60 / 100</small></div></div><button class="act" id="av"><b>Hukuki koruma</b><small>baskı -10 · −8 gelir</small></button></div>'}
+else{bub="İşte bu kadar. <b>"+SL+" gün</b> dayan. <b>🏢 Yatırım</b> sekmesinden kalıcı geliştirmeler alabilirsin ama kasada hep en az 10 bırak. Hapis, iflas, satılmışlık… hangi sonla bitireceğin sana kalmış. Başarılar, editör!";body='<button class="big" id="tn">Oyuna başla</button>'}
+var pr=s>=2&&s<7?'<div class="st3" style="margin-bottom:8px"><div class="sn"><span>🚨 Baskı <small>(normalde gizli)</small></span><b>'+T.o+' / 100</b></div><div class="tr"><i class="'+(T.o>=50?'lo':'')+'" style="width:'+T.o+'%"></i></div></div>':"";
+app.innerHTML='<div class="top"><div><h1>Eğitim</h1><div class="day">Hakan Usta ile 1 dakika</div></div>'+(s<7?'<button class="dng" id="tx2">Atla</button>':'')+'</div>'
++(s>=1?'<div class="g3">'+ga("👥","Halk",T.h)+ga("💰","Gelir",T.g)+ga("⭐","İtibar",T.i)+'</div>':'')+pr
++'<div class="gd"><span class="av gav">👨‍💼</span><div><div class="gn">Hakan Usta</div><div class="bub">'+bub+'</div></div></div>'+body;
+function done(){sv("manset_ogr",1)}
+var b=$("tn");if(b)b.onclick=function(){if(s==7){done();menu();modsec()}else nx()};
+b=$("tx");if(b)b.onclick=function(){done();menu()};
+b=$("tx2");if(b)b.onclick=function(){done();menu()};
+b=$("av");if(b)b.onclick=function(){T.o=cl(T.o-10);T.g=cl(T.g-8);snd("good");nx()};
+app.querySelectorAll("[data-k]").forEach(function(x){x.onclick=function(){
+var o=(s==2?TE0:TE5).o[+x.dataset.k];T.x=o;
+T.h=cl(T.h+o[1]);T.g=cl(T.g+o[2]-2);T.i=cl(T.i+o[3]);T.o=cl(T.o+Math.max(0,o[4]));
+snd(o[1]+o[3]>=0?"good":"bad");nx()}});
+window.scrollTo(0,0)}
+
+(function(){var s=ld("manset_oyun",null);if(s&&s.S&&s.S.m!="d"&&!s.S.over&&Z[s.S.z]&&(s.S.m!="k"||s.S.K)){var o=(s.o||[]).map(function(i){return E[i]}).filter(Boolean);if(s.S.m=="k"||o.length){S=s.S;order=o}}})();
+splash();
+</script>
+</body>
+</html>
